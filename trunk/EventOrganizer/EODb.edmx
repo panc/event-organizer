@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EODbModel.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="EODbModelStoreContainer">
+          <EntitySet Name="Competition" EntityType="EODbModel.Store.Competition" store:Type="Tables" />
+          <EntitySet Name="Starter" EntityType="EODbModel.Store.Starter" store:Type="Tables" />
+          <EntitySet Name="StarterCompetition" EntityType="EODbModel.Store.StarterCompetition" store:Type="Tables" />
+        </EntityContainer>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Caption" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Starter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Birthdate" Type="datetime" />
+          <Property Name="Club" Type="nvarchar" MaxLength="100" />
+          <Property Name="Pony" Type="nvarchar" MaxLength="100" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="StarterCompetition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StarterId" Type="integer" Nullable="false" />
+          <Property Name="CompetitionId" Type="integer" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EODbModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="EODbEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="Competition" EntityType="EODbModel.Competition" />
+          <EntitySet Name="Starter" EntityType="EODbModel.Starter" />
+          <EntitySet Name="StarterCompetition" EntityType="EODbModel.StarterCompetition" />
+          <AssociationSet Name="StarterCompetitionAss" Association="EODbModel.StarterCompetitionAss">
+            <End Role="Starter" EntitySet="Starter" />
+            <End Role="StarterCompetition" EntitySet="StarterCompetition" />
+          </AssociationSet>
+          <AssociationSet Name="CompetitionStarterCompetition" Association="EODbModel.CompetitionStarterCompetition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="StarterCompetition" EntitySet="StarterCompetition" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Competition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Caption" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StarterCompetition" Relationship="EODbModel.CompetitionStarterCompetition" FromRole="Competition" ToRole="StarterCompetition" />
+        </EntityType>
+        <EntityType Name="Starter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Birthdate" />
+          <Property Type="String" Name="Club" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Pony" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Comment" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StarterCompetition" Relationship="EODbModel.StarterCompetitionAss" FromRole="Starter" ToRole="StarterCompetition" />
+        </EntityType>
+        <EntityType Name="StarterCompetition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Int64" Name="StarterId" Nullable="false" />
+          <Property Type="Int64" Name="CompetitionId" Nullable="false" />
+          <NavigationProperty Name="Starter" Relationship="EODbModel.StarterCompetitionAss" FromRole="StarterCompetition" ToRole="Starter" />
+          <NavigationProperty Name="Competition" Relationship="EODbModel.CompetitionStarterCompetition" FromRole="StarterCompetition" ToRole="Competition" />
+        </EntityType>
+        <Association Name="StarterCompetitionAss">
+          <End Type="EODbModel.Starter" Role="Starter" Multiplicity="1" />
+          <End Type="EODbModel.StarterCompetition" Role="StarterCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Starter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StarterCompetition">
+              <PropertyRef Name="StarterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CompetitionStarterCompetition">
+          <End Type="EODbModel.Competition" Role="Competition" Multiplicity="1" />
+          <End Type="EODbModel.StarterCompetition" Role="StarterCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StarterCompetition">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EODbModelStoreContainer" CdmEntityContainer="EODbEntities">
+          <EntitySetMapping Name="Competition">
+            <EntityTypeMapping TypeName="EODbModel.Competition">
+              <MappingFragment StoreEntitySet="Competition">
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Starter">
+            <EntityTypeMapping TypeName="EODbModel.Starter">
+              <MappingFragment StoreEntitySet="Starter">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Pony" ColumnName="Pony" />
+                <ScalarProperty Name="Club" ColumnName="Club" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StarterCompetition">
+            <EntityTypeMapping TypeName="EODbModel.StarterCompetition">
+              <MappingFragment StoreEntitySet="StarterCompetition">
+                <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+                <ScalarProperty Name="StarterId" ColumnName="StarterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EODb" ShowGrid="false" DisplayType="false">
+        <EntityTypeShape EntityType="EODbModel.Competition" Width="1.5" PointX="0.75" PointY="0.75" Height="1.4033821614583335" />
+        <EntityTypeShape EntityType="EODbModel.Starter" Width="1.5" PointX="7.125" PointY="0.75" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="EODbModel.StarterCompetition" Width="1.5" PointX="4.75" PointY="0.75" Height="1.5956835937499996" />
+        <AssociationConnector Association="EODbModel.StarterCompetitionAss">
+          <ConnectorPoint PointX="7.125" PointY="1.6439925130208337" />
+          <ConnectorPoint PointX="6.25" PointY="1.6439925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="EODbModel.CompetitionStarterCompetition">
+          <ConnectorPoint PointX="2.25" PointY="1.5478417968750002" />
+          <ConnectorPoint PointX="4.75" PointY="1.5478417968750002" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
