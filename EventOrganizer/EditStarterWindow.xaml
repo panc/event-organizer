@@ -1,7 +1,7 @@
 ﻿<Window x:Class="EventOrganizer.EditStarterWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Meldung bearbeiten" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:my="clr-namespace:EventOrganizer" Loaded="Window_Loaded" Height="342" Width="509" ResizeMode="CanMinimize">
+        Title="Meldung bearbeiten" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:my="clr-namespace:EventOrganizer" Loaded="Window_Loaded" Height="342" Width="509" ResizeMode="CanMinimize" Icon="/EventOrganizer;component/EventIcon.ico">
     <Grid>
         <ListBox Margin="317,44,12,45" Name="_competitionListBox" BorderThickness="1" IsHitTestVisible="True" SelectionMode="Single" ItemsSource="{Binding}">
             <ListBox.ItemTemplate>
