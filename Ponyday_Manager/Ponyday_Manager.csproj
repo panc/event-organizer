@@ -49,20 +49,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Results_One.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Results_One.Designer.cs">
+      <DependentUpon>Results_One.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mainform.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mainform.Designer.cs">
       <DependentUpon>Mainform.cs</DependentUpon>
     </Compile>
-    <Compile Include="Starter.cs">
+    <Compile Include="Starter_One.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Starter.Designer.cs">
-      <DependentUpon>Starter.cs</DependentUpon>
+    <Compile Include="Starter_One.Designer.cs">
+      <DependentUpon>Starter_One.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Results_One.resx">
+      <DependentUpon>Results_One.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mainform.resx">
       <DependentUpon>Mainform.cs</DependentUpon>
     </EmbeddedResource>
@@ -75,8 +84,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Starter.resx">
-      <DependentUpon>Starter.cs</DependentUpon>
+    <EmbeddedResource Include="Starter_One.resx">
+      <DependentUpon>Starter_One.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
