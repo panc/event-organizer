@@ -23,10 +23,46 @@ namespace Ponyday_Manager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Starter starter = new Starter();
+            Starter_One starter = new Starter_One();
             starter.ShowDialog();
             
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Results_One results = new Results_One();
+            results.ShowDialog();
         }
     }
 }
