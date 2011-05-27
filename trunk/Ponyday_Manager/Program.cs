@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Ponyday_Manager
+namespace PonydayManager
 {
     static class Program
     {
@@ -15,7 +15,7 @@ namespace Ponyday_Manager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Mainform());
+            Application.Run(new MainForm());
         }
     }
 }

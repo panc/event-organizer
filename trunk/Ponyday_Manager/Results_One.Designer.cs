@@ -1,4 +1,4 @@
-﻿namespace Ponyday_Manager
+﻿namespace PonydayManager
 {
     partial class Results_One
     {

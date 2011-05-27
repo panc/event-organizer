@@ -7,62 +7,48 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Ponyday_Manager
+using PonydayManager.Entities;
+
+namespace PonydayManager
 {
-    public partial class Mainform : Form
+    public partial class MainForm : Form
     {
-        public Mainform()
+        public MainForm()
         {
             InitializeComponent();
+
+            _starterDataGridView.AutoGenerateColumns = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            _starterDataGridView.DataSource = Starter.Select("");      
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Starter_One starter = new Starter_One();
-            starter.ShowDialog();
-            
-            
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void CloseMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        private void StarterDataGridView_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-
+            if (_starterDataGridView.CurrentRow != null && _starterDataGridView.CurrentRow.DataBoundItem is Starter)
+            {
+                using (StarterForm starter = new StarterForm((Starter)_starterDataGridView.CurrentRow.DataBoundItem))
+                {
+                    if (starter.ShowDialog() == DialogResult.OK)
+                        _starterDataGridView.DataSource = Starter.Select("");
+                }
+            }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void AddStarterButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Results_One results = new Results_One();
-            results.ShowDialog();
+            using (StarterForm starter = new StarterForm(new Starter()))
+            {
+                if (starter.ShowDialog() == DialogResult.OK)
+                    _starterDataGridView.DataSource = Starter.Select("");
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Ponyday_Manager
+namespace PonydayManager
 {
     public partial class Results_One : Form
     {
