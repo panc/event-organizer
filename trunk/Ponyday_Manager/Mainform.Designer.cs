@@ -31,10 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this._starterListButton = new System.Windows.Forms.Button();
+            this._competitionComboBox = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this._addStarterButton = new System.Windows.Forms.Button();
@@ -52,10 +51,11 @@
             this.wertungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.überToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._starterDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -68,16 +68,6 @@
             this.button1.Text = "Meldesystem";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::PonydayManager.Properties.Resources.Logo;
-            this.pictureBox1.Location = new System.Drawing.Point(18, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(186, 91);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -89,34 +79,35 @@
             this.button2.Text = "Ergebnisslisten";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // _starterListButton
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(687, 70);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(127, 30);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Startisten";
-            this.button3.UseVisualStyleBackColor = true;
+            this._starterListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._starterListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._starterListButton.Location = new System.Drawing.Point(687, 70);
+            this._starterListButton.Name = "_starterListButton";
+            this._starterListButton.Size = new System.Drawing.Size(127, 30);
+            this._starterListButton.TabIndex = 4;
+            this._starterListButton.Text = "Startisten";
+            this._starterListButton.UseVisualStyleBackColor = true;
+            this._starterListButton.Click += new System.EventHandler(this.StarterListButton_Click);
             // 
-            // comboBox2
+            // _competitionComboBox
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this._competitionComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this._competitionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._competitionComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._competitionComboBox.FormattingEnabled = true;
+            this._competitionComboBox.Items.AddRange(new object[] {
             "Bewerb 1",
             "Bewerb 2",
             "Bewerb 3",
             "Bewerb 4",
             "Bewerb 5",
             "Bewerb 6"});
-            this.comboBox2.Location = new System.Drawing.Point(636, 36);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(178, 28);
-            this.comboBox2.TabIndex = 9;
-            this.comboBox2.Text = "Bewerb auswählen";
+            this._competitionComboBox.Location = new System.Drawing.Point(610, 36);
+            this._competitionComboBox.Name = "_competitionComboBox";
+            this._competitionComboBox.Size = new System.Drawing.Size(204, 28);
+            this._competitionComboBox.TabIndex = 9;
             // 
             // button6
             // 
@@ -279,6 +270,16 @@
             this.überToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.überToolStripMenuItem.Text = "Über...";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PonydayManager.Properties.Resources.Logo;
+            this.pictureBox1.Location = new System.Drawing.Point(18, 33);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(186, 91);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,8 +288,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this._competitionComboBox);
+            this.Controls.Add(this._starterListButton);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
@@ -297,12 +298,12 @@
             this.Name = "MainForm";
             this.Text = "Ponyday Manager";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._starterDataGridView)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,8 +314,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button _starterListButton;
+        private System.Windows.Forms.ComboBox _competitionComboBox;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;

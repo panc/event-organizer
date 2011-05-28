@@ -44,6 +44,9 @@
     <Reference Include="log4net">
       <HintPath>..\etc\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="SpreadsheetGear">
+      <HintPath>..\etc\SpreadsheetGear.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -62,6 +65,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StarterListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StarterListForm.Designer.cs">
+      <DependentUpon>StarterListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Competition.cs" />
+    <Compile Include="Entities\StarterCompetition.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Starter.cs" />
     <Compile Include="Extensions.cs" />
@@ -77,14 +88,17 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StarterForm.cs">
+    <Compile Include="EditStarterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StarterForm.Designer.cs">
-      <DependentUpon>StarterForm.cs</DependentUpon>
+    <Compile Include="EditStarterForm.Designer.cs">
+      <DependentUpon>EditStarterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="StarterListForm.resx">
+      <DependentUpon>StarterListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Results_One.resx">
       <DependentUpon>Results_One.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,8 +115,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="StarterForm.resx">
-      <DependentUpon>StarterForm.cs</DependentUpon>
+    <EmbeddedResource Include="EditStarterForm.resx">
+      <DependentUpon>EditStarterForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.Config" />
     <None Include="Properties\Settings.settings">

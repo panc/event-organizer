@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using log4net;
 
 using PonydayManager.Entities;
 
@@ -13,16 +14,22 @@ namespace PonydayManager
 {
     public partial class MainForm : Form
     {
+        private static ILog _log = LogManager.GetLogger(typeof(MainForm));
+
         public MainForm()
         {
             InitializeComponent();
 
             _starterDataGridView.AutoGenerateColumns = false;
+
+            _competitionComboBox.DisplayMember = "Caption";
+            _competitionComboBox.ValueMember = "Id";
+            _competitionComboBox.DataSource = Competition.Select("");
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            _starterDataGridView.DataSource = Starter.Select("");      
+            _starterDataGridView.DataSource = Starter.Select("");
         }
 
         private void CloseMenuItem_Click(object sender, EventArgs e)
@@ -32,22 +39,69 @@ namespace PonydayManager
 
         private void StarterDataGridView_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (_starterDataGridView.CurrentRow != null && _starterDataGridView.CurrentRow.DataBoundItem is Starter)
+            try
             {
-                using (StarterForm starter = new StarterForm((Starter)_starterDataGridView.CurrentRow.DataBoundItem))
+                if (_starterDataGridView.CurrentRow != null && _starterDataGridView.CurrentRow.DataBoundItem is Starter)
                 {
-                    if (starter.ShowDialog() == DialogResult.OK)
-                        _starterDataGridView.DataSource = Starter.Select("");
+                    using (EditStarterForm starter = new EditStarterForm((Starter)_starterDataGridView.CurrentRow.DataBoundItem))
+                    {
+                        if (starter.ShowDialog() == DialogResult.OK)
+                            _starterDataGridView.DataSource = Starter.Select("");
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Failed to open a starter!", ex);
+                MessageBox.Show(this,
+                                "Beim Öffnen des Starters ist ein Fehler aufgetreten.",
+                                "Starter öffnen",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
 
         private void AddStarterButton_Click(object sender, EventArgs e)
         {
-            using (StarterForm starter = new StarterForm(new Starter()))
+            try
             {
-                if (starter.ShowDialog() == DialogResult.OK)
-                    _starterDataGridView.DataSource = Starter.Select("");
+                using (EditStarterForm starter = new EditStarterForm(new Starter()))
+                {
+                    if (starter.ShowDialog() == DialogResult.OK)
+                        _starterDataGridView.DataSource = Starter.Select("");
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Failed to open starter-editing form!", ex);
+                MessageBox.Show(this,
+                                "Beim Hinzufügen eines neuen Starters ist ein Fehler aufgetreten.",
+                                "Starter hinzufügen",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
+        private void StarterListButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_competitionComboBox.SelectedItem is Competition)
+                {
+                    using (StarterListForm frm = new StarterListForm((Competition)_competitionComboBox.SelectedItem))
+                    {
+                        frm.ShowDialog();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Failed to open startlist!", ex);
+                MessageBox.Show(this, 
+                                "Beim Laden der Starterliste ist ein Fehler aufgetreten.", 
+                                "Starterlist",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
     }
