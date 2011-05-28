@@ -11,25 +11,41 @@ using PonydayManager.Entities;
 
 namespace PonydayManager
 {
-    public partial class StarterForm : Form
+    public partial class EditStarterForm : Form
     {
         private Starter _starter;
         private bool _isDirty;
         private bool _isLoading;
 
-        public StarterForm(Starter starter)
+        public EditStarterForm(Starter starter)
         {
             InitializeComponent();
 
             _starter = starter;
             _isLoading = true;
 
+            // load the textboxes
             _firstName.Text = _starter.FirstName;
             _lastName.Text = _starter.LastName;
             _club.Text = _starter.Club;
             _comment.Text = _starter.Comment;
-
             _birthdate.Value = _starter.Birthdate ?? DateTime.Now.Date;
+
+            // load the competition-listbox
+            foreach (var item in Competition.Select(""))
+            {
+                if (_starter.Competitions.Where(c => c.CompetitionId == item.Id).Count() == 0)
+                    _starter.Competitions.Add(new StarterCompetition 
+                        { 
+                            CompetitionId = item.Id, 
+                            StarterId = _starter.Id 
+                        });
+            }
+
+            foreach (var item in _starter.Competitions)
+                _competitions.Items.Add(item, item.IsChecked);
+
+            _competitions.Sorted = true;
 
             _isLoading = false;
         }
@@ -38,11 +54,19 @@ namespace PonydayManager
         {
             if (_isDirty)
             {
+                // update the values from the textboxes
                 _starter.FirstName = _firstName.Text;
                 _starter.LastName = _lastName.Text;
                 _starter.Club = _club.Text;
                 _starter.Comment = _comment.Text;
                 _starter.Birthdate = _birthdate.Value;
+
+                // update the values from the listbox
+                foreach (var item in _competitions.Items)
+                {
+                    if (item is StarterCompetition)
+                        ((StarterCompetition)item).IsChecked = _competitions.CheckedItems.Contains(item);
+                }
 
                 _starter.Save();
                 _isDirty = false;
@@ -71,6 +95,12 @@ namespace PonydayManager
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void Competitions_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (!_isLoading)
+                _isDirty = true;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace PonydayManager
 {
-    partial class StarterForm
+    partial class EditStarterForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StarterForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditStarterForm));
             this._firstName = new System.Windows.Forms.TextBox();
             this._lastName = new System.Windows.Forms.TextBox();
             this._club = new System.Windows.Forms.TextBox();
@@ -50,14 +50,13 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this._birthdate = new System.Windows.Forms.DateTimePicker();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this._competitionPanel = new System.Windows.Forms.Panel();
             this._saveButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.cost = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this._competitions = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // _firstName
@@ -81,16 +80,16 @@
             // _club
             // 
             this._club.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._club.Location = new System.Drawing.Point(499, 105);
+            this._club.Location = new System.Drawing.Point(113, 137);
             this._club.Name = "_club";
-            this._club.Size = new System.Drawing.Size(222, 26);
+            this._club.Size = new System.Drawing.Size(214, 26);
             this._club.TabIndex = 9;
             this._club.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // horseOne
             // 
             this.horseOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.horseOne.Location = new System.Drawing.Point(113, 172);
+            this.horseOne.Location = new System.Drawing.Point(113, 186);
             this.horseOne.Name = "horseOne";
             this.horseOne.Size = new System.Drawing.Size(214, 26);
             this.horseOne.TabIndex = 17;
@@ -100,7 +99,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(16, 175);
+            this.label5.Location = new System.Drawing.Point(16, 189);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 20);
             this.label5.TabIndex = 18;
@@ -110,7 +109,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(375, 108);
+            this.label4.Location = new System.Drawing.Point(16, 140);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 20);
             this.label4.TabIndex = 10;
@@ -150,7 +149,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(16, 207);
+            this.label6.Location = new System.Drawing.Point(16, 221);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 20);
             this.label6.TabIndex = 24;
@@ -159,7 +158,7 @@
             // horseTwo
             // 
             this.horseTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.horseTwo.Location = new System.Drawing.Point(114, 204);
+            this.horseTwo.Location = new System.Drawing.Point(114, 218);
             this.horseTwo.Name = "horseTwo";
             this.horseTwo.Size = new System.Drawing.Size(214, 26);
             this.horseTwo.TabIndex = 23;
@@ -169,7 +168,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(16, 239);
+            this.label7.Location = new System.Drawing.Point(16, 253);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 20);
             this.label7.TabIndex = 30;
@@ -178,7 +177,7 @@
             // horseThree
             // 
             this.horseThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.horseThree.Location = new System.Drawing.Point(114, 236);
+            this.horseThree.Location = new System.Drawing.Point(114, 250);
             this.horseThree.Name = "horseThree";
             this.horseThree.Size = new System.Drawing.Size(214, 26);
             this.horseThree.TabIndex = 29;
@@ -190,7 +189,7 @@
             this._comment.Location = new System.Drawing.Point(20, 393);
             this._comment.Multiline = true;
             this._comment.Name = "_comment";
-            this._comment.Size = new System.Drawing.Size(701, 111);
+            this._comment.Size = new System.Drawing.Size(622, 111);
             this._comment.TabIndex = 35;
             // 
             // label8
@@ -218,7 +217,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(648, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(571, 6);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(73, 40);
             this.pictureBox1.TabIndex = 34;
@@ -231,7 +230,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Location = new System.Drawing.Point(5, 46);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(716, 1);
+            this.panel1.Size = new System.Drawing.Size(639, 1);
             this.panel1.TabIndex = 39;
             // 
             // label9
@@ -258,40 +257,17 @@
             // 
             this._birthdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._birthdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this._birthdate.Location = new System.Drawing.Point(499, 75);
+            this._birthdate.Location = new System.Drawing.Point(497, 73);
             this._birthdate.Name = "_birthdate";
             this._birthdate.Size = new System.Drawing.Size(145, 26);
             this._birthdate.TabIndex = 42;
             this._birthdate.ValueChanged += new System.EventHandler(this.Control_Changed);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this._competitionPanel);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(379, 157);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(341, 208);
-            this.groupBox1.TabIndex = 43;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Bewerbe";
-            // 
-            // _competitionPanel
-            // 
-            this._competitionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this._competitionPanel.AutoScroll = true;
-            this._competitionPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._competitionPanel.Location = new System.Drawing.Point(6, 25);
-            this._competitionPanel.Name = "_competitionPanel";
-            this._competitionPanel.Size = new System.Drawing.Size(329, 177);
-            this._competitionPanel.TabIndex = 0;
-            // 
             // _saveButton
             // 
             this._saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._saveButton.Location = new System.Drawing.Point(513, 523);
+            this._saveButton.Location = new System.Drawing.Point(436, 523);
             this._saveButton.Name = "_saveButton";
             this._saveButton.Size = new System.Drawing.Size(101, 30);
             this._saveButton.TabIndex = 4;
@@ -304,7 +280,7 @@
             this._cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this._cancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._cancelButton.Location = new System.Drawing.Point(620, 523);
+            this._cancelButton.Location = new System.Drawing.Point(543, 523);
             this._cancelButton.Name = "_cancelButton";
             this._cancelButton.Size = new System.Drawing.Size(101, 30);
             this._cancelButton.TabIndex = 44;
@@ -330,18 +306,39 @@
             this.cost.TabIndex = 46;
             this.cost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(375, 108);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(76, 20);
+            this.label12.TabIndex = 47;
+            this.label12.Text = "Bewerbe:";
+            // 
+            // _competitions
+            // 
+            this._competitions.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._competitions.FormattingEnabled = true;
+            this._competitions.Location = new System.Drawing.Point(379, 130);
+            this._competitions.Name = "_competitions";
+            this._competitions.Size = new System.Drawing.Size(263, 193);
+            this._competitions.TabIndex = 48;
+            this._competitions.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.Competitions_ItemCheck);
+            // 
             // StarterForm
             // 
             this.AcceptButton = this._saveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this._cancelButton;
-            this.ClientSize = new System.Drawing.Size(733, 565);
+            this.ClientSize = new System.Drawing.Size(656, 565);
+            this.Controls.Add(this._competitions);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.cost);
             this.Controls.Add(this.label11);
             this.Controls.Add(this._cancelButton);
             this.Controls.Add(this._saveButton);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this._birthdate);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -371,7 +368,6 @@
             this.Text = "Meldesystem";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StarterForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,11 +396,11 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker _birthdate;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Panel _competitionPanel;
         private System.Windows.Forms.Button _saveButton;
         private System.Windows.Forms.Button _cancelButton;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox cost;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckedListBox _competitions;
     }
 }
