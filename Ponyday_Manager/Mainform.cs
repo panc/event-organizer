@@ -19,17 +19,26 @@ namespace PonydayManager
         public MainForm()
         {
             InitializeComponent();
-
-            _starterDataGridView.AutoGenerateColumns = false;
-
-            _competitionComboBox.DisplayMember = "Caption";
-            _competitionComboBox.ValueMember = "Id";
-            _competitionComboBox.DataSource = Competition.Select("");
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _starterDataGridView.DataSource = Starter.Select("");
+            try
+            {
+                _starterDataGridView.AutoGenerateColumns = false;
+
+                _competitionComboBox.DisplayMember = "Caption";
+                _competitionComboBox.ValueMember = "Id";
+                _competitionComboBox.DataSource = Competition.Select("");
+
+                _starterDataGridView.DataSource = Starter.Select("");
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Failed to initialize the application.", ex);
+                MessageBox.Show("Beim Laden der Einstellungen ist ein Fehler aufgetreten!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
 
         private void CloseMenuItem_Click(object sender, EventArgs e)
@@ -100,6 +109,30 @@ namespace PonydayManager
                 MessageBox.Show(this, 
                                 "Beim Laden der Starterliste ist ein Fehler aufgetreten.", 
                                 "Starterlist",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
+        private void EditStarterButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_starterDataGridView.CurrentRow.DataBoundItem is Starter)
+                {
+                    using (EditStarterForm starter = new EditStarterForm((Starter)_starterDataGridView.CurrentRow.DataBoundItem))
+                    {
+                        if (starter.ShowDialog() == DialogResult.OK)
+                            _starterDataGridView.DataSource = Starter.Select("");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Failed to open starter-editing form!", ex);
+                MessageBox.Show(this,
+                                "Beim Bearbeiten eines Starters ist ein Fehler aufgetreten.",
+                                "Starter bearbeiten",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }

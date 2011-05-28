@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this._starterListButton = new System.Windows.Forms.Button();
             this._competitionComboBox = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this._editStarterButton = new System.Windows.Forms.Button();
             this._addStarterButton = new System.Windows.Forms.Button();
             this._starterDataGridView = new System.Windows.Forms.DataGridView();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +44,8 @@
             this.Birthdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Club = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Costs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Paied = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._closeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,16 +60,6 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(220, 71);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 30);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Meldesystem";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -124,6 +117,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this._editStarterButton);
             this.groupBox1.Controls.Add(this._addStarterButton);
             this.groupBox1.Controls.Add(this._starterDataGridView);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -133,6 +127,18 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Meldungen";
+            // 
+            // _editStarterButton
+            // 
+            this._editStarterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._editStarterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._editStarterButton.Location = new System.Drawing.Point(159, 305);
+            this._editStarterButton.Name = "_editStarterButton";
+            this._editStarterButton.Size = new System.Drawing.Size(147, 30);
+            this._editStarterButton.TabIndex = 14;
+            this._editStarterButton.Text = "Starter bearbeiten";
+            this._editStarterButton.UseVisualStyleBackColor = true;
+            this._editStarterButton.Click += new System.EventHandler(this.EditStarterButton_Click);
             // 
             // _addStarterButton
             // 
@@ -162,10 +168,13 @@
             this.LastName,
             this.Birthdate,
             this.Club,
-            this.Comment});
+            this.Comment,
+            this.Costs,
+            this.Paied});
             this._starterDataGridView.Location = new System.Drawing.Point(18, 43);
             this._starterDataGridView.Name = "_starterDataGridView";
             this._starterDataGridView.ReadOnly = true;
+            this._starterDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._starterDataGridView.Size = new System.Drawing.Size(772, 253);
             this._starterDataGridView.TabIndex = 0;
             this._starterDataGridView.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.StarterDataGridView_RowHeaderMouseDoubleClick);
@@ -207,6 +216,23 @@
             this.Comment.HeaderText = "Kommentar";
             this.Comment.Name = "Comment";
             this.Comment.ReadOnly = true;
+            // 
+            // Costs
+            // 
+            this.Costs.DataPropertyName = "Costs";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Costs.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Costs.HeaderText = "zu bezahlen";
+            this.Costs.Name = "Costs";
+            this.Costs.ReadOnly = true;
+            // 
+            // Paied
+            // 
+            this.Paied.DataPropertyName = "Paied";
+            this.Paied.HeaderText = "bezahlt";
+            this.Paied.Name = "Paied";
+            this.Paied.ReadOnly = true;
             // 
             // menuStrip1
             // 
@@ -285,7 +311,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(826, 532);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this._competitionComboBox);
@@ -311,7 +336,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button _starterListButton;
@@ -327,12 +351,15 @@
         private System.Windows.Forms.ToolStripMenuItem verwaltungToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bewerbeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem wertungenToolStripMenuItem;
+        private System.Windows.Forms.Button _addStarterButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Birthdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Club;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
-        private System.Windows.Forms.Button _addStarterButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Costs;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Paied;
+        private System.Windows.Forms.Button _editStarterButton;
     }
 }
 

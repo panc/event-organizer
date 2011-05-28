@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SQLite;
+using log4net;
 
 namespace PonydayManager.Entities
 {
     public class StarterCompetition : Entity
     {
+        private static ILog _log = LogManager.GetLogger(typeof(StarterCompetition));
+
         private Competition _competition;
 
         public StarterCompetition()

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SQLite;
+using log4net;
 
 namespace PonydayManager.Entities
 {
     public class Competition : Entity
     {
+        private static ILog _log = LogManager.GetLogger(typeof(Competition));
+
         public Competition()
         {
             Id = NEW_ID;
@@ -35,7 +38,7 @@ namespace PonydayManager.Entities
                             result.Add(new Competition
                             {
                                 Id = rdr.GetInt32(0),
-                                Caption = rdr.GetString(1)
+                                Caption = rdr.GetNullableString(1)
                             });
                         }
                     }
@@ -63,7 +66,7 @@ namespace PonydayManager.Entities
                             return new Competition
                                 {
                                     Id = rdr.GetInt32(0),
-                                    Caption = rdr.GetString(1)
+                                    Caption = rdr.GetNullableString(1)
                                 };
                         }
                     }

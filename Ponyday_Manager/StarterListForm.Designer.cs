@@ -30,18 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StarterListForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this._captionLabel = new System.Windows.Forms.Label();
             this._printButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
             this._starterDataGridView = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Birthdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Club = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.Costs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Paied = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._starterDataGridView)).BeginInit();
             this.panel2.SuspendLayout();
@@ -114,13 +117,27 @@
             this.LastName,
             this.Birthdate,
             this.Club,
-            this.Comment});
+            this.Comment,
+            this.Costs,
+            this.Paied});
             this._starterDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._starterDataGridView.Location = new System.Drawing.Point(0, 0);
             this._starterDataGridView.Name = "_starterDataGridView";
             this._starterDataGridView.ReadOnly = true;
             this._starterDataGridView.Size = new System.Drawing.Size(864, 462);
             this._starterDataGridView.TabIndex = 45;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this._starterDataGridView);
+            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Location = new System.Drawing.Point(13, 69);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(864, 462);
+            this.panel2.TabIndex = 46;
             // 
             // FirstName
             // 
@@ -160,17 +177,22 @@
             this.Comment.Name = "Comment";
             this.Comment.ReadOnly = true;
             // 
-            // panel2
+            // Costs
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this._starterDataGridView);
-            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(13, 69);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(864, 462);
-            this.panel2.TabIndex = 46;
+            this.Costs.DataPropertyName = "Costs";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Costs.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Costs.HeaderText = "zu bezahlen";
+            this.Costs.Name = "Costs";
+            this.Costs.ReadOnly = true;
+            // 
+            // Paied
+            // 
+            this.Paied.DataPropertyName = "Paied";
+            this.Paied.HeaderText = "bezahlt";
+            this.Paied.Name = "Paied";
+            this.Paied.ReadOnly = true;
             // 
             // StarterListForm
             // 
@@ -206,11 +228,13 @@
         private System.Windows.Forms.Button _printButton;
         private System.Windows.Forms.Button _cancelButton;
         private System.Windows.Forms.DataGridView _starterDataGridView;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Birthdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Club;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Costs;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Paied;
     }
 }

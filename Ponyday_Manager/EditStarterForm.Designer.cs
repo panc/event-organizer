@@ -32,19 +32,19 @@
             this._firstName = new System.Windows.Forms.TextBox();
             this._lastName = new System.Windows.Forms.TextBox();
             this._club = new System.Windows.Forms.TextBox();
-            this.horseOne = new System.Windows.Forms.TextBox();
+            this._ponyOne = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.horseTwo = new System.Windows.Forms.TextBox();
+            this._ponyTwo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.horseThree = new System.Windows.Forms.TextBox();
+            this._ponyThree = new System.Windows.Forms.TextBox();
             this._comment = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this._paied = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             this._saveButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.cost = new System.Windows.Forms.TextBox();
+            this._costs = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this._competitions = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -86,14 +86,14 @@
             this._club.TabIndex = 9;
             this._club.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
-            // horseOne
+            // _ponyOne
             // 
-            this.horseOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.horseOne.Location = new System.Drawing.Point(113, 186);
-            this.horseOne.Name = "horseOne";
-            this.horseOne.Size = new System.Drawing.Size(214, 26);
-            this.horseOne.TabIndex = 17;
-            this.horseOne.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._ponyOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._ponyOne.Location = new System.Drawing.Point(113, 186);
+            this._ponyOne.Name = "_ponyOne";
+            this._ponyOne.Size = new System.Drawing.Size(214, 26);
+            this._ponyOne.TabIndex = 17;
+            this._ponyOne.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // label5
             // 
@@ -155,14 +155,14 @@
             this.label6.TabIndex = 24;
             this.label6.Text = "Pony 2:";
             // 
-            // horseTwo
+            // _ponyTwo
             // 
-            this.horseTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.horseTwo.Location = new System.Drawing.Point(114, 218);
-            this.horseTwo.Name = "horseTwo";
-            this.horseTwo.Size = new System.Drawing.Size(214, 26);
-            this.horseTwo.TabIndex = 23;
-            this.horseTwo.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._ponyTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._ponyTwo.Location = new System.Drawing.Point(114, 218);
+            this._ponyTwo.Name = "_ponyTwo";
+            this._ponyTwo.Size = new System.Drawing.Size(214, 26);
+            this._ponyTwo.TabIndex = 23;
+            this._ponyTwo.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // label7
             // 
@@ -174,14 +174,14 @@
             this.label7.TabIndex = 30;
             this.label7.Text = "Pony 3:";
             // 
-            // horseThree
+            // _ponyThree
             // 
-            this.horseThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.horseThree.Location = new System.Drawing.Point(114, 250);
-            this.horseThree.Name = "horseThree";
-            this.horseThree.Size = new System.Drawing.Size(214, 26);
-            this.horseThree.TabIndex = 29;
-            this.horseThree.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._ponyThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._ponyThree.Location = new System.Drawing.Point(114, 250);
+            this._ponyThree.Name = "_ponyThree";
+            this._ponyThree.Size = new System.Drawing.Size(214, 26);
+            this._ponyThree.TabIndex = 29;
+            this._ponyThree.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // _comment
             // 
@@ -202,16 +202,17 @@
             this.label8.TabIndex = 37;
             this.label8.Text = "Zu bezahlen:";
             // 
-            // checkBox1
+            // _paied
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(246, 300);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(82, 24);
-            this.checkBox1.TabIndex = 38;
-            this.checkBox1.Text = "Bezahlt";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this._paied.AutoSize = true;
+            this._paied.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._paied.Location = new System.Drawing.Point(246, 300);
+            this._paied.Name = "_paied";
+            this._paied.Size = new System.Drawing.Size(82, 24);
+            this._paied.TabIndex = 38;
+            this._paied.Text = "Bezahlt";
+            this._paied.UseVisualStyleBackColor = true;
+            this._paied.CheckedChanged += new System.EventHandler(this.Paied_CheckedChanged);
             // 
             // pictureBox1
             // 
@@ -297,14 +298,16 @@
             this.label11.TabIndex = 45;
             this.label11.Text = "€";
             // 
-            // cost
+            // _costs
             // 
-            this.cost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cost.Location = new System.Drawing.Point(123, 299);
-            this.cost.Name = "cost";
-            this.cost.Size = new System.Drawing.Size(95, 26);
-            this.cost.TabIndex = 46;
-            this.cost.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this._costs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._costs.Location = new System.Drawing.Point(123, 299);
+            this._costs.Name = "_costs";
+            this._costs.Size = new System.Drawing.Size(95, 26);
+            this._costs.TabIndex = 46;
+            this._costs.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this._costs.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._costs.Leave += new System.EventHandler(this.Costs_Leave);
             // 
             // label12
             // 
@@ -326,7 +329,7 @@
             this._competitions.TabIndex = 48;
             this._competitions.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.Competitions_ItemCheck);
             // 
-            // StarterForm
+            // EditStarterForm
             // 
             this.AcceptButton = this._saveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,7 +338,7 @@
             this.ClientSize = new System.Drawing.Size(656, 565);
             this.Controls.Add(this._competitions);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.cost);
+            this.Controls.Add(this._costs);
             this.Controls.Add(this.label11);
             this.Controls.Add(this._cancelButton);
             this.Controls.Add(this._saveButton);
@@ -343,16 +346,16 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this._paied);
             this.Controls.Add(this.label8);
             this.Controls.Add(this._comment);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.horseThree);
+            this.Controls.Add(this._ponyThree);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.horseTwo);
+            this.Controls.Add(this._ponyTwo);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.horseOne);
+            this.Controls.Add(this._ponyOne);
             this.Controls.Add(this.label4);
             this.Controls.Add(this._club);
             this.Controls.Add(this.label3);
@@ -362,7 +365,7 @@
             this.Controls.Add(this._firstName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "StarterForm";
+            this.Name = "EditStarterForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Meldesystem";
@@ -378,19 +381,19 @@
         private System.Windows.Forms.TextBox _firstName;
         private System.Windows.Forms.TextBox _lastName;
         private System.Windows.Forms.TextBox _club;
-        private System.Windows.Forms.TextBox horseOne;
+        private System.Windows.Forms.TextBox _ponyOne;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox horseTwo;
+        private System.Windows.Forms.TextBox _ponyTwo;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox horseThree;
+        private System.Windows.Forms.TextBox _ponyThree;
         private System.Windows.Forms.TextBox _comment;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox _paied;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label9;
@@ -399,7 +402,7 @@
         private System.Windows.Forms.Button _saveButton;
         private System.Windows.Forms.Button _cancelButton;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox cost;
+        private System.Windows.Forms.TextBox _costs;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckedListBox _competitions;
     }
