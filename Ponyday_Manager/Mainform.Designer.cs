@@ -75,6 +75,7 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._starterListDataGridView)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +94,7 @@
             this._competitionComboBox.Location = new System.Drawing.Point(79, 6);
             this._competitionComboBox.Name = "_competitionComboBox";
             this._competitionComboBox.Size = new System.Drawing.Size(204, 28);
-            this._competitionComboBox.TabIndex = 9;
+            this._competitionComboBox.TabIndex = 0;
             this._competitionComboBox.SelectedIndexChanged += new System.EventHandler(this.CompetitionComboBox_SelectedIndexChanged);
             // 
             // button6
@@ -105,7 +106,7 @@
             this.button6.Location = new System.Drawing.Point(6, 346);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(174, 30);
-            this.button6.TabIndex = 10;
+            this.button6.TabIndex = 1;
             this.button6.Text = "Wertung bearbeiten";
             this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button6.UseVisualStyleBackColor = true;
@@ -135,7 +136,7 @@
             this._starterDataGridView.ReadOnly = true;
             this._starterDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._starterDataGridView.Size = new System.Drawing.Size(820, 334);
-            this._starterDataGridView.TabIndex = 0;
+            this._starterDataGridView.TabIndex = 2;
             this._starterDataGridView.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.StarterDataGridView_RowHeaderMouseDoubleClick);
             // 
             // FirstName
@@ -260,7 +261,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(840, 415);
-            this.tabControl1.TabIndex = 13;
+            this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -284,7 +285,7 @@
             this._editStarterButton.Location = new System.Drawing.Point(173, 346);
             this._editStarterButton.Name = "_editStarterButton";
             this._editStarterButton.Size = new System.Drawing.Size(175, 30);
-            this._editStarterButton.TabIndex = 14;
+            this._editStarterButton.TabIndex = 1;
             this._editStarterButton.Text = "Meldung bearbeiten";
             this._editStarterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this._editStarterButton.UseVisualStyleBackColor = true;
@@ -299,7 +300,7 @@
             this._addStarterButton.Location = new System.Drawing.Point(6, 346);
             this._addStarterButton.Name = "_addStarterButton";
             this._addStarterButton.Size = new System.Drawing.Size(161, 30);
-            this._addStarterButton.TabIndex = 13;
+            this._addStarterButton.TabIndex = 0;
             this._addStarterButton.Text = "Meldung erfassen";
             this._addStarterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this._addStarterButton.UseVisualStyleBackColor = true;
@@ -434,7 +435,7 @@
             this._starterListButton.Location = new System.Drawing.Point(469, 346);
             this._starterListButton.Name = "_starterListButton";
             this._starterListButton.Size = new System.Drawing.Size(156, 30);
-            this._starterListButton.TabIndex = 4;
+            this._starterListButton.TabIndex = 2;
             this._starterListButton.Text = "Startiste drucken";
             this._starterListButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this._starterListButton.UseVisualStyleBackColor = true;
@@ -444,7 +445,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 40);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(7, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(248, 31);
             this.label2.TabIndex = 14;
@@ -454,17 +456,18 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Location = new System.Drawing.Point(15, 98);
+            this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Location = new System.Drawing.Point(0, 22);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(850, 2);
+            this.panel1.Size = new System.Drawing.Size(870, 82);
             this.panel1.TabIndex = 40;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(705, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(705, 29);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(153, 69);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -476,11 +479,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(870, 564);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
@@ -495,6 +497,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._starterListDataGridView)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

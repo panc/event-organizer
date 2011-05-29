@@ -65,7 +65,7 @@
             this._firstName.Location = new System.Drawing.Point(113, 73);
             this._firstName.Name = "_firstName";
             this._firstName.Size = new System.Drawing.Size(215, 26);
-            this._firstName.TabIndex = 3;
+            this._firstName.TabIndex = 0;
             this._firstName.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // _lastName
@@ -74,7 +74,7 @@
             this._lastName.Location = new System.Drawing.Point(113, 105);
             this._lastName.Name = "_lastName";
             this._lastName.Size = new System.Drawing.Size(215, 26);
-            this._lastName.TabIndex = 5;
+            this._lastName.TabIndex = 1;
             this._lastName.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // _club
@@ -83,7 +83,7 @@
             this._club.Location = new System.Drawing.Point(113, 137);
             this._club.Name = "_club";
             this._club.Size = new System.Drawing.Size(214, 26);
-            this._club.TabIndex = 9;
+            this._club.TabIndex = 2;
             this._club.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // _ponyOne
@@ -92,7 +92,7 @@
             this._ponyOne.Location = new System.Drawing.Point(113, 186);
             this._ponyOne.Name = "_ponyOne";
             this._ponyOne.Size = new System.Drawing.Size(214, 26);
-            this._ponyOne.TabIndex = 17;
+            this._ponyOne.TabIndex = 3;
             this._ponyOne.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // label5
@@ -161,7 +161,7 @@
             this._ponyTwo.Location = new System.Drawing.Point(114, 218);
             this._ponyTwo.Name = "_ponyTwo";
             this._ponyTwo.Size = new System.Drawing.Size(214, 26);
-            this._ponyTwo.TabIndex = 23;
+            this._ponyTwo.TabIndex = 4;
             this._ponyTwo.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // label7
@@ -180,7 +180,7 @@
             this._ponyThree.Location = new System.Drawing.Point(114, 250);
             this._ponyThree.Name = "_ponyThree";
             this._ponyThree.Size = new System.Drawing.Size(214, 26);
-            this._ponyThree.TabIndex = 29;
+            this._ponyThree.TabIndex = 5;
             this._ponyThree.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // _comment
@@ -190,7 +190,7 @@
             this._comment.Multiline = true;
             this._comment.Name = "_comment";
             this._comment.Size = new System.Drawing.Size(622, 111);
-            this._comment.TabIndex = 35;
+            this._comment.TabIndex = 10;
             // 
             // label8
             // 
@@ -209,7 +209,7 @@
             this._paied.Location = new System.Drawing.Point(246, 300);
             this._paied.Name = "_paied";
             this._paied.Size = new System.Drawing.Size(82, 24);
-            this._paied.TabIndex = 38;
+            this._paied.TabIndex = 7;
             this._paied.Text = "Bezahlt";
             this._paied.UseVisualStyleBackColor = true;
             this._paied.CheckedChanged += new System.EventHandler(this.Paied_CheckedChanged);
@@ -261,7 +261,7 @@
             this._birthdate.Location = new System.Drawing.Point(497, 73);
             this._birthdate.Name = "_birthdate";
             this._birthdate.Size = new System.Drawing.Size(145, 26);
-            this._birthdate.TabIndex = 42;
+            this._birthdate.TabIndex = 8;
             this._birthdate.ValueChanged += new System.EventHandler(this.Control_Changed);
             // 
             // _saveButton
@@ -271,7 +271,7 @@
             this._saveButton.Location = new System.Drawing.Point(436, 523);
             this._saveButton.Name = "_saveButton";
             this._saveButton.Size = new System.Drawing.Size(101, 30);
-            this._saveButton.TabIndex = 4;
+            this._saveButton.TabIndex = 11;
             this._saveButton.Text = "Speichern";
             this._saveButton.UseVisualStyleBackColor = true;
             this._saveButton.Click += new System.EventHandler(this.SaveButton_Click);
@@ -284,7 +284,7 @@
             this._cancelButton.Location = new System.Drawing.Point(543, 523);
             this._cancelButton.Name = "_cancelButton";
             this._cancelButton.Size = new System.Drawing.Size(101, 30);
-            this._cancelButton.TabIndex = 44;
+            this._cancelButton.TabIndex = 12;
             this._cancelButton.Text = "Abbrechen";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
@@ -304,7 +304,7 @@
             this._costs.Location = new System.Drawing.Point(123, 299);
             this._costs.Name = "_costs";
             this._costs.Size = new System.Drawing.Size(95, 26);
-            this._costs.TabIndex = 46;
+            this._costs.TabIndex = 6;
             this._costs.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._costs.TextChanged += new System.EventHandler(this.Control_Changed);
             this._costs.Leave += new System.EventHandler(this.Costs_Leave);
@@ -326,7 +326,7 @@
             this._competitions.Location = new System.Drawing.Point(379, 130);
             this._competitions.Name = "_competitions";
             this._competitions.Size = new System.Drawing.Size(263, 193);
-            this._competitions.TabIndex = 48;
+            this._competitions.TabIndex = 9;
             this._competitions.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.Competitions_ItemCheck);
             // 
             // EditStarterForm
