@@ -240,9 +240,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(8, 16);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(241, 20);
+            this.label9.Size = new System.Drawing.Size(253, 20);
             this.label9.TabIndex = 40;
-            this.label9.Text = "Starter erfassen / bearbeiten";
+            this.label9.Text = "Meldung erfassen / bearbeiten";
             // 
             // label10
             // 
@@ -250,9 +250,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(16, 366);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(95, 20);
+            this.label10.Size = new System.Drawing.Size(67, 20);
             this.label10.TabIndex = 41;
-            this.label10.Text = "Kommentar:";
+            this.label10.Text = "Notizen:";
             // 
             // _birthdate
             // 

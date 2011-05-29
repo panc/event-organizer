@@ -26,6 +26,7 @@ namespace PonydayManager
             try
             {
                 _starterDataGridView.AutoGenerateColumns = false;
+                _starterListDataGridView.AutoGenerateColumns = false;
 
                 _competitionComboBox.DisplayMember = "Caption";
                 _competitionComboBox.ValueMember = "Id";
@@ -91,29 +92,6 @@ namespace PonydayManager
             }
         }
 
-        private void StarterListButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (_competitionComboBox.SelectedItem is Competition)
-                {
-                    using (StarterListForm frm = new StarterListForm((Competition)_competitionComboBox.SelectedItem))
-                    {
-                        frm.ShowDialog();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                _log.Error("Failed to open startlist!", ex);
-                MessageBox.Show(this, 
-                                "Beim Laden der Starterliste ist ein Fehler aufgetreten.", 
-                                "Starterlist",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
-        }
-
         private void EditStarterButton_Click(object sender, EventArgs e)
         {
             try
@@ -136,6 +114,36 @@ namespace PonydayManager
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
+        }
+
+        private void StarterListButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string caption = string.Empty;
+                if (_competitionComboBox.SelectedItem is Competition)
+                    caption = ((Competition)_competitionComboBox.SelectedItem).Caption;
+
+                ExcelExporter exporter = new ExcelExporter();
+                exporter.ExportStarterList((IList<Starter>)_starterListDataGridView.DataSource, caption);
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Failed to open startlist!", ex);
+                MessageBox.Show(this,
+                                "Beim Laden der Starterliste ist ein Fehler aufgetreten.",
+                                "Starterlist",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
+        
+
+        private void CompetitionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_competitionComboBox.SelectedValue is int)
+                _starterListDataGridView.DataSource = Starter.SelectForCompetition((int)_competitionComboBox.SelectedValue);
         }
     }
 }
