@@ -66,12 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExcelExporter.cs" />
-    <Compile Include="StarterListForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StarterListForm.Designer.cs">
-      <DependentUpon>StarterListForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Entities\Competition.cs" />
     <Compile Include="Entities\StarterCompetition.cs" />
     <Compile Include="Entities\Entity.cs" />
@@ -97,9 +91,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="StarterListForm.resx">
-      <DependentUpon>StarterListForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Results_One.resx">
       <DependentUpon>Results_One.cs</DependentUpon>
     </EmbeddedResource>
