@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExcelExporter.cs" />
     <Compile Include="StarterListForm.cs">
       <SubType>Form</SubType>
     </Compile>
