@@ -26,7 +26,7 @@ namespace PonydayManager
             try
             {
                 _starterDataGridView.AutoGenerateColumns = false;
-                _starterListDataGridView.AutoGenerateColumns = false;
+                _starterResultDataGridView.AutoGenerateColumns = false;
 
                 _competitionComboBox.DisplayMember = "Caption";
                 _competitionComboBox.ValueMember = "Id";
@@ -101,7 +101,10 @@ namespace PonydayManager
                     using (EditStarterForm starter = new EditStarterForm((Starter)_starterDataGridView.CurrentRow.DataBoundItem))
                     {
                         if (starter.ShowDialog() == DialogResult.OK)
+                        {
                             _starterDataGridView.DataSource = Starter.Select("");
+                            _competitionComboBox.SelectedIndex = 0;
+                        }
                     }
                 }
             }
@@ -125,7 +128,7 @@ namespace PonydayManager
                     caption = ((Competition)_competitionComboBox.SelectedItem).Caption;
 
                 ExcelExporter exporter = new ExcelExporter();
-                exporter.ExportStarterList((IList<Starter>)_starterListDataGridView.DataSource, caption);
+                exporter.ExportStarterList((IList<StarterResult>)_starterResultDataGridView.DataSource, caption);
             }
             catch (Exception ex)
             {
@@ -143,7 +146,35 @@ namespace PonydayManager
         private void CompetitionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_competitionComboBox.SelectedValue is int)
-                _starterListDataGridView.DataSource = Starter.SelectForCompetition((int)_competitionComboBox.SelectedValue);
+                _starterResultDataGridView.DataSource = StarterResult.SelectForCompetition((int)_competitionComboBox.SelectedValue);
+        }
+
+        private void EditResultButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_starterResultDataGridView.CurrentRow.DataBoundItem is StarterResult)
+                {
+                    using (EditResultForm starter = new EditResultForm((StarterResult)_starterResultDataGridView.CurrentRow.DataBoundItem))
+                    {
+                        if (starter.ShowDialog() == DialogResult.OK)
+                        {
+                            int index = _competitionComboBox.SelectedIndex;
+                            _competitionComboBox.SelectedIndex = 0;
+                            _competitionComboBox.SelectedIndex = index;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Failed to open starter-editing form!", ex);
+                MessageBox.Show(this,
+                                "Beim Bearbeiten eines Starters ist ein Fehler aufgetreten.",
+                                "Starter bearbeiten",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
         }
     }
 }

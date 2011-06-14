@@ -63,30 +63,43 @@ namespace PonydayManager.Entities
             return result;
         }
 
-        public static IList<Starter> SelectForCompetition(int competitionId)
-        {
-            List<Starter> result = new List<Starter>();
+        //public static IList<Starter> SelectForCompetition(int competitionId)
+        //{
+        //    List<Starter> result = new List<Starter>();
 
-            using (SQLiteConnection connection = OpenConnection())
-            {
-                using (SQLiteCommand cmd = new SQLiteCommand(connection))
-                {
-                    cmd.CommandText = "SELECT s.Id, FirstName, LastName, Birthdate, Club, Comment, PonyOne, PonyTwo, PonyThree, Costs, Paied FROM Starter AS s " +
-                                      "INNER JOIN StarterCompetition AS sc ON s.Id = sc.StarterId AND CompetitionId = ?;";
+        //    using (SQLiteConnection connection = OpenConnection())
+        //    {
+        //        using (SQLiteCommand cmd = new SQLiteCommand(connection))
+        //        {
+        //            StringBuilder sb = new StringBuilder()
+        //            .Append("SELECT ")
+        //                .Append("s.Id, FirstName, LastName, Birthdate, Club, Comment, PonyOne as Pony ")
+        //                .Append("FROM Starter AS s ")
+        //                .Append("INNER JOIN StarterCompetition AS sc ON s.Id = sc.StarterId AND CompetitionId = ? ")
+        //                .Append("WHERE s.PonyOne != null ")
+        //            .Append(" UNION SELECT ")
+        //                .Append("s.Id, FirstName, LastName, Birthdate, Club, Comment, PonyTwo as Pony ")
+        //                .Append("FROM Starter AS s ")
+        //                .Append("INNER JOIN StarterCompetition AS sc ON s.Id = sc.StarterId AND CompetitionId = ?;")
+        //                .Append("WHERE s.PonyTwo != null ");
 
-                    cmd.Parameters.Add(new SQLiteParameter { Value = competitionId });
+        //            cmd.CommandText = sb.ToString();
 
-                    _log.Debug(CreateLogString(cmd));
+        //            cmd.Parameters.Add(new SQLiteParameter { Value = competitionId });
+        //            cmd.Parameters.Add(new SQLiteParameter { Value = competitionId });
 
-                    using (SQLiteDataReader rdr = cmd.ExecuteReader())
-                    {
-                        result = CreateStarterList(rdr);
-                    }
-                }
-            }
 
-            return result;
-        }
+        //            _log.Debug(CreateLogString(cmd));
+
+        //            using (SQLiteDataReader rdr = cmd.ExecuteReader())
+        //            {
+        //                result = CreateStarterList(rdr);
+        //            }
+        //        }
+        //    }
+
+        //    return result;
+        //}
 
         private static List<Starter> CreateStarterList(SQLiteDataReader rdr)
         {
@@ -104,9 +117,7 @@ namespace PonydayManager.Entities
                     Comment = rdr.GetNullableString(5),
                     PonyOne = rdr.GetNullableString(6),
                     PonyTwo = rdr.GetNullableString(7),
-                    PonyThree = rdr.GetNullableString(8),
-                    Costs = rdr.GetNullableDecimal(9),
-                    Paied = rdr.GetBoolean(10)
+                    PonyThree = rdr.GetNullableString(8)
                 });
             }
 

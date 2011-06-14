@@ -17,10 +17,15 @@ namespace PonydayManager
         private bool _isDirty;
         private bool _isLoading;
 
-        public EditStarterForm(Starter starter)
+        public EditStarterForm()
         {
             InitializeComponent();
-
+        }
+        
+        public EditStarterForm(Starter starter)
+            : this()
+        {
+            
             _starter = starter;
             _isLoading = true;
 
