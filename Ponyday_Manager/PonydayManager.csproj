@@ -65,17 +65,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\StarterResult.cs" />
     <Compile Include="ExcelExporter.cs" />
     <Compile Include="Entities\Competition.cs" />
     <Compile Include="Entities\StarterCompetition.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Starter.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Results_One.cs">
+    <Compile Include="EditResultForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Results_One.Designer.cs">
-      <DependentUpon>Results_One.cs</DependentUpon>
+    <Compile Include="EditResultForm.Designer.cs">
+      <DependentUpon>EditResultForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -91,8 +92,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Results_One.resx">
-      <DependentUpon>Results_One.cs</DependentUpon>
+    <EmbeddedResource Include="EditResultForm.resx">
+      <DependentUpon>EditResultForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
