@@ -12,6 +12,7 @@ namespace PonydayManager.Entities
         private static ILog _log = LogManager.GetLogger(typeof(Starter));
 
         private IList<StarterCompetition> _competitions;
+        private IList<Pony> _ponys;
 
         public Starter()
         {
@@ -22,13 +23,25 @@ namespace PonydayManager.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime? Birthdate { get; set; }
-        public string PonyOne { get; set; }
-        public string PonyTwo { get; set; }
-        public string PonyThree { get; set; }
         public string Club { get; set; }
         public string Comment { get; set; }
         public decimal? Costs { get; set; }
         public bool Paied { get; set; }
+
+        public Pony PonyOne
+        {
+            get { return SelectPony(1); }
+        }
+
+        public Pony PonyTwo
+        {
+            get { return SelectPony(2); }
+        }
+
+        public Pony PonyThree
+        {
+            get { return SelectPony(3); }
+        }
 
         public IList<StarterCompetition> Competitions
         {
@@ -41,6 +54,17 @@ namespace PonydayManager.Entities
             }
         }
 
+        public IList<Pony> Ponys
+        {
+            get
+            {
+                if (_ponys == null)
+                    _ponys = Pony.Select(this.Id);
+
+                return _ponys;
+            }
+        }
+
         public static IList<Starter> Select(string filter)
         {
             List<Starter> result = new List<Starter>();
@@ -49,7 +73,7 @@ namespace PonydayManager.Entities
             {
                 using (SQLiteCommand cmd = new SQLiteCommand(connection))
                 {
-                    cmd.CommandText = "SELECT Id, FirstName, LastName, Birthdate, Club, Comment, PonyOne, PonyTwo, PonyThree, Costs, Paied FROM Starter;";
+                    cmd.CommandText = "SELECT Id, FirstName, LastName, Birthdate, Club, Comment, Costs, Paied FROM EO_Starter;";
 
                     _log.Debug(CreateLogString(cmd));
 
@@ -115,9 +139,8 @@ namespace PonydayManager.Entities
                     Birthdate = rdr.GetNullableDateTime(3),
                     Club = rdr.GetNullableString(4),
                     Comment = rdr.GetNullableString(5),
-                    PonyOne = rdr.GetNullableString(6),
-                    PonyTwo = rdr.GetNullableString(7),
-                    PonyThree = rdr.GetNullableString(8)
+                    Costs = rdr.GetNullableDecimal(6),
+                    Paied = rdr.GetBoolean(7)
                 });
             }
 
@@ -140,7 +163,7 @@ namespace PonydayManager.Entities
 
         private void Update(SQLiteCommand cmd)
         {
-            cmd.CommandText = "UPDATE Starter SET FirstName = ?, LastName = ?, Birthdate = ?, Club = ?, Comment = ?, PonyOne = ?, PonyTwo = ?, PonyThree = ?, Costs = ?, Paied = ? WHERE Id = ?;";
+            cmd.CommandText = "UPDATE EO_Starter SET FirstName = ?, LastName = ?, Birthdate = ?, Club = ?, Comment = ?, Costs = ?, Paied = ? WHERE Id = ?;";
             cmd.Parameters.AddRange(new SQLiteParameter[]
                 {
                     new SQLiteParameter{ Value = this.FirstName },
@@ -159,18 +182,24 @@ namespace PonydayManager.Entities
             _log.Debug(CreateLogString(cmd));
 
             if (cmd.ExecuteNonQuery() != 1)
-                throw new Exception("Insert effects more than one record!");
+                throw new Exception("Update effects more than one record!");
 
             if (_competitions != null)
             {
                 foreach (var item in _competitions)
                     item.Save();
             }
+
+            if (_ponys != null)
+            {
+                foreach (var item in _ponys)
+                    item.Save();
+            }
         }
 
         private void Insert(SQLiteCommand cmd)
         {
-            cmd.CommandText = "INSERT INTO Starter (FirstName, LastName, Birthdate, Club, Comment, PonyOne, PonyTwo, PonyThree, Costs, Paied) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            cmd.CommandText = "INSERT INTO EO_Starter (FirstName, LastName, Birthdate, Club, Comment, Costs, Paied) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             cmd.Parameters.AddRange(new SQLiteParameter[]
                 {
                     new SQLiteParameter{ Value = this.FirstName },
@@ -193,7 +222,7 @@ namespace PonydayManager.Entities
             cmd.CommandText = "SELECT last_insert_rowid();";
             object newId = cmd.ExecuteScalar();
             int id = Convert.ToInt32(newId);
-                
+
             if (_competitions != null)
             {
                 foreach (var item in _competitions)
@@ -202,6 +231,28 @@ namespace PonydayManager.Entities
                     item.Save();
                 }
             }
+
+            if (_ponys != null)
+            {
+                foreach (var item in _ponys)
+                {
+                    item.StarterId = id;
+                    item.Save();
+                }
+            }
+        }
+
+        private Pony SelectPony(int sortIndex)
+        {
+            Pony pony = this.Ponys.SingleOrDefault(p => p.SortIndex == sortIndex);
+
+            if (pony == null)
+            {
+                pony = new Pony { SortIndex = sortIndex };
+                this.Ponys.Add(pony);
+            }
+
+            return pony;
         }
     }
 }

@@ -47,7 +47,7 @@ namespace PonydayManager.Entities
             {
                 using (SQLiteCommand cmd = new SQLiteCommand(connection))
                 {
-                    cmd.CommandText = "SELECT Id, StarterId, CompetitionId FROM StarterCompetition";
+                    cmd.CommandText = "SELECT Id, StarterId, CompetitionId FROM EO_StarterCompetition";
 
                     if (starterId.HasValue)
                     {
@@ -92,7 +92,7 @@ namespace PonydayManager.Entities
 
         private void Delete(SQLiteCommand cmd)
         {
-            cmd.CommandText = "DELETE FROM StarterCompetition WHERE Id = ?;";
+            cmd.CommandText = "DELETE FROM EO_StarterCompetition WHERE Id = ?;";
             cmd.Parameters.AddRange(new SQLiteParameter[]
                 {
                     new SQLiteParameter{ Value = this.Id }
@@ -106,7 +106,7 @@ namespace PonydayManager.Entities
 
         private void Insert(SQLiteCommand cmd)
         {
-            cmd.CommandText = "INSERT INTO StarterCompetition (StarterId, CompetitionId) VALUES(?, ?);";
+            cmd.CommandText = "INSERT INTO EO_StarterCompetition (StarterId, CompetitionId) VALUES(?, ?);";
             cmd.Parameters.AddRange(new SQLiteParameter[]
                 {
                     new SQLiteParameter{ Value = this.StarterId },

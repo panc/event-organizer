@@ -35,11 +35,13 @@ namespace PonydayManager
             _club.Text = _starter.Club;
             _comment.Text = _starter.Comment;
             _birthdate.Value = _starter.Birthdate ?? DateTime.Now.Date;
-            _ponyOne.Text = _starter.PonyOne;
-            _ponyTwo.Text = _starter.PonyTwo;
-            _ponyThree.Text = _starter.PonyThree;
             _costs.Text = string.Format("{0:#,##0.00}", _starter.Costs);
             _paied.Checked = _starter.Paied;
+
+            _ponyOne.Text = _starter.PonyOne.Name;
+            _ponyTwo.Text = _starter.PonyTwo.Name;
+            _ponyThree.Text = _starter.PonyThree.Name;
+            
 
             // load the competition-listbox
             foreach (var item in Competition.Select(""))
@@ -80,9 +82,9 @@ namespace PonydayManager
                 _starter.LastName = _lastName.Text;
                 _starter.Club = _club.Text;
                 _starter.Comment = _comment.Text;
-                _starter.PonyOne = _ponyOne.Text;
-                _starter.PonyTwo = _ponyTwo.Text;
-                _starter.PonyThree = _ponyThree.Text;
+                _starter.PonyOne.Name = _ponyOne.Text;
+                _starter.PonyTwo.Name = _ponyTwo.Text;
+                _starter.PonyThree.Name = _ponyThree.Text;
                 _starter.Birthdate = _birthdate.Value;
                 _starter.Costs = _costs.GetTextAsDecimal();
                 _starter.Paied = _paied.Checked;

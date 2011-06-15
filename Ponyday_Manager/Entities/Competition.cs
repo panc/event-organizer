@@ -27,7 +27,7 @@ namespace PonydayManager.Entities
             {
                 using (SQLiteCommand cmd = new SQLiteCommand(connection))
                 {
-                    cmd.CommandText = "SELECT Id, Caption FROM Competition;";
+                    cmd.CommandText = "SELECT Id, Caption FROM EO_Competition;";
 
                     _log.Debug(CreateLogString(cmd));
                     
@@ -54,7 +54,7 @@ namespace PonydayManager.Entities
             {
                 using (SQLiteCommand cmd = new SQLiteCommand(connection))
                 {
-                    cmd.CommandText = "SELECT Id, Caption FROM Competition WHERE Id = ?;";
+                    cmd.CommandText = "SELECT Id, Caption FROM EO_Competition WHERE Id = ?;";
                     cmd.Parameters.Add(new SQLiteParameter { Value = id });
 
                     _log.Debug(CreateLogString(cmd));
@@ -92,7 +92,7 @@ namespace PonydayManager.Entities
 
         private void Update(SQLiteCommand cmd)
         {
-            cmd.CommandText = "UPDATE Competition SET Caption = ? WHERE Id = ?;";
+            cmd.CommandText = "UPDATE EO_Competition SET Caption = ? WHERE Id = ?;";
             cmd.Parameters.AddRange(new SQLiteParameter[]
                 {
                     new SQLiteParameter{ Value = this.Caption },
@@ -107,7 +107,7 @@ namespace PonydayManager.Entities
 
         private void Insert(SQLiteCommand cmd)
         {
-            cmd.CommandText = "INSERT INTO Starter (Caption) VALUES(?);";
+            cmd.CommandText = "INSERT INTO EO_Competition (Caption) VALUES(?);";
             cmd.Parameters.AddRange(new SQLiteParameter[]
                 {
                     new SQLiteParameter{ Value = this.Caption }

@@ -13,7 +13,7 @@ namespace PonydayManager
 {
     public class ExcelExporter
     {
-        public void ExportStarterList(IList<StarterResult> starter, string competitionCaption)
+        public void ExportStarterList(IList<Result> starter, string competitionCaption)
         {
             string tempFileName = string.Empty;
 
@@ -26,8 +26,8 @@ namespace PonydayManager
 
                 wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Vorname";
                 wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Nachname";
-                wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Geburtsdatum";
                 wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Pony";
+                wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Anmerkung";
 
                 wb.ActiveWorksheet.Cells[rowIndex, 0].EntireRow.Font.Bold = true;
                 rowIndex++;
@@ -37,8 +37,8 @@ namespace PonydayManager
                     colIndex = 0;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.FirstName;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.LastName;
-                    wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Birthdate;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Pony;
+                    wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Comment;
                     
                     rowIndex++;
                 }
