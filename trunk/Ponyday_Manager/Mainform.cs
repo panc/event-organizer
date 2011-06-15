@@ -128,7 +128,7 @@ namespace PonydayManager
                     caption = ((Competition)_competitionComboBox.SelectedItem).Caption;
 
                 ExcelExporter exporter = new ExcelExporter();
-                exporter.ExportStarterList((IList<StarterResult>)_starterResultDataGridView.DataSource, caption);
+                exporter.ExportStarterList((IList<Result>)_starterResultDataGridView.DataSource, caption);
             }
             catch (Exception ex)
             {
@@ -146,16 +146,16 @@ namespace PonydayManager
         private void CompetitionComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_competitionComboBox.SelectedValue is int)
-                _starterResultDataGridView.DataSource = StarterResult.SelectForCompetition((int)_competitionComboBox.SelectedValue);
+                _starterResultDataGridView.DataSource = Result.SelectForCompetition((int)_competitionComboBox.SelectedValue);
         }
 
         private void EditResultButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (_starterResultDataGridView.CurrentRow.DataBoundItem is StarterResult)
+                if (_starterResultDataGridView.CurrentRow.DataBoundItem is Result)
                 {
-                    using (EditResultForm starter = new EditResultForm((StarterResult)_starterResultDataGridView.CurrentRow.DataBoundItem))
+                    using (EditResultForm starter = new EditResultForm((Result)_starterResultDataGridView.CurrentRow.DataBoundItem))
                     {
                         if (starter.ShowDialog() == DialogResult.OK)
                         {
