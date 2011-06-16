@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using log4net;
 
 using PonydayManager.Entities;
 
@@ -13,6 +14,8 @@ namespace PonydayManager
 {
     public partial class EditStarterForm : Form
     {
+        private static ILog _log = LogManager.GetLogger(typeof(EditStarterForm));
+        
         private Starter _starter;
         private bool _isDirty;
         private bool _isLoading;
@@ -64,44 +67,56 @@ namespace PonydayManager
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (_isDirty)
+            try
             {
-                if (string.IsNullOrEmpty(_firstName.Text) || string.IsNullOrEmpty(_lastName.Text))
+                if (_isDirty)
                 {
-                    MessageBox.Show(this,
-                                    "Es müssen ein Vor- und ein Nachname eingegeben werden!",
-                                    "Speichern",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
+                    if (string.IsNullOrEmpty(_firstName.Text) || string.IsNullOrEmpty(_lastName.Text))
+                    {
+                        MessageBox.Show(this,
+                                        "Es müssen ein Vor- und ein Nachname eingegeben werden!",
+                                        "Speichern",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
 
-                    return;
+                        return;
+                    }
+
+                    // update the values from the textboxes
+                    _starter.FirstName = _firstName.Text;
+                    _starter.LastName = _lastName.Text;
+                    _starter.Club = _club.Text;
+                    _starter.Comment = _comment.Text;
+                    _starter.PonyOne.Name = _ponyOne.Text;
+                    _starter.PonyTwo.Name = _ponyTwo.Text;
+                    _starter.PonyThree.Name = _ponyThree.Text;
+                    _starter.Birthdate = _birthdate.Value;
+                    _starter.Costs = _costs.GetTextAsDecimal();
+                    _starter.Paied = _paied.Checked;
+
+                    // update the values from the listbox
+                    foreach (var item in _competitions.Items)
+                    {
+                        if (item is StarterCompetition)
+                            ((StarterCompetition)item).IsChecked = _competitions.CheckedItems.Contains(item);
+                    }
+
+                    _starter.Save();
+                    _isDirty = false;
                 }
 
-                // update the values from the textboxes
-                _starter.FirstName = _firstName.Text;
-                _starter.LastName = _lastName.Text;
-                _starter.Club = _club.Text;
-                _starter.Comment = _comment.Text;
-                _starter.PonyOne.Name = _ponyOne.Text;
-                _starter.PonyTwo.Name = _ponyTwo.Text;
-                _starter.PonyThree.Name = _ponyThree.Text;
-                _starter.Birthdate = _birthdate.Value;
-                _starter.Costs = _costs.GetTextAsDecimal();
-                _starter.Paied = _paied.Checked;
-
-                // update the values from the listbox
-                foreach (var item in _competitions.Items)
-                {
-                    if (item is StarterCompetition)
-                        ((StarterCompetition)item).IsChecked = _competitions.CheckedItems.Contains(item);
-                }
-
-                _starter.Save();
-                _isDirty = false;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            catch (Exception ex)
+            {
+                _log.Error("Failed to save starter!", ex);
+                MessageBox.Show(this,
+                                "Beim Speichern der Meldedaten ist ein Fehler aufgetreten.",
+                                "Speichern",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+            }
         }
 
         private void Control_Changed(object sender, EventArgs e)
@@ -116,7 +131,7 @@ namespace PonydayManager
             {
                 if (MessageBox.Show(this,
                                    "Wollen Sie die geänderten Daten verwerfen?",
-                                   "Speichern",
+                                   "Schließen",
                                    MessageBoxButtons.YesNoCancel,
                                    MessageBoxIcon.Question) != DialogResult.Yes)
                 {

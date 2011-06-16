@@ -11,12 +11,6 @@ namespace PonydayManager.Entities
     {
         private static ILog _log = LogManager.GetLogger(typeof(Pony));
 
-        public Pony()
-        {
-            Id = NEW_ID;
-        }
-
-        public int Id { get; set; }
         public int StarterId { get; set; }
         public string Name { get; set; }
         public int SortIndex { get; set; }
@@ -53,17 +47,14 @@ namespace PonydayManager.Entities
             return result;
         }
 
-        public void Save()
+        public void Save(SQLiteConnection connection)
         {
-            using (SQLiteConnection connection = OpenConnection())
+            using (SQLiteCommand cmd = new SQLiteCommand(connection))
             {
-                using (SQLiteCommand cmd = new SQLiteCommand(connection))
-                {
-                    if (this.Id == Starter.NEW_ID)
-                        Insert(cmd);
-                    else
-                        Update(cmd);
-                }
+                if (this.Id == Starter.NEW_ID)
+                    Insert(cmd);
+                else
+                    Update(cmd);
             }
         }
 
@@ -98,6 +89,8 @@ namespace PonydayManager.Entities
 
             if (cmd.ExecuteNonQuery() != 1)
                 throw new Exception("Insert effects more than one record!");
+
+            ReadBackId(cmd.Connection);
         }
     }
 }

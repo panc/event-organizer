@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using log4net;
 
 using PonydayManager.Entities;
 
@@ -13,6 +14,8 @@ namespace PonydayManager
 {
     public partial class EditResultForm : Form
     {
+        private static ILog _log = LogManager.GetLogger(typeof(EditResultForm));
+
         private Result _result;
         private bool _isDirty;
         private bool _isLoading;
@@ -44,24 +47,36 @@ namespace PonydayManager
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (_isDirty)
+            try
             {
-                // update the values from the textboxes
-                _result.AssessmentOne = _assessmentOne.Text;
-                _result.AssessmentTwo = _assessmentTwo.Text;
-                _result.AssessmentThree = _assessmentThree.Text ;
-                _result.AssessmentFour = _assessmentFour.Text;
-                _result.AssessmentFive = _assessmentFive.Text;
-                _result.AssessmentSum = _assessmentSum.Text;
+                if (_isDirty)
+                {
+                    // update the values from the textboxes
+                    _result.AssessmentOne = _assessmentOne.Text;
+                    _result.AssessmentTwo = _assessmentTwo.Text;
+                    _result.AssessmentThree = _assessmentThree.Text;
+                    _result.AssessmentFour = _assessmentFour.Text;
+                    _result.AssessmentFive = _assessmentFive.Text;
+                    _result.AssessmentSum = _assessmentSum.Text;
 
-                _result.Comment = _comment.Text;
+                    _result.Comment = _comment.Text;
 
-                //_result.Save();
-                _isDirty = false;
+                    //_result.Save();
+                    _isDirty = false;
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            catch (Exception ex)
+            {
+                _log.Error("Failed to save starter!", ex);
+                MessageBox.Show(this,
+                                "Beim Speichern der Ergebnisdaten ist ein Fehler aufgetreten.",
+                                "Speichern",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Exclamation);
+            }
         }
 
         private void Control_Changed(object sender, EventArgs e)
