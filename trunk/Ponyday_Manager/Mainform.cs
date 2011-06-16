@@ -64,8 +64,8 @@ namespace PonydayManager
             {
                 _log.Error("Failed to open a starter!", ex);
                 MessageBox.Show(this,
-                                "Beim Öffnen des Starters ist ein Fehler aufgetreten.",
-                                "Starter öffnen",
+                                "Beim Bearbeiten des Starters ist ein Fehler aufgetreten.",
+                                "Starter bearbeiten",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }

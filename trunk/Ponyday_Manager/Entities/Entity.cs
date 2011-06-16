@@ -12,6 +12,23 @@ namespace PonydayManager.Entities
     {
         public const int NEW_ID = -1;
 
+        public int Id { get; protected set; }
+
+        public Entity()
+        {
+            Id = NEW_ID;
+        }
+
+        protected void ReadBackId(SQLiteConnection connection)
+        {
+            using (SQLiteCommand cmd = connection.CreateCommand())
+            {
+                cmd.CommandText = "SELECT last_insert_rowid();";
+                object newId = cmd.ExecuteScalar();
+                this.Id = Convert.ToInt32(newId);
+            }
+        }
+
         protected static SQLiteConnection OpenConnection()
         {
             string dbPath = ConfigurationManager.AppSettings["DatabaseFile"];

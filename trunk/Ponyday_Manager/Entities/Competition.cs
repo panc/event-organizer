@@ -11,36 +11,35 @@ namespace PonydayManager.Entities
     {
         private static ILog _log = LogManager.GetLogger(typeof(Competition));
 
-        public Competition()
-        {
-            Id = NEW_ID;
-        }
-
-        public int Id { get; set; }
         public string Caption { get; set; }
 
         public static IList<Competition> Select(string filter)
         {
-            List<Competition> result = new List<Competition>();
-
             using (SQLiteConnection connection = OpenConnection())
             {
-                using (SQLiteCommand cmd = new SQLiteCommand(connection))
-                {
-                    cmd.CommandText = "SELECT Id, Caption FROM EO_Competition;";
+                return Select(connection, filter);
+            }
+        }
 
-                    _log.Debug(CreateLogString(cmd));
-                    
-                    using (SQLiteDataReader rdr = cmd.ExecuteReader())
+        public static IList<Competition> Select(SQLiteConnection connection, string filter)
+        {
+            List<Competition> result = new List<Competition>();
+
+            using (SQLiteCommand cmd = new SQLiteCommand(connection))
+            {
+                cmd.CommandText = "SELECT Id, Caption FROM EO_Competition;";
+
+                _log.Debug(CreateLogString(cmd));
+
+                using (SQLiteDataReader rdr = cmd.ExecuteReader())
+                {
+                    while (rdr.Read())
                     {
-                        while (rdr.Read())
+                        result.Add(new Competition
                         {
-                            result.Add(new Competition
-                            {
-                                Id = rdr.GetInt32(0),
-                                Caption = rdr.GetNullableString(1)
-                            });
-                        }
+                            Id = rdr.GetInt32(0),
+                            Caption = rdr.GetNullableString(1)
+                        });
                     }
                 }
             }
@@ -100,7 +99,7 @@ namespace PonydayManager.Entities
                 });
 
             _log.Debug(CreateLogString(cmd));
-            
+
             if (cmd.ExecuteNonQuery() != 1)
                 throw new Exception("Update effects more than one record!");
         }
@@ -114,9 +113,11 @@ namespace PonydayManager.Entities
                 });
 
             _log.Debug(CreateLogString(cmd));
-            
+
             if (cmd.ExecuteNonQuery() != 1)
                 throw new Exception("Insert effects more than one record!");
+
+            ReadBackId(cmd.Connection);
         }
     }
 }

@@ -13,12 +13,6 @@ namespace PonydayManager.Entities
 
         private Competition _competition;
 
-        public StarterCompetition()
-        {
-            Id = NEW_ID;
-        }
-
-        public int Id { get; set; }
         public int StarterId { get; set; }
         public int CompetitionId { get; set; }
         public bool IsChecked { get; set; }
@@ -76,17 +70,14 @@ namespace PonydayManager.Entities
             return result;
         }
 
-        public void Save()
+        public void Save(SQLiteConnection connection)
         {
-            using (SQLiteConnection connection = OpenConnection())
+            using (SQLiteCommand cmd = new SQLiteCommand(connection))
             {
-                using (SQLiteCommand cmd = new SQLiteCommand(connection))
-                {
-                    if (this.IsChecked && this.Id == Entity.NEW_ID)
-                        Insert(cmd);
-                    else if (!this.IsChecked && this.Id != Entity.NEW_ID)
-                        Delete(cmd);
-                }
+                if (this.IsChecked && this.Id == Entity.NEW_ID)
+                    Insert(cmd);
+                else if (!this.IsChecked && this.Id != Entity.NEW_ID)
+                    Delete(cmd);
             }
         }
 
@@ -117,6 +108,8 @@ namespace PonydayManager.Entities
             
             if (cmd.ExecuteNonQuery() != 1)
                 throw new Exception("Insert effects more than one record!");
+
+            ReadBackId(cmd.Connection);
         }
     }
 }
