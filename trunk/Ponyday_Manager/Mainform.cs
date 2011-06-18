@@ -155,9 +155,10 @@ namespace PonydayManager
             {
                 if (_starterResultDataGridView.CurrentRow.DataBoundItem is Result)
                 {
-                    using (EditResultForm starter = new EditResultForm((Result)_starterResultDataGridView.CurrentRow.DataBoundItem))
+                    using (EditResultForm result = new EditResultForm((Result)_starterResultDataGridView.CurrentRow.DataBoundItem, 
+                                                                       _competitionComboBox.Text))
                     {
-                        if (starter.ShowDialog() == DialogResult.OK)
+                        if (result.ShowDialog() == DialogResult.OK)
                         {
                             int index = _competitionComboBox.SelectedIndex;
                             _competitionComboBox.SelectedIndex = 0;

@@ -25,6 +25,14 @@ namespace PonydayManager
             return null;
         }
 
+        public static int? GetNullableInt32(this SQLiteDataReader rdr, int index)
+        {
+            if (!rdr.IsDBNull(index) && rdr[index] is int || rdr[index] is long)
+                return rdr.GetInt32(index);
+
+            return null;
+        }
+        
         public static string GetNullableString(this SQLiteDataReader rdr, int index)
         {
             if (!rdr.IsDBNull(index))
@@ -33,10 +41,20 @@ namespace PonydayManager
             return string.Empty;
         }
 
+
         public static decimal? GetTextAsDecimal(this TextBox tb)
         {
             decimal result;
             if (!string.IsNullOrEmpty(tb.Text) && decimal.TryParse(tb.Text, out result))
+                return result;
+
+            return null;
+        }
+
+        public static int? GetTextAsInt32(this TextBox tb)
+        {
+            int result;
+            if (!string.IsNullOrEmpty(tb.Text) && int.TryParse(tb.Text, out result))
                 return result;
 
             return null;
