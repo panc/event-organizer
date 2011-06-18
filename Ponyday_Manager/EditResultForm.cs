@@ -113,10 +113,37 @@ namespace PonydayManager
             TextBox tb = sender as TextBox;
             if (tb != null)
                 tb.Text = tb.GetTextAsInt32().ToString();
+        }
 
-            if (tb != _assessmentSum)
+        private void Assessment_TextChanged(object sender, EventArgs e)
+        {
+            Control_Changed(sender, e);
+
+            if (!_isLoading)
             {
-                
+                int? sum = null;
+                int? value = _assessmentOne.GetTextAsInt32();
+                if (value.HasValue)
+                    sum = sum.GetValueOrDefault() + value;
+
+                value = _assessmentTwo.GetTextAsInt32();
+                if (value.HasValue)
+                    sum = sum.GetValueOrDefault() + value;
+
+                value = _assessmentThree.GetTextAsInt32();
+                if (value.HasValue)
+                    sum = sum.GetValueOrDefault() + value;
+
+                value = _assessmentFour.GetTextAsInt32();
+                if (value.HasValue)
+                    sum = sum.GetValueOrDefault() + value;
+
+                value = _assessmentFive.GetTextAsInt32();
+                if (value.HasValue)
+                    sum = sum.GetValueOrDefault() + value;
+
+                if (sum.HasValue)
+                    _assessmentSum.Text = sum.ToString();
             }
         }
     }
