@@ -13,12 +13,12 @@ namespace PonydayManager.Entities
 
         public int PonyId { get; set; }
         public int CompetitionId { get; set; }
-        public string AssessmentOne { get; set; }
-        public string AssessmentTwo { get; set; }
-        public string AssessmentThree { get; set; }
-        public string AssessmentFour { get; set; }
-        public string AssessmentFive { get; set; }
-        public string AssessmentSum { get; set; }
+        public int? AssessmentOne { get; set; }
+        public int? AssessmentTwo { get; set; }
+        public int? AssessmentThree { get; set; }
+        public int? AssessmentFour { get; set; }
+        public int? AssessmentFive { get; set; }
+        public int? AssessmentSum { get; set; }
         public string Comment { get; set; }
 
         public int StarterId { get; set; }
@@ -37,6 +37,7 @@ namespace PonydayManager.Entities
                     StringBuilder sb = new StringBuilder()
                         .Append("SELECT ")
                         .Append("r.Id, r.CompetitionId, r.PonyId, ")
+                        .Append("r.AssessmentOne, r.AssessmentTwo, r.AssessmentThree, r.AssessmentFour, r.AssessmentFive, r.AssessmentSum, r.Comment, ")
                         .Append("s.FirstName, s.LastName, p.Name as Pony ")
                         .Append("FROM EO_Result AS r ")
                         .Append("INNER JOIN EO_Pony AS p ON p.Id = r.PonyId AND p.Name is not null and length(p.Name) > 0  ")
@@ -59,9 +60,16 @@ namespace PonydayManager.Entities
                                 Id = rdr.GetInt32(0),
                                 CompetitionId = rdr.GetInt32(1),
                                 PonyId = rdr.GetInt32(2),
-                                FirstName = rdr.GetNullableString(3),
-                                LastName = rdr.GetNullableString(4),
-                                Pony = rdr.GetNullableString(5)
+                                AssessmentOne = rdr.GetNullableInt32(3),
+                                AssessmentTwo = rdr.GetNullableInt32(4),
+                                AssessmentThree = rdr.GetNullableInt32(5),
+                                AssessmentFour = rdr.GetNullableInt32(6),
+                                AssessmentFive = rdr.GetNullableInt32(7),
+                                AssessmentSum = rdr.GetNullableInt32(8),
+                                Comment = rdr.GetNullableString(9),
+                                FirstName = rdr.GetNullableString(10),
+                                LastName = rdr.GetNullableString(11),
+                                Pony = rdr.GetNullableString(12)
                             });
                         }
 

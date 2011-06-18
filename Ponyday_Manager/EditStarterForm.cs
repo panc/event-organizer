@@ -65,6 +65,31 @@ namespace PonydayManager
             _isLoading = false;
         }
 
+        private void Save()
+        {
+            // update the values from the textboxes
+            _starter.FirstName = _firstName.Text;
+            _starter.LastName = _lastName.Text;
+            _starter.Club = _club.Text;
+            _starter.Comment = _comment.Text;
+            _starter.PonyOne.Name = _ponyOne.Text;
+            _starter.PonyTwo.Name = _ponyTwo.Text;
+            _starter.PonyThree.Name = _ponyThree.Text;
+            _starter.Birthdate = _birthdate.Value;
+            _starter.Costs = _costs.GetTextAsDecimal();
+            _starter.Paied = _paied.Checked;
+
+            // update the values from the listbox
+            foreach (var item in _competitions.Items)
+            {
+                if (item is StarterCompetition)
+                    ((StarterCompetition)item).IsChecked = _competitions.CheckedItems.Contains(item);
+            }
+
+            _starter.Save();
+            _isDirty = false;
+        }
+
         private void SaveButton_Click(object sender, EventArgs e)
         {
             try
@@ -82,27 +107,7 @@ namespace PonydayManager
                         return;
                     }
 
-                    // update the values from the textboxes
-                    _starter.FirstName = _firstName.Text;
-                    _starter.LastName = _lastName.Text;
-                    _starter.Club = _club.Text;
-                    _starter.Comment = _comment.Text;
-                    _starter.PonyOne.Name = _ponyOne.Text;
-                    _starter.PonyTwo.Name = _ponyTwo.Text;
-                    _starter.PonyThree.Name = _ponyThree.Text;
-                    _starter.Birthdate = _birthdate.Value;
-                    _starter.Costs = _costs.GetTextAsDecimal();
-                    _starter.Paied = _paied.Checked;
-
-                    // update the values from the listbox
-                    foreach (var item in _competitions.Items)
-                    {
-                        if (item is StarterCompetition)
-                            ((StarterCompetition)item).IsChecked = _competitions.CheckedItems.Contains(item);
-                    }
-
-                    _starter.Save();
-                    _isDirty = false;
+                    Save();
                 }
 
                 this.DialogResult = DialogResult.OK;
@@ -129,14 +134,16 @@ namespace PonydayManager
         {
             if (_isDirty)
             {
-                if (MessageBox.Show(this,
-                                   "Wollen Sie die geänderten Daten verwerfen?",
+                DialogResult dlg = MessageBox.Show(this,
+                                   "Wollen Sie die Meldedaten speichern?",
                                    "Schließen",
                                    MessageBoxButtons.YesNoCancel,
-                                   MessageBoxIcon.Question) != DialogResult.Yes)
-                {
+                                   MessageBoxIcon.Question);
+
+                if (dlg == DialogResult.Yes)
+                    Save();
+                else if (dlg == DialogResult.Cancel)
                     e.Cancel = true;
-                }
             }
         }
 

@@ -39,7 +39,7 @@
             this._comment = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
+            this._titleLable = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this._saveButton = new System.Windows.Forms.Button();
             this._cancelButton = new System.Windows.Forms.Button();
@@ -109,20 +109,24 @@
             // _assessmentOne
             // 
             this._assessmentOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._assessmentOne.Location = new System.Drawing.Point(204, 163);
+            this._assessmentOne.Location = new System.Drawing.Point(281, 163);
             this._assessmentOne.Name = "_assessmentOne";
-            this._assessmentOne.Size = new System.Drawing.Size(233, 26);
+            this._assessmentOne.Size = new System.Drawing.Size(156, 26);
             this._assessmentOne.TabIndex = 4;
+            this._assessmentOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._assessmentOne.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._assessmentOne.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
             // 
             // _assessmentTwo
             // 
             this._assessmentTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._assessmentTwo.Location = new System.Drawing.Point(204, 195);
+            this._assessmentTwo.Location = new System.Drawing.Point(281, 195);
             this._assessmentTwo.Name = "_assessmentTwo";
-            this._assessmentTwo.Size = new System.Drawing.Size(233, 26);
+            this._assessmentTwo.Size = new System.Drawing.Size(156, 26);
             this._assessmentTwo.TabIndex = 5;
+            this._assessmentTwo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._assessmentTwo.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._assessmentTwo.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
             // 
             // _comment
             // 
@@ -154,15 +158,15 @@
             this.panel1.Size = new System.Drawing.Size(440, 1);
             this.panel1.TabIndex = 39;
             // 
-            // label9
+            // _titleLable
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(8, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(168, 20);
-            this.label9.TabIndex = 40;
-            this.label9.Text = "Wertung bearbeiten";
+            this._titleLable.AutoSize = true;
+            this._titleLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._titleLable.Location = new System.Drawing.Point(8, 16);
+            this._titleLable.Name = "_titleLable";
+            this._titleLable.Size = new System.Drawing.Size(207, 20);
+            this._titleLable.TabIndex = 40;
+            this._titleLable.Text = "Wertung bearbeiten ({0})";
             // 
             // label10
             // 
@@ -216,16 +220,18 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(182, 20);
             this.label3.TabIndex = 46;
-            this.label3.Text = "Bewertungsgrundlage 2:";
+            this.label3.Text = "Bewertungsgrundlage 4:";
             // 
             // _assessmentFour
             // 
             this._assessmentFour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._assessmentFour.Location = new System.Drawing.Point(204, 259);
+            this._assessmentFour.Location = new System.Drawing.Point(281, 259);
             this._assessmentFour.Name = "_assessmentFour";
-            this._assessmentFour.Size = new System.Drawing.Size(233, 26);
+            this._assessmentFour.Size = new System.Drawing.Size(156, 26);
             this._assessmentFour.TabIndex = 44;
+            this._assessmentFour.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._assessmentFour.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._assessmentFour.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
             // 
             // label4
             // 
@@ -235,16 +241,18 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(182, 20);
             this.label4.TabIndex = 45;
-            this.label4.Text = "Bewertungsgrundlage 1:";
+            this.label4.Text = "Bewertungsgrundlage 3:";
             // 
             // _assessmentThree
             // 
             this._assessmentThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._assessmentThree.Location = new System.Drawing.Point(204, 227);
+            this._assessmentThree.Location = new System.Drawing.Point(281, 227);
             this._assessmentThree.Name = "_assessmentThree";
-            this._assessmentThree.Size = new System.Drawing.Size(233, 26);
+            this._assessmentThree.Size = new System.Drawing.Size(156, 26);
             this._assessmentThree.TabIndex = 43;
+            this._assessmentThree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._assessmentThree.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._assessmentThree.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
             // 
             // label7
             // 
@@ -259,11 +267,13 @@
             // _assessmentSum
             // 
             this._assessmentSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._assessmentSum.Location = new System.Drawing.Point(204, 335);
+            this._assessmentSum.Location = new System.Drawing.Point(281, 335);
             this._assessmentSum.Name = "_assessmentSum";
-            this._assessmentSum.Size = new System.Drawing.Size(233, 26);
+            this._assessmentSum.Size = new System.Drawing.Size(156, 26);
             this._assessmentSum.TabIndex = 48;
+            this._assessmentSum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._assessmentSum.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._assessmentSum.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
             // 
             // label8
             // 
@@ -273,16 +283,18 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(182, 20);
             this.label8.TabIndex = 49;
-            this.label8.Text = "Bewertungsgrundlage 1:";
+            this.label8.Text = "Bewertungsgrundlage 5:";
             // 
             // _assessmentFive
             // 
             this._assessmentFive.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._assessmentFive.Location = new System.Drawing.Point(204, 291);
+            this._assessmentFive.Location = new System.Drawing.Point(281, 291);
             this._assessmentFive.Name = "_assessmentFive";
-            this._assessmentFive.Size = new System.Drawing.Size(233, 26);
+            this._assessmentFive.Size = new System.Drawing.Size(156, 26);
             this._assessmentFive.TabIndex = 47;
+            this._assessmentFive.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._assessmentFive.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._assessmentFive.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
             // 
             // panel2
             // 
@@ -312,7 +324,7 @@
             this.Controls.Add(this._cancelButton);
             this.Controls.Add(this._saveButton);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this._titleLable);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this._comment);
             this.Controls.Add(this.pictureBox1);
@@ -328,7 +340,7 @@
             this.Name = "EditResultForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Meldesystem";
+            this.Text = "Wertung bearbeiten";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StarterForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -348,7 +360,7 @@
         private System.Windows.Forms.TextBox _comment;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label _titleLable;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button _saveButton;
         private System.Windows.Forms.Button _cancelButton;
