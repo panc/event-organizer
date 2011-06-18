@@ -64,6 +64,7 @@
             this._starterInfo.ReadOnly = true;
             this._starterInfo.Size = new System.Drawing.Size(324, 26);
             this._starterInfo.TabIndex = 0;
+            this._starterInfo.TabStop = false;
             this._starterInfo.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // _ponyInfo
@@ -74,6 +75,7 @@
             this._ponyInfo.ReadOnly = true;
             this._ponyInfo.Size = new System.Drawing.Size(324, 26);
             this._ponyInfo.TabIndex = 3;
+            this._ponyInfo.TabStop = false;
             this._ponyInfo.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // label5
@@ -112,9 +114,9 @@
             this._assessmentOne.Location = new System.Drawing.Point(281, 163);
             this._assessmentOne.Name = "_assessmentOne";
             this._assessmentOne.Size = new System.Drawing.Size(156, 26);
-            this._assessmentOne.TabIndex = 4;
+            this._assessmentOne.TabIndex = 0;
             this._assessmentOne.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this._assessmentOne.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._assessmentOne.TextChanged += new System.EventHandler(this.Assessment_TextChanged);
             this._assessmentOne.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
             // 
             // _assessmentTwo
@@ -123,9 +125,9 @@
             this._assessmentTwo.Location = new System.Drawing.Point(281, 195);
             this._assessmentTwo.Name = "_assessmentTwo";
             this._assessmentTwo.Size = new System.Drawing.Size(156, 26);
-            this._assessmentTwo.TabIndex = 5;
+            this._assessmentTwo.TabIndex = 1;
             this._assessmentTwo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this._assessmentTwo.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._assessmentTwo.TextChanged += new System.EventHandler(this.Assessment_TextChanged);
             this._assessmentTwo.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
             // 
             // _comment
@@ -135,7 +137,7 @@
             this._comment.Multiline = true;
             this._comment.Name = "_comment";
             this._comment.Size = new System.Drawing.Size(417, 111);
-            this._comment.TabIndex = 10;
+            this._comment.TabIndex = 6;
             this._comment.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // pictureBox1
@@ -150,8 +152,8 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Location = new System.Drawing.Point(5, 46);
             this.panel1.Name = "panel1";
@@ -185,7 +187,7 @@
             this._saveButton.Location = new System.Drawing.Point(229, 550);
             this._saveButton.Name = "_saveButton";
             this._saveButton.Size = new System.Drawing.Size(101, 30);
-            this._saveButton.TabIndex = 11;
+            this._saveButton.TabIndex = 7;
             this._saveButton.Text = "Speichern";
             this._saveButton.UseVisualStyleBackColor = true;
             this._saveButton.Click += new System.EventHandler(this.SaveButton_Click);
@@ -198,7 +200,7 @@
             this._cancelButton.Location = new System.Drawing.Point(336, 550);
             this._cancelButton.Name = "_cancelButton";
             this._cancelButton.Size = new System.Drawing.Size(101, 30);
-            this._cancelButton.TabIndex = 12;
+            this._cancelButton.TabIndex = 8;
             this._cancelButton.Text = "Abbrechen";
             this._cancelButton.UseVisualStyleBackColor = true;
             // 
@@ -228,9 +230,9 @@
             this._assessmentFour.Location = new System.Drawing.Point(281, 259);
             this._assessmentFour.Name = "_assessmentFour";
             this._assessmentFour.Size = new System.Drawing.Size(156, 26);
-            this._assessmentFour.TabIndex = 44;
+            this._assessmentFour.TabIndex = 3;
             this._assessmentFour.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this._assessmentFour.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._assessmentFour.TextChanged += new System.EventHandler(this.Assessment_TextChanged);
             this._assessmentFour.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
             // 
             // label4
@@ -249,9 +251,9 @@
             this._assessmentThree.Location = new System.Drawing.Point(281, 227);
             this._assessmentThree.Name = "_assessmentThree";
             this._assessmentThree.Size = new System.Drawing.Size(156, 26);
-            this._assessmentThree.TabIndex = 43;
+            this._assessmentThree.TabIndex = 2;
             this._assessmentThree.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this._assessmentThree.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._assessmentThree.TextChanged += new System.EventHandler(this.Assessment_TextChanged);
             this._assessmentThree.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
             // 
             // label7
@@ -270,7 +272,7 @@
             this._assessmentSum.Location = new System.Drawing.Point(281, 335);
             this._assessmentSum.Name = "_assessmentSum";
             this._assessmentSum.Size = new System.Drawing.Size(156, 26);
-            this._assessmentSum.TabIndex = 48;
+            this._assessmentSum.TabIndex = 5;
             this._assessmentSum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._assessmentSum.TextChanged += new System.EventHandler(this.Control_Changed);
             this._assessmentSum.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
@@ -291,9 +293,9 @@
             this._assessmentFive.Location = new System.Drawing.Point(281, 291);
             this._assessmentFive.Name = "_assessmentFive";
             this._assessmentFive.Size = new System.Drawing.Size(156, 26);
-            this._assessmentFive.TabIndex = 47;
+            this._assessmentFive.TabIndex = 4;
             this._assessmentFive.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this._assessmentFive.TextChanged += new System.EventHandler(this.Control_Changed);
+            this._assessmentFive.TextChanged += new System.EventHandler(this.Assessment_TextChanged);
             this._assessmentFive.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
             // 
             // panel2
