@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Reflection;
 using log4net;
 
 using PonydayManager.Entities;
@@ -108,6 +109,8 @@ namespace PonydayManager
         {
             try
             {
+                _versionStatusLabel.Text = "Version " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
                 _competitionComboBox.DisplayMember = "Caption";
                 _competitionComboBox.ValueMember = "Id";
                 _competitionComboBox.DataSource = Competition.Select("");
@@ -125,6 +128,14 @@ namespace PonydayManager
         private void CloseMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AboutMenuItem_Click(object sender, EventArgs e)
+        {
+            using (AboutBox frm = new AboutBox())
+            {
+                frm.ShowDialog(this);
+            }
         }
 
         private void AddStarterButton_Click(object sender, EventArgs e)

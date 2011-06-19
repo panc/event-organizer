@@ -37,7 +37,6 @@
             this._assessmentOne = new System.Windows.Forms.TextBox();
             this._assessmentTwo = new System.Windows.Forms.TextBox();
             this._comment = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this._titleLable = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -53,6 +52,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this._assessmentFive = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,16 +139,6 @@
             this._comment.Size = new System.Drawing.Size(417, 111);
             this._comment.TabIndex = 6;
             this._comment.TextChanged += new System.EventHandler(this.Control_Changed);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(372, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(73, 40);
-            this.pictureBox1.TabIndex = 34;
-            this.pictureBox1.TabStop = false;
             // 
             // panel1
             // 
@@ -305,6 +295,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(417, 1);
             this.panel2.TabIndex = 51;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::PonydayManager.Properties.Resources.Logo_small;
+            this.pictureBox1.Location = new System.Drawing.Point(375, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(66, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 34;
+            this.pictureBox1.TabStop = false;
             // 
             // EditResultForm
             // 
