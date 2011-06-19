@@ -19,15 +19,64 @@ namespace PonydayManager
         public MainForm()
         {
             InitializeComponent();
+
+            _starterDataGridView.AutoGenerateColumns = false;
+            _resultDataGridView.AutoGenerateColumns = false;
         }
+
+        private void EditStarter(Starter starter)
+        {
+            try
+            {
+                using (EditStarterForm frm = new EditStarterForm(starter))
+                {
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        _starterDataGridView.DataSource = Starter.Select("");
+                        ReloadResultList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Failed to open starter-editing form!", ex);
+                MessageBox.Show(this,
+                                "Beim Bearbeiten eines Starters ist ein Fehler aufgetreten.",
+                                "Starter bearbeiten",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
+        private void EditResult(Result result)
+        {
+            try
+            {
+                using (EditResultForm frm = new EditResultForm(result, _competitionComboBox.Text))
+                {
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        _resultDataGridView.Invalidate();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _log.Error("Failed to open starter-editing form!", ex);
+                MessageBox.Show(this,
+                                "Beim Bearbeiten eines Starters ist ein Fehler aufgetreten.",
+                                "Starter bearbeiten",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+            }
+        }
+
+        #region Events
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             try
             {
-                _starterDataGridView.AutoGenerateColumns = false;
-                _starterResultDataGridView.AutoGenerateColumns = false;
-
                 _competitionComboBox.DisplayMember = "Caption";
                 _competitionComboBox.ValueMember = "Id";
                 _competitionComboBox.DataSource = Competition.Select("");
@@ -42,80 +91,57 @@ namespace PonydayManager
             }
         }
 
+        private void ReloadResultList()
+        {
+            if (_competitionComboBox.SelectedValue is int)
+                _resultDataGridView.DataSource = Result.SelectForCompetition(
+                                                    (int)_competitionComboBox.SelectedValue);
+        }
+
         private void CloseMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void StarterDataGridView_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                if (_starterDataGridView.CurrentRow != null && _starterDataGridView.CurrentRow.DataBoundItem is Starter)
-                {
-                    using (EditStarterForm starter = new EditStarterForm((Starter)_starterDataGridView.CurrentRow.DataBoundItem))
-                    {
-                        if (starter.ShowDialog() == DialogResult.OK)
-                            _starterDataGridView.DataSource = Starter.Select("");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                _log.Error("Failed to open a starter!", ex);
-                MessageBox.Show(this,
-                                "Beim Bearbeiten des Starters ist ein Fehler aufgetreten.",
-                                "Starter bearbeiten",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
-        }
-
         private void AddStarterButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (EditStarterForm starter = new EditStarterForm(new Starter()))
-                {
-                    if (starter.ShowDialog() == DialogResult.OK)
-                        _starterDataGridView.DataSource = Starter.Select("");
-                }
-            }
-            catch (Exception ex)
-            {
-                _log.Error("Failed to open starter-editing form!", ex);
-                MessageBox.Show(this,
-                                "Beim Hinzufügen eines neuen Starters ist ein Fehler aufgetreten.",
-                                "Starter hinzufügen",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
+            EditStarter(new Starter());
         }
 
         private void EditStarterButton_Click(object sender, EventArgs e)
         {
-            try
+            if (_starterDataGridView.CurrentRow.DataBoundItem is Starter)
+                EditStarter((Starter)_starterDataGridView.CurrentRow.DataBoundItem);
+        }        
+
+        private void StarterDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 &&
+                _starterDataGridView.RowCount > e.RowIndex &&
+                _starterDataGridView.Rows[e.RowIndex].DataBoundItem is Starter )
             {
-                if (_starterDataGridView.CurrentRow.DataBoundItem is Starter)
-                {
-                    using (EditStarterForm starter = new EditStarterForm((Starter)_starterDataGridView.CurrentRow.DataBoundItem))
-                    {
-                        if (starter.ShowDialog() == DialogResult.OK)
-                        {
-                            _starterDataGridView.DataSource = Starter.Select("");
-                            _competitionComboBox.SelectedIndex = 0;
-                        }
-                    }
-                }
+                EditStarter((Starter)_starterDataGridView.Rows[e.RowIndex].DataBoundItem);
             }
-            catch (Exception ex)
+        }
+
+        private void CompetitionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ReloadResultList();
+        }
+
+        private void EditResultButton_Click(object sender, EventArgs e)
+        {
+            if (_resultDataGridView.CurrentRow.DataBoundItem is Result)
+                EditResult((Result)_resultDataGridView.CurrentRow.DataBoundItem);
+        }        
+
+        private void StarterResultDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 &&
+                _resultDataGridView.RowCount > e.RowIndex &&
+                _resultDataGridView.Rows[e.RowIndex].DataBoundItem is Result)
             {
-                _log.Error("Failed to open starter-editing form!", ex);
-                MessageBox.Show(this,
-                                "Beim Bearbeiten eines Starters ist ein Fehler aufgetreten.",
-                                "Starter bearbeiten",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                EditResult((Result)_resultDataGridView.Rows[e.RowIndex].DataBoundItem);
             }
         }
 
@@ -128,54 +154,41 @@ namespace PonydayManager
                     caption = ((Competition)_competitionComboBox.SelectedItem).Caption;
 
                 ExcelExporter exporter = new ExcelExporter();
-                exporter.ExportStarterList((IList<Result>)_starterResultDataGridView.DataSource, caption);
+                exporter.ExportStarterList((IList<Result>)_resultDataGridView.DataSource, caption);
             }
             catch (Exception ex)
             {
-                _log.Error("Failed to open startlist!", ex);
+                _log.Error("Failed to print startlist!", ex);
                 MessageBox.Show(this,
-                                "Beim Laden der Starterliste ist ein Fehler aufgetreten.",
-                                "Starterlist",
+                                "Beim Drucken der Starterliste ist ein Fehler aufgetreten.",
+                                "Starterliste",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
         }
 
-        
-
-        private void CompetitionComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_competitionComboBox.SelectedValue is int)
-                _starterResultDataGridView.DataSource = Result.SelectForCompetition((int)_competitionComboBox.SelectedValue);
-        }
-
-        private void EditResultButton_Click(object sender, EventArgs e)
+        private void PrintResultButton_Click(object sender, EventArgs e)
         {
             try
             {
-                if (_starterResultDataGridView.CurrentRow.DataBoundItem is Result)
-                {
-                    using (EditResultForm result = new EditResultForm((Result)_starterResultDataGridView.CurrentRow.DataBoundItem, 
-                                                                       _competitionComboBox.Text))
-                    {
-                        if (result.ShowDialog() == DialogResult.OK)
-                        {
-                            int index = _competitionComboBox.SelectedIndex;
-                            _competitionComboBox.SelectedIndex = 0;
-                            _competitionComboBox.SelectedIndex = index;
-                        }
-                    }
-                }
+                string caption = string.Empty;
+                if (_competitionComboBox.SelectedItem is Competition)
+                    caption = ((Competition)_competitionComboBox.SelectedItem).Caption;
+
+                ExcelExporter exporter = new ExcelExporter();
+                exporter.ExportResultList((IList<Result>)_resultDataGridView.DataSource, caption);
             }
             catch (Exception ex)
             {
-                _log.Error("Failed to open starter-editing form!", ex);
+                _log.Error("Failed to print resultlist!", ex);
                 MessageBox.Show(this,
-                                "Beim Bearbeiten eines Starters ist ein Fehler aufgetreten.",
-                                "Starter bearbeiten",
+                                "Beim Drucken der Ergebnisliste ein Fehler aufgetreten.",
+                                "Ergebnisliste",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
         }
+
+        #endregion
     }
 }
