@@ -45,7 +45,6 @@
             this._comment = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this._paied = new System.Windows.Forms.CheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this._costs = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this._competitions = new System.Windows.Forms.CheckedListBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -214,16 +214,6 @@
             this._paied.UseVisualStyleBackColor = true;
             this._paied.CheckedChanged += new System.EventHandler(this.Paied_CheckedChanged);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(571, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(73, 40);
-            this.pictureBox1.TabIndex = 34;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
@@ -330,6 +320,17 @@
             this._competitions.TabIndex = 9;
             this._competitions.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.Competitions_ItemCheck);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::PonydayManager.Properties.Resources.Logo_small;
+            this.pictureBox1.Location = new System.Drawing.Point(573, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(66, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 48;
+            this.pictureBox1.TabStop = false;
+            // 
             // EditStarterForm
             // 
             this.AcceptButton = this._saveButton;
@@ -337,6 +338,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this._cancelButton;
             this.ClientSize = new System.Drawing.Size(656, 565);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this._competitions);
             this.Controls.Add(this.label12);
             this.Controls.Add(this._costs);
@@ -350,7 +352,6 @@
             this.Controls.Add(this._paied);
             this.Controls.Add(this.label8);
             this.Controls.Add(this._comment);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this._ponyThree);
             this.Controls.Add(this.label6);
@@ -395,7 +396,6 @@
         private System.Windows.Forms.TextBox _comment;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox _paied;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
@@ -406,5 +406,6 @@
         private System.Windows.Forms.TextBox _costs;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckedListBox _competitions;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

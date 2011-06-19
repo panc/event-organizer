@@ -65,7 +65,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DataGridViewExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\OutlookPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Entities\Pony.cs" />
@@ -96,6 +105,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditResultForm.resx">
       <DependentUpon>EditResultForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,8 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EventIcon.ico" />
-    <None Include="Resources\navigate-down-icon.png" />
-    <None Include="Resources\navigate-up-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
