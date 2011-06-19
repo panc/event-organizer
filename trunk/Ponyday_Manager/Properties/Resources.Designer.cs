@@ -81,6 +81,20 @@ namespace PonydayManager.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap navigate_down_icon {
+            get {
+                object obj = ResourceManager.GetObject("navigate-down-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap navigate_up_icon {
+            get {
+                object obj = ResourceManager.GetObject("navigate-up-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap New_16x16 {
             get {
                 object obj = ResourceManager.GetObject("New_16x16", resourceCulture);
