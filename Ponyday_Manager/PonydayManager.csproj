@@ -65,6 +65,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\DataGridViewExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Entities\Pony.cs" />
     <Compile Include="Entities\Result.cs" />
     <Compile Include="ExcelExporter.cs" />
@@ -125,6 +128,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EventIcon.ico" />
+    <None Include="Resources\navigate-down-icon.png" />
+    <None Include="Resources\navigate-up-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -13,6 +13,7 @@ namespace PonydayManager.Entities
 
         public int PonyId { get; set; }
         public int CompetitionId { get; set; }
+        public int SortIndex { get; set; }
         public int? AssessmentOne { get; set; }
         public int? AssessmentTwo { get; set; }
         public int? AssessmentThree { get; set; }
@@ -36,7 +37,7 @@ namespace PonydayManager.Entities
                 {
                     StringBuilder sb = new StringBuilder()
                         .Append("SELECT ")
-                        .Append("r.Id, r.CompetitionId, r.PonyId, ")
+                        .Append("r.Id, r.CompetitionId, r.PonyId, r.SortIndex, ")
                         .Append("r.AssessmentOne, r.AssessmentTwo, r.AssessmentThree, r.AssessmentFour, r.AssessmentFive, r.AssessmentSum, r.Comment, ")
                         .Append("s.FirstName, s.LastName, p.Name as Pony ")
                         .Append("FROM EO_Result AS r ")
@@ -44,8 +45,8 @@ namespace PonydayManager.Entities
                         .Append("INNER JOIN EO_Starter AS s ON s.Id = p.StarterId ")
                         .Append("INNER JOIN EO_StarterCompetition AS sc ON sc.StarterId = s.Id AND sc.CompetitionId = r.CompetitionId ")
                         .Append("WHERE r.CompetitionId = ? ")
-                        .Append("ORDER BY s.LastName, s.FirstName, p.Name;");
-                        //.Append("ORDER BY r.SortIndex;"); // will be needed later
+                        //.Append("ORDER BY s.LastName, s.FirstName, p.Name;");
+                        .Append("ORDER BY r.SortIndex;"); 
 
                     cmd.CommandText = sb.ToString();
 
@@ -62,16 +63,17 @@ namespace PonydayManager.Entities
                                 Id = rdr.GetInt32(0),
                                 CompetitionId = rdr.GetInt32(1),
                                 PonyId = rdr.GetInt32(2),
-                                AssessmentOne = rdr.GetNullableInt32(3),
-                                AssessmentTwo = rdr.GetNullableInt32(4),
-                                AssessmentThree = rdr.GetNullableInt32(5),
-                                AssessmentFour = rdr.GetNullableInt32(6),
-                                AssessmentFive = rdr.GetNullableInt32(7),
-                                AssessmentSum = rdr.GetNullableInt32(8),
-                                Comment = rdr.GetNullableString(9),
-                                FirstName = rdr.GetNullableString(10),
-                                LastName = rdr.GetNullableString(11),
-                                Pony = rdr.GetNullableString(12)
+                                SortIndex = rdr.GetInt32(3),
+                                AssessmentOne = rdr.GetNullableInt32(4),
+                                AssessmentTwo = rdr.GetNullableInt32(3),
+                                AssessmentThree = rdr.GetNullableInt32(6),
+                                AssessmentFour = rdr.GetNullableInt32(7),
+                                AssessmentFive = rdr.GetNullableInt32(8),
+                                AssessmentSum = rdr.GetNullableInt32(9),
+                                Comment = rdr.GetNullableString(10),
+                                FirstName = rdr.GetNullableString(11),
+                                LastName = rdr.GetNullableString(12),
+                                Pony = rdr.GetNullableString(13)
                             });
                         }
 
@@ -103,11 +105,12 @@ namespace PonydayManager.Entities
 
         private void Update(SQLiteCommand cmd)
         {
-            cmd.CommandText = "UPDATE EO_Result SET PonyId = ?, CompetitionId = ?, AssessmentOne = ?, AssessmentTwo = ?, AssessmentThree = ?, AssessmentFour = ?, AssessmentFive = ?, AssessmentSum = ?, Comment = ? WHERE Id = ?;";
+            cmd.CommandText = "UPDATE EO_Result SET PonyId = ?, CompetitionId = ?, SortIndex = ?, AssessmentOne = ?, AssessmentTwo = ?, AssessmentThree = ?, AssessmentFour = ?, AssessmentFive = ?, AssessmentSum = ?, Comment = ? WHERE Id = ?;";
             cmd.Parameters.AddRange(new SQLiteParameter[]
                 {
                     new SQLiteParameter{ Value = this.PonyId },
                     new SQLiteParameter{ Value = this.CompetitionId },
+                    new SQLiteParameter{ Value = this.SortIndex },
                     new SQLiteParameter{ Value = this.AssessmentOne },
                     new SQLiteParameter{ Value = this.AssessmentTwo },
                     new SQLiteParameter{ Value = this.AssessmentThree },
@@ -127,11 +130,12 @@ namespace PonydayManager.Entities
 
         private void Insert(SQLiteCommand cmd)
         {
-            cmd.CommandText = "INSERT INTO EO_Result (PonyId, CompetitionId, AssessmentOne, AssessmentTwo, AssessmentThree, AssessmentFour, AssessmentFive, AssessmentSum, Comment) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            cmd.CommandText = "INSERT INTO EO_Result (PonyId, CompetitionId, SortIndex, AssessmentOne, AssessmentTwo, AssessmentThree, AssessmentFour, AssessmentFive, AssessmentSum, Comment) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             cmd.Parameters.AddRange(new SQLiteParameter[]
                 {
                     new SQLiteParameter{ Value = this.PonyId },
                     new SQLiteParameter{ Value = this.CompetitionId },
+                    new SQLiteParameter{ Value = this.SortIndex },
                     new SQLiteParameter{ Value = this.AssessmentOne },
                     new SQLiteParameter{ Value = this.AssessmentTwo },
                     new SQLiteParameter{ Value = this.AssessmentThree },

@@ -32,7 +32,10 @@ namespace PonydayManager
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
+                        _starterDataGridView.StoreRowSelection();
                         _starterDataGridView.DataSource = Starter.Select("");
+                        _starterDataGridView.RestoreRowSelection();
+
                         ReloadResultList();
                     }
                 }
@@ -71,6 +74,34 @@ namespace PonydayManager
             }
         }
 
+        private void ReloadResultList()
+        {
+            if (_competitionComboBox.SelectedValue is int)
+            {
+                _resultDataGridView.StoreRowSelection();
+                _resultDataGridView.DataSource = Result.SelectForCompetition(
+                                                    (int)_competitionComboBox.SelectedValue);
+                _resultDataGridView.RestoreRowSelection();
+            }
+        }
+
+        private void SetUpDownEnabled()
+        {
+            if (_resultDataGridView.CurrentRow != null && _resultDataGridView.CurrentRow.DataBoundItem is Result)
+            {
+                int selectedIndex = _resultDataGridView.CurrentRow.Index;
+                if (selectedIndex == 0)
+                    _resultUpButton.Enabled = false;
+                else
+                    _resultUpButton.Enabled = true;
+
+                if (selectedIndex == ((IList<Result>)_resultDataGridView.DataSource).Count - 1)
+                    _resultDownButton.Enabled = false;
+                else
+                    _resultDownButton.Enabled = true;
+            }
+        }
+
         #region Events
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -91,13 +122,6 @@ namespace PonydayManager
             }
         }
 
-        private void ReloadResultList()
-        {
-            if (_competitionComboBox.SelectedValue is int)
-                _resultDataGridView.DataSource = Result.SelectForCompetition(
-                                                    (int)_competitionComboBox.SelectedValue);
-        }
-
         private void CloseMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -112,13 +136,13 @@ namespace PonydayManager
         {
             if (_starterDataGridView.CurrentRow.DataBoundItem is Starter)
                 EditStarter((Starter)_starterDataGridView.CurrentRow.DataBoundItem);
-        }        
+        }
 
         private void StarterDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 &&
                 _starterDataGridView.RowCount > e.RowIndex &&
-                _starterDataGridView.Rows[e.RowIndex].DataBoundItem is Starter )
+                _starterDataGridView.Rows[e.RowIndex].DataBoundItem is Starter)
             {
                 EditStarter((Starter)_starterDataGridView.Rows[e.RowIndex].DataBoundItem);
             }
@@ -133,9 +157,9 @@ namespace PonydayManager
         {
             if (_resultDataGridView.CurrentRow.DataBoundItem is Result)
                 EditResult((Result)_resultDataGridView.CurrentRow.DataBoundItem);
-        }        
+        }
 
-        private void StarterResultDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void ResultDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1 &&
                 _resultDataGridView.RowCount > e.RowIndex &&
@@ -187,6 +211,63 @@ namespace PonydayManager
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
             }
+        }
+
+        private void ResultUpButton_Click(object sender, EventArgs e)
+        {
+            if (_resultDataGridView.CurrentRow.DataBoundItem is Result)
+            {
+                int rowIndex = _resultDataGridView.CurrentRow.Index;
+                if (rowIndex > 0)
+                {
+                    Result current = (Result)_resultDataGridView.CurrentRow.DataBoundItem;
+                    Result prev = (Result)_resultDataGridView.Rows[rowIndex - 1].DataBoundItem;
+
+                    int sortIndex = current.SortIndex;
+                    current.SortIndex = prev.SortIndex;
+                    prev.SortIndex = sortIndex;
+
+                    if (current.SortIndex == prev.SortIndex)
+                        prev.SortIndex++;
+
+                    current.Save();
+                    prev.Save();
+
+                    ReloadResultList();
+                    _resultDataGridView.SetCurrentRow(rowIndex - 1);
+                }
+            }
+        }
+
+        private void ResultDownButton_Click(object sender, EventArgs e)
+        {
+            if (_resultDataGridView.CurrentRow.DataBoundItem is Result)
+            {
+                int rowIndex = _resultDataGridView.CurrentRow.Index;
+                if (rowIndex < _resultDataGridView.RowCount - 1)
+                {
+                    Result current = (Result)_resultDataGridView.CurrentRow.DataBoundItem;
+                    Result next = (Result)_resultDataGridView.Rows[rowIndex + 1].DataBoundItem;
+
+                    int sortIndex = current.SortIndex;
+                    current.SortIndex = next.SortIndex;
+                    next.SortIndex = sortIndex;
+
+                    if (current.SortIndex == next.SortIndex)
+                        next.SortIndex--;
+
+                    current.Save();
+                    next.Save();
+
+                    ReloadResultList();
+                    _resultDataGridView.SetCurrentRow(rowIndex + 1);
+                }
+            }
+        }
+
+        private void ResultDataGridView_CurrentCellChanged(object sender, EventArgs e)
+        {
+            SetUpDownEnabled();
         }
 
         #endregion
