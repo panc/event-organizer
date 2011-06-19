@@ -43,7 +43,9 @@ namespace PonydayManager.Entities
                         .Append("INNER JOIN EO_Pony AS p ON p.Id = r.PonyId AND p.Name is not null and length(p.Name) > 0  ")
                         .Append("INNER JOIN EO_Starter AS s ON s.Id = p.StarterId ")
                         .Append("INNER JOIN EO_StarterCompetition AS sc ON sc.StarterId = s.Id AND sc.CompetitionId = r.CompetitionId ")
-                        .Append("WHERE r.CompetitionId = ?;");
+                        .Append("WHERE r.CompetitionId = ? ")
+                        .Append("ORDER BY s.LastName, s.FirstName, p.Name;");
+                        //.Append("ORDER BY r.SortIndex;"); // will be needed later
 
                     cmd.CommandText = sb.ToString();
 

@@ -33,11 +33,6 @@
             this._competitionComboBox = new System.Windows.Forms.ComboBox();
             this._editResultButton = new System.Windows.Forms.Button();
             this._starterDataGridView = new System.Windows.Forms.DataGridView();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Birthdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Club = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._closeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,22 +45,28 @@
             this._editStarterButton = new System.Windows.Forms.Button();
             this._addStarterButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this._starterResultDataGridView = new System.Windows.Forms.DataGridView();
+            this._resultDataGridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this._printResultButton = new System.Windows.Forms.Button();
             this._starterListButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Birthdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Club = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Assessment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this._starterDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._starterResultDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._resultDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -82,7 +83,7 @@
             "Bewerb 4",
             "Bewerb 5",
             "Bewerb 6"});
-            this._competitionComboBox.Location = new System.Drawing.Point(79, 6);
+            this._competitionComboBox.Location = new System.Drawing.Point(79, 25);
             this._competitionComboBox.Name = "_competitionComboBox";
             this._competitionComboBox.Size = new System.Drawing.Size(204, 28);
             this._competitionComboBox.TabIndex = 0;
@@ -116,56 +117,19 @@
             this._starterDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this._starterDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._starterDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FirstName,
             this.LastName,
+            this.FirstName,
             this.Birthdate,
             this.Club,
             this.Comment});
             this._starterDataGridView.Location = new System.Drawing.Point(6, 6);
+            this._starterDataGridView.MultiSelect = false;
             this._starterDataGridView.Name = "_starterDataGridView";
             this._starterDataGridView.ReadOnly = true;
             this._starterDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._starterDataGridView.Size = new System.Drawing.Size(820, 334);
             this._starterDataGridView.TabIndex = 2;
-            this._starterDataGridView.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.StarterDataGridView_RowHeaderMouseDoubleClick);
-            // 
-            // FirstName
-            // 
-            this.FirstName.DataPropertyName = "FirstName";
-            this.FirstName.HeaderText = "Vorname";
-            this.FirstName.Name = "FirstName";
-            this.FirstName.ReadOnly = true;
-            // 
-            // LastName
-            // 
-            this.LastName.DataPropertyName = "LastName";
-            this.LastName.HeaderText = "Nachname";
-            this.LastName.Name = "LastName";
-            this.LastName.ReadOnly = true;
-            // 
-            // Birthdate
-            // 
-            this.Birthdate.DataPropertyName = "Birthdate";
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Birthdate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Birthdate.HeaderText = "Geburtsdatum";
-            this.Birthdate.Name = "Birthdate";
-            this.Birthdate.ReadOnly = true;
-            // 
-            // Club
-            // 
-            this.Club.DataPropertyName = "Club";
-            this.Club.HeaderText = "Verein";
-            this.Club.Name = "Club";
-            this.Club.ReadOnly = true;
-            // 
-            // Comment
-            // 
-            this.Comment.DataPropertyName = "Comment";
-            this.Comment.HeaderText = "Kommentar";
-            this.Comment.Name = "Comment";
-            this.Comment.ReadOnly = true;
+            this._starterDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StarterDataGridView_CellDoubleClick);
             // 
             // menuStrip1
             // 
@@ -281,7 +245,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this._starterResultDataGridView);
+            this.tabPage2.Controls.Add(this._resultDataGridView);
             this.tabPage2.Controls.Add(this._editResultButton);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this._competitionComboBox);
@@ -295,32 +259,37 @@
             this.tabPage2.Text = "Starter- und Ergebnislisten";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // _starterResultDataGridView
+            // _resultDataGridView
             // 
-            this._starterResultDataGridView.AllowUserToAddRows = false;
-            this._starterResultDataGridView.AllowUserToDeleteRows = false;
-            this._starterResultDataGridView.AllowUserToResizeRows = false;
-            this._starterResultDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this._resultDataGridView.AllowUserToAddRows = false;
+            this._resultDataGridView.AllowUserToDeleteRows = false;
+            this._resultDataGridView.AllowUserToResizeRows = false;
+            this._resultDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this._starterResultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this._starterResultDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this._starterResultDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this._starterResultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._starterResultDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
+            this._resultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this._resultDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this._resultDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this._resultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._resultDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn5});
-            this._starterResultDataGridView.Location = new System.Drawing.Point(6, 40);
-            this._starterResultDataGridView.Name = "_starterResultDataGridView";
-            this._starterResultDataGridView.ReadOnly = true;
-            this._starterResultDataGridView.Size = new System.Drawing.Size(820, 300);
-            this._starterResultDataGridView.TabIndex = 46;
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn5,
+            this.Assessment});
+            this._resultDataGridView.Location = new System.Drawing.Point(6, 65);
+            this._resultDataGridView.MultiSelect = false;
+            this._resultDataGridView.Name = "_resultDataGridView";
+            this._resultDataGridView.ReadOnly = true;
+            this._resultDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this._resultDataGridView.Size = new System.Drawing.Size(820, 275);
+            this._resultDataGridView.StandardTab = true;
+            this._resultDataGridView.TabIndex = 46;
+            this._resultDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StarterResultDataGridView_CellDoubleClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 9);
+            this.label1.Location = new System.Drawing.Point(6, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 20);
             this.label1.TabIndex = 10;
@@ -339,6 +308,7 @@
             this._printResultButton.Text = "Ergebnissliste drucken";
             this._printResultButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this._printResultButton.UseVisualStyleBackColor = true;
+            this._printResultButton.Click += new System.EventHandler(this.PrintResultButton_Click);
             // 
             // _starterListButton
             // 
@@ -388,12 +358,43 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // dataGridViewTextBoxColumn1
+            // LastName
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "FirstName";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Vorname";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "Nachname";
+            this.LastName.Name = "LastName";
+            this.LastName.ReadOnly = true;
+            // 
+            // FirstName
+            // 
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "Vorname";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.ReadOnly = true;
+            // 
+            // Birthdate
+            // 
+            this.Birthdate.DataPropertyName = "Birthdate";
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Birthdate.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Birthdate.HeaderText = "Geburtsdatum";
+            this.Birthdate.Name = "Birthdate";
+            this.Birthdate.ReadOnly = true;
+            // 
+            // Club
+            // 
+            this.Club.DataPropertyName = "Club";
+            this.Club.HeaderText = "Verein";
+            this.Club.Name = "Club";
+            this.Club.ReadOnly = true;
+            // 
+            // Comment
+            // 
+            this.Comment.DataPropertyName = "Comment";
+            this.Comment.HeaderText = "Kommentar";
+            this.Comment.Name = "Comment";
+            this.Comment.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -402,12 +403,26 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "FirstName";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Vorname";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "Pony";
             this.dataGridViewTextBoxColumn5.HeaderText = "Pony";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // Assessment
+            // 
+            this.Assessment.DataPropertyName = "AssessmentSum";
+            this.Assessment.HeaderText = "Gesamtbewertung";
+            this.Assessment.Name = "Assessment";
+            this.Assessment.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -431,7 +446,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._starterResultDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._resultDataGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -461,17 +476,18 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView _starterResultDataGridView;
+        private System.Windows.Forms.DataGridView _resultDataGridView;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Birthdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Club;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Assessment;
     }
 }
 

@@ -67,7 +67,12 @@ namespace PonydayManager.Entities
             {
                 using (SQLiteCommand cmd = new SQLiteCommand(connection))
                 {
-                    cmd.CommandText = "SELECT Id, FirstName, LastName, Birthdate, Club, Comment, Costs, Paied FROM EO_Starter;";
+                    StringBuilder sb = new StringBuilder()
+                        .Append("SELECT Id, FirstName, LastName, Birthdate, Club, Comment, Costs, Paied ")
+                        .Append("FROM EO_Starter ")
+                        .Append("ORDER BY LastName, FirstName;");
+
+                    cmd.CommandText = sb.ToString();
 
                     _log.Debug(CreateLogString(cmd));
 
