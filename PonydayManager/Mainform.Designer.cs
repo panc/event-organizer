@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this._competitionComboBox = new System.Windows.Forms.ComboBox();
+            this._competitionTabOneComboBox = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._closeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,51 +41,60 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this._editStarterButton = new System.Windows.Forms.Button();
             this._addStarterButton = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this._resultDownButton = new System.Windows.Forms.Button();
+            this._resultUpButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this._starterListButton = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this._editResultButton = new System.Windows.Forms.Button();
+            this._printResultButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this._competitionTabTwoComboBox = new System.Windows.Forms.ComboBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this._versionStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._starterDataGridView = new PonydayManager.Controls.DataGridViewExt();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Club = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this._resultDownButton = new System.Windows.Forms.Button();
-            this._resultUpButton = new System.Windows.Forms.Button();
-            this._editResultButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this._resultDataGridView = new PonydayManager.Controls.DataGridViewExt();
+            this._starterCompetitionDataGridView = new PonydayManager.Controls.DataGridViewExt();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Assessment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._printResultButton = new System.Windows.Forms.Button();
-            this._starterListButton = new System.Windows.Forms.Button();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this._resultDataGridView = new PonydayManager.Controls.DataGridViewExt();
             this.panel1 = new PonydayManager.Controls.OutlookPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this._versionStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._starterDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._resultDataGridView)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._starterDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._starterCompetitionDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._resultDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // _competitionComboBox
+            // _competitionTabOneComboBox
             // 
-            this._competitionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this._competitionComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._competitionComboBox.FormattingEnabled = true;
-            this._competitionComboBox.Location = new System.Drawing.Point(120, 28);
-            this._competitionComboBox.Name = "_competitionComboBox";
-            this._competitionComboBox.Size = new System.Drawing.Size(204, 28);
-            this._competitionComboBox.TabIndex = 0;
-            this._competitionComboBox.SelectedIndexChanged += new System.EventHandler(this.CompetitionComboBox_SelectedIndexChanged);
+            this._competitionTabOneComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._competitionTabOneComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._competitionTabOneComboBox.FormattingEnabled = true;
+            this._competitionTabOneComboBox.Location = new System.Drawing.Point(120, 17);
+            this._competitionTabOneComboBox.Name = "_competitionTabOneComboBox";
+            this._competitionTabOneComboBox.Size = new System.Drawing.Size(204, 28);
+            this._competitionTabOneComboBox.TabIndex = 0;
+            this._competitionTabOneComboBox.SelectedIndexChanged += new System.EventHandler(this.CompetitionTabOneComboBox_SelectedIndexChanged);
             // 
             // menuStrip1
             // 
@@ -150,6 +159,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(12, 129);
             this.tabControl1.Name = "tabControl1";
@@ -199,6 +209,162 @@
             this._addStarterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this._addStarterButton.UseVisualStyleBackColor = true;
             this._addStarterButton.Click += new System.EventHandler(this.AddStarterButton_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this._resultDownButton);
+            this.tabPage2.Controls.Add(this._resultUpButton);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this._competitionTabOneComboBox);
+            this.tabPage2.Controls.Add(this._starterListButton);
+            this.tabPage2.Controls.Add(this._starterCompetitionDataGridView);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(838, 377);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Starterlisten";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // _resultDownButton
+            // 
+            this._resultDownButton.Image = global::PonydayManager.Properties.Resources.Navigate_down;
+            this._resultDownButton.Location = new System.Drawing.Point(6, 117);
+            this._resultDownButton.Name = "_resultDownButton";
+            this._resultDownButton.Size = new System.Drawing.Size(39, 33);
+            this._resultDownButton.TabIndex = 48;
+            this._resultDownButton.UseVisualStyleBackColor = true;
+            this._resultDownButton.Click += new System.EventHandler(this.ResultDownButton_Click);
+            // 
+            // _resultUpButton
+            // 
+            this._resultUpButton.Image = ((System.Drawing.Image)(resources.GetObject("_resultUpButton.Image")));
+            this._resultUpButton.Location = new System.Drawing.Point(6, 78);
+            this._resultUpButton.Name = "_resultUpButton";
+            this._resultUpButton.Size = new System.Drawing.Size(39, 33);
+            this._resultUpButton.TabIndex = 47;
+            this._resultUpButton.UseVisualStyleBackColor = true;
+            this._resultUpButton.Click += new System.EventHandler(this.ResultUpButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(47, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Bewerb:";
+            // 
+            // _starterListButton
+            // 
+            this._starterListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._starterListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._starterListButton.Image = global::PonydayManager.Properties.Resources.Excel_16x16;
+            this._starterListButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._starterListButton.Location = new System.Drawing.Point(676, 341);
+            this._starterListButton.Name = "_starterListButton";
+            this._starterListButton.Size = new System.Drawing.Size(156, 30);
+            this._starterListButton.TabIndex = 2;
+            this._starterListButton.Text = "Startiste drucken";
+            this._starterListButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._starterListButton.UseVisualStyleBackColor = true;
+            this._starterListButton.Click += new System.EventHandler(this.StarterListButton_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this._editResultButton);
+            this.tabPage3.Controls.Add(this._printResultButton);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Controls.Add(this._competitionTabTwoComboBox);
+            this.tabPage3.Controls.Add(this._resultDataGridView);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(838, 377);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Ergebnislisten";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // _editResultButton
+            // 
+            this._editResultButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._editResultButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._editResultButton.Image = ((System.Drawing.Image)(resources.GetObject("_editResultButton.Image")));
+            this._editResultButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._editResultButton.Location = new System.Drawing.Point(6, 341);
+            this._editResultButton.Name = "_editResultButton";
+            this._editResultButton.Size = new System.Drawing.Size(174, 30);
+            this._editResultButton.TabIndex = 52;
+            this._editResultButton.Text = "Wertung bearbeiten";
+            this._editResultButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._editResultButton.UseVisualStyleBackColor = true;
+            // 
+            // _printResultButton
+            // 
+            this._printResultButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._printResultButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._printResultButton.Image = global::PonydayManager.Properties.Resources.Excel_16x16;
+            this._printResultButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._printResultButton.Location = new System.Drawing.Point(637, 341);
+            this._printResultButton.Name = "_printResultButton";
+            this._printResultButton.Size = new System.Drawing.Size(195, 30);
+            this._printResultButton.TabIndex = 51;
+            this._printResultButton.Text = "Ergebnissliste drucken";
+            this._printResultButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._printResultButton.UseVisualStyleBackColor = true;
+            this._printResultButton.Click += new System.EventHandler(this.PrintResultButton_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 20);
+            this.label3.TabIndex = 49;
+            this.label3.Text = "Bewerb:";
+            // 
+            // _competitionTabTwoComboBox
+            // 
+            this._competitionTabTwoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._competitionTabTwoComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._competitionTabTwoComboBox.FormattingEnabled = true;
+            this._competitionTabTwoComboBox.Location = new System.Drawing.Point(76, 17);
+            this._competitionTabTwoComboBox.Name = "_competitionTabTwoComboBox";
+            this._competitionTabTwoComboBox.Size = new System.Drawing.Size(204, 28);
+            this._competitionTabTwoComboBox.TabIndex = 47;
+            this._competitionTabTwoComboBox.SelectedIndexChanged += new System.EventHandler(this.CompetitionTabTwoComboBox_SelectedIndexChanged);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel3,
+            this._versionStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(870, 24);
+            this.statusStrip1.TabIndex = 41;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(214, 19);
+            this.toolStripStatusLabel1.Text = "  © Christoph Pangerl, Christian Prein";
+            this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(641, 19);
+            this.toolStripStatusLabel3.Spring = true;
+            // 
+            // _versionStatusLabel
+            // 
+            this._versionStatusLabel.Name = "_versionStatusLabel";
+            this._versionStatusLabel.Size = new System.Drawing.Size(0, 19);
             // 
             // _starterDataGridView
             // 
@@ -254,95 +420,31 @@
             this.Comment.Name = "Comment";
             this.Comment.ReadOnly = true;
             // 
-            // tabPage2
+            // _starterCompetitionDataGridView
             // 
-            this.tabPage2.Controls.Add(this._resultDownButton);
-            this.tabPage2.Controls.Add(this._resultUpButton);
-            this.tabPage2.Controls.Add(this._editResultButton);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this._competitionComboBox);
-            this.tabPage2.Controls.Add(this._resultDataGridView);
-            this.tabPage2.Controls.Add(this._printResultButton);
-            this.tabPage2.Controls.Add(this._starterListButton);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(838, 377);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Starter- und Ergebnislisten";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // _resultDownButton
-            // 
-            this._resultDownButton.Image = global::PonydayManager.Properties.Resources.Navigate_down;
-            this._resultDownButton.Location = new System.Drawing.Point(6, 133);
-            this._resultDownButton.Name = "_resultDownButton";
-            this._resultDownButton.Size = new System.Drawing.Size(39, 33);
-            this._resultDownButton.TabIndex = 48;
-            this._resultDownButton.UseVisualStyleBackColor = true;
-            this._resultDownButton.Click += new System.EventHandler(this.ResultDownButton_Click);
-            // 
-            // _resultUpButton
-            // 
-            this._resultUpButton.Image = ((System.Drawing.Image)(resources.GetObject("_resultUpButton.Image")));
-            this._resultUpButton.Location = new System.Drawing.Point(6, 94);
-            this._resultUpButton.Name = "_resultUpButton";
-            this._resultUpButton.Size = new System.Drawing.Size(39, 33);
-            this._resultUpButton.TabIndex = 47;
-            this._resultUpButton.UseVisualStyleBackColor = true;
-            this._resultUpButton.Click += new System.EventHandler(this.ResultUpButton_Click);
-            // 
-            // _editResultButton
-            // 
-            this._editResultButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._editResultButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._editResultButton.Image = ((System.Drawing.Image)(resources.GetObject("_editResultButton.Image")));
-            this._editResultButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._editResultButton.Location = new System.Drawing.Point(51, 341);
-            this._editResultButton.Name = "_editResultButton";
-            this._editResultButton.Size = new System.Drawing.Size(174, 30);
-            this._editResultButton.TabIndex = 1;
-            this._editResultButton.Text = "Wertung bearbeiten";
-            this._editResultButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._editResultButton.UseVisualStyleBackColor = true;
-            this._editResultButton.Click += new System.EventHandler(this.EditResultButton_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 20);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Bewerb:";
-            // 
-            // _resultDataGridView
-            // 
-            this._resultDataGridView.AllowUserToAddRows = false;
-            this._resultDataGridView.AllowUserToDeleteRows = false;
-            this._resultDataGridView.AllowUserToResizeRows = false;
-            this._resultDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this._starterCompetitionDataGridView.AllowUserToAddRows = false;
+            this._starterCompetitionDataGridView.AllowUserToDeleteRows = false;
+            this._starterCompetitionDataGridView.AllowUserToResizeRows = false;
+            this._starterCompetitionDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this._resultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this._resultDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this._resultDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this._resultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._resultDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this._starterCompetitionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this._starterCompetitionDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this._starterCompetitionDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this._starterCompetitionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._starterCompetitionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn5,
-            this.Assessment});
-            this._resultDataGridView.Location = new System.Drawing.Point(51, 65);
-            this._resultDataGridView.MultiSelect = false;
-            this._resultDataGridView.Name = "_resultDataGridView";
-            this._resultDataGridView.ReadOnly = true;
-            this._resultDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this._resultDataGridView.Size = new System.Drawing.Size(781, 262);
-            this._resultDataGridView.StandardTab = true;
-            this._resultDataGridView.TabIndex = 46;
-            this._resultDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ResultDataGridView_CellDoubleClick);
-            this._resultDataGridView.CurrentCellChanged += new System.EventHandler(this.ResultDataGridView_CurrentCellChanged);
+            this.dataGridViewTextBoxColumn5});
+            this._starterCompetitionDataGridView.Location = new System.Drawing.Point(51, 51);
+            this._starterCompetitionDataGridView.MultiSelect = false;
+            this._starterCompetitionDataGridView.Name = "_starterCompetitionDataGridView";
+            this._starterCompetitionDataGridView.ReadOnly = true;
+            this._starterCompetitionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this._starterCompetitionDataGridView.Size = new System.Drawing.Size(781, 284);
+            this._starterCompetitionDataGridView.StandardTab = true;
+            this._starterCompetitionDataGridView.TabIndex = 46;
+            this._starterCompetitionDataGridView.CurrentCellChanged += new System.EventHandler(this.StarterCompetitionDataGridView_CurrentCellChanged);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -365,74 +467,32 @@
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
-            // Assessment
+            // _resultDataGridView
             // 
-            this.Assessment.DataPropertyName = "AssessmentSum";
-            this.Assessment.HeaderText = "Gesamtbewertung";
-            this.Assessment.Name = "Assessment";
-            this.Assessment.ReadOnly = true;
-            // 
-            // _printResultButton
-            // 
-            this._printResultButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._printResultButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._printResultButton.Image = global::PonydayManager.Properties.Resources.Excel_16x16;
-            this._printResultButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._printResultButton.Location = new System.Drawing.Point(637, 341);
-            this._printResultButton.Name = "_printResultButton";
-            this._printResultButton.Size = new System.Drawing.Size(195, 30);
-            this._printResultButton.TabIndex = 3;
-            this._printResultButton.Text = "Ergebnissliste drucken";
-            this._printResultButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._printResultButton.UseVisualStyleBackColor = true;
-            this._printResultButton.Click += new System.EventHandler(this.PrintResultButton_Click);
-            // 
-            // _starterListButton
-            // 
-            this._starterListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._starterListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._starterListButton.Image = global::PonydayManager.Properties.Resources.Excel_16x16;
-            this._starterListButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._starterListButton.Location = new System.Drawing.Point(475, 341);
-            this._starterListButton.Name = "_starterListButton";
-            this._starterListButton.Size = new System.Drawing.Size(156, 30);
-            this._starterListButton.TabIndex = 2;
-            this._starterListButton.Text = "Startiste drucken";
-            this._starterListButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._starterListButton.UseVisualStyleBackColor = true;
-            this._starterListButton.Click += new System.EventHandler(this.StarterListButton_Click);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel3,
-            this._versionStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(870, 24);
-            this.statusStrip1.TabIndex = 41;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(214, 19);
-            this.toolStripStatusLabel1.Text = "  © Christoph Pangerl, Christian Prein";
-            this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::PonydayManager.Properties.Resources.Logo_medium;
-            this.pictureBox1.Location = new System.Drawing.Point(717, 7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(141, 70);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this._resultDataGridView.AllowUserToAddRows = false;
+            this._resultDataGridView.AllowUserToDeleteRows = false;
+            this._resultDataGridView.AllowUserToResizeRows = false;
+            this._resultDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this._resultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this._resultDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this._resultDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this._resultDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._resultDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7});
+            this._resultDataGridView.Location = new System.Drawing.Point(6, 51);
+            this._resultDataGridView.MultiSelect = false;
+            this._resultDataGridView.Name = "_resultDataGridView";
+            this._resultDataGridView.ReadOnly = true;
+            this._resultDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this._resultDataGridView.Size = new System.Drawing.Size(826, 284);
+            this._resultDataGridView.StandardTab = true;
+            this._resultDataGridView.TabIndex = 50;
+            this._resultDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ResultDataGridView_CellDoubleClick);
             // 
             // panel1
             // 
@@ -458,16 +518,44 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Ponyday Manager";
             // 
-            // _versionStatusLabel
+            // pictureBox1
             // 
-            this._versionStatusLabel.Name = "_versionStatusLabel";
-            this._versionStatusLabel.Size = new System.Drawing.Size(0, 19);
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::PonydayManager.Properties.Resources.Logo_medium;
+            this.pictureBox1.Location = new System.Drawing.Point(717, 7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(141, 70);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
-            // toolStripStatusLabel3
+            // dataGridViewTextBoxColumn3
             // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(610, 19);
-            this.toolStripStatusLabel3.Spring = true;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "LastName";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nachname";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "FirstName";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Vorname";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Pony";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Pony";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Assessment";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Gesamtbewertung";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -488,15 +576,18 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this._starterDataGridView)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._resultDataGridView)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._starterDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._starterCompetitionDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._resultDataGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -505,10 +596,8 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button _printResultButton;
         private System.Windows.Forms.Button _starterListButton;
-        private System.Windows.Forms.ComboBox _competitionComboBox;
-        private System.Windows.Forms.Button _editResultButton;
+        private System.Windows.Forms.ComboBox _competitionTabOneComboBox;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem dateiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
@@ -523,23 +612,32 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label1;
-        private PonydayManager.Controls.DataGridViewExt _resultDataGridView;
+        private PonydayManager.Controls.DataGridViewExt _starterCompetitionDataGridView;
         private System.Windows.Forms.Label label2;
         private PonydayManager.Controls.OutlookPanel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Club;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Assessment;
         private System.Windows.Forms.Button _resultDownButton;
         private System.Windows.Forms.Button _resultUpButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel _versionStatusLabel;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox _competitionTabTwoComboBox;
+        private Controls.DataGridViewExt _resultDataGridView;
+        private System.Windows.Forms.Button _printResultButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.Button _editResultButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
     }
 }
 
