@@ -22,6 +22,7 @@ namespace PonydayManager
             InitializeComponent();
 
             _starterDataGridView.AutoGenerateColumns = false;
+            _starterCompetitionDataGridView.AutoGenerateColumns = false;
             _resultDataGridView.AutoGenerateColumns = false;
         }
 
@@ -37,7 +38,7 @@ namespace PonydayManager
                         _starterDataGridView.DataSource = Starter.Select("");
                         _starterDataGridView.RestoreRowSelection();
 
-                        ReloadResultList();
+                        ReloadStarterCompetitionList();
                     }
                 }
             }
@@ -56,11 +57,11 @@ namespace PonydayManager
         {
             try
             {
-                using (EditResultForm frm = new EditResultForm(result, _competitionComboBox.Text))
+                using (EditResultForm frm = new EditResultForm(result, _competitionTabTwoComboBox.Text))
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        _resultDataGridView.Invalidate();
+                        ReloadResultList();
                     }
                 }
             }
@@ -75,28 +76,42 @@ namespace PonydayManager
             }
         }
 
+        private void ReloadStarterCompetitionList()
+        {
+            if (_competitionTabOneComboBox.SelectedValue is int)
+            {
+                _starterCompetitionDataGridView.StoreRowSelection();
+                _starterCompetitionDataGridView.DataSource = Result.SelectForCompetition(
+                                                    (int)_competitionTabOneComboBox.SelectedValue,
+                                                    false);
+                _starterCompetitionDataGridView.RestoreRowSelection();
+            }
+        }
+
+
         private void ReloadResultList()
         {
-            if (_competitionComboBox.SelectedValue is int)
+            if (_competitionTabTwoComboBox.SelectedValue is int)
             {
                 _resultDataGridView.StoreRowSelection();
                 _resultDataGridView.DataSource = Result.SelectForCompetition(
-                                                    (int)_competitionComboBox.SelectedValue);
+                                                    (int)_competitionTabTwoComboBox.SelectedValue,
+                                                    true);
                 _resultDataGridView.RestoreRowSelection();
             }
         }
 
         private void SetUpDownEnabled()
         {
-            if (_resultDataGridView.CurrentRow != null && _resultDataGridView.CurrentRow.DataBoundItem is Result)
+            if (_starterCompetitionDataGridView.CurrentRow != null && _starterCompetitionDataGridView.CurrentRow.DataBoundItem is Result)
             {
-                int selectedIndex = _resultDataGridView.CurrentRow.Index;
+                int selectedIndex = _starterCompetitionDataGridView.CurrentRow.Index;
                 if (selectedIndex == 0)
                     _resultUpButton.Enabled = false;
                 else
                     _resultUpButton.Enabled = true;
 
-                if (selectedIndex == ((IList<Result>)_resultDataGridView.DataSource).Count - 1)
+                if (selectedIndex == ((IList<Result>)_starterCompetitionDataGridView.DataSource).Count - 1)
                     _resultDownButton.Enabled = false;
                 else
                     _resultDownButton.Enabled = true;
@@ -111,9 +126,14 @@ namespace PonydayManager
             {
                 _versionStatusLabel.Text = "Version " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-                _competitionComboBox.DisplayMember = "Caption";
-                _competitionComboBox.ValueMember = "Id";
-                _competitionComboBox.DataSource = Competition.Select("");
+                IList<Competition> list = Competition.Select("");
+                _competitionTabOneComboBox.DisplayMember = "Caption";
+                _competitionTabOneComboBox.ValueMember = "Id";
+                _competitionTabOneComboBox.DataSource = list;
+
+                _competitionTabTwoComboBox.DisplayMember = "Caption";
+                _competitionTabTwoComboBox.ValueMember = "Id";
+                _competitionTabTwoComboBox.DataSource = list.ToList();
 
                 _starterDataGridView.DataSource = Starter.Select("");
             }
@@ -159,15 +179,9 @@ namespace PonydayManager
             }
         }
 
-        private void CompetitionComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void StarterCompetitionDataGridView_CurrentCellChanged(object sender, EventArgs e)
         {
-            ReloadResultList();
-        }
-
-        private void EditResultButton_Click(object sender, EventArgs e)
-        {
-            if (_resultDataGridView.CurrentRow.DataBoundItem is Result)
-                EditResult((Result)_resultDataGridView.CurrentRow.DataBoundItem);
+            SetUpDownEnabled();
         }
 
         private void ResultDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -180,16 +194,32 @@ namespace PonydayManager
             }
         }
 
+        private void CompetitionTabOneComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ReloadStarterCompetitionList();
+        }
+
+        private void CompetitionTabTwoComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ReloadResultList();
+        }
+
+        private void EditResultButton_Click(object sender, EventArgs e)
+        {
+            if (_starterCompetitionDataGridView.CurrentRow.DataBoundItem is Result)
+                EditResult((Result)_starterCompetitionDataGridView.CurrentRow.DataBoundItem);
+        }
+
         private void StarterListButton_Click(object sender, EventArgs e)
         {
             try
             {
                 string caption = string.Empty;
-                if (_competitionComboBox.SelectedItem is Competition)
-                    caption = ((Competition)_competitionComboBox.SelectedItem).Caption;
+                if (_competitionTabOneComboBox.SelectedItem is Competition)
+                    caption = ((Competition)_competitionTabOneComboBox.SelectedItem).Caption;
 
                 ExcelExporter exporter = new ExcelExporter();
-                exporter.ExportStarterList((IList<Result>)_resultDataGridView.DataSource, caption);
+                exporter.ExportStarterList((IList<Result>)_starterCompetitionDataGridView.DataSource, caption);
             }
             catch (Exception ex)
             {
@@ -207,11 +237,11 @@ namespace PonydayManager
             try
             {
                 string caption = string.Empty;
-                if (_competitionComboBox.SelectedItem is Competition)
-                    caption = ((Competition)_competitionComboBox.SelectedItem).Caption;
+                if (_competitionTabOneComboBox.SelectedItem is Competition)
+                    caption = ((Competition)_competitionTabOneComboBox.SelectedItem).Caption;
 
                 ExcelExporter exporter = new ExcelExporter();
-                exporter.ExportResultList((IList<Result>)_resultDataGridView.DataSource, caption);
+                exporter.ExportResultList((IList<Result>)_starterCompetitionDataGridView.DataSource, caption);
             }
             catch (Exception ex)
             {
@@ -226,13 +256,13 @@ namespace PonydayManager
 
         private void ResultUpButton_Click(object sender, EventArgs e)
         {
-            if (_resultDataGridView.CurrentRow.DataBoundItem is Result)
+            if (_starterCompetitionDataGridView.CurrentRow.DataBoundItem is Result)
             {
-                int rowIndex = _resultDataGridView.CurrentRow.Index;
+                int rowIndex = _starterCompetitionDataGridView.CurrentRow.Index;
                 if (rowIndex > 0)
                 {
-                    Result current = (Result)_resultDataGridView.CurrentRow.DataBoundItem;
-                    Result prev = (Result)_resultDataGridView.Rows[rowIndex - 1].DataBoundItem;
+                    Result current = (Result)_starterCompetitionDataGridView.CurrentRow.DataBoundItem;
+                    Result prev = (Result)_starterCompetitionDataGridView.Rows[rowIndex - 1].DataBoundItem;
 
                     int sortIndex = current.SortIndex;
                     current.SortIndex = prev.SortIndex;
@@ -244,21 +274,21 @@ namespace PonydayManager
                     current.Save();
                     prev.Save();
 
-                    ReloadResultList();
-                    _resultDataGridView.SetCurrentRow(rowIndex - 1);
+                    ReloadStarterCompetitionList();
+                    _starterCompetitionDataGridView.SetCurrentRow(rowIndex - 1);
                 }
             }
         }
 
         private void ResultDownButton_Click(object sender, EventArgs e)
         {
-            if (_resultDataGridView.CurrentRow.DataBoundItem is Result)
+            if (_starterCompetitionDataGridView.CurrentRow.DataBoundItem is Result)
             {
-                int rowIndex = _resultDataGridView.CurrentRow.Index;
-                if (rowIndex < _resultDataGridView.RowCount - 1)
+                int rowIndex = _starterCompetitionDataGridView.CurrentRow.Index;
+                if (rowIndex < _starterCompetitionDataGridView.RowCount - 1)
                 {
-                    Result current = (Result)_resultDataGridView.CurrentRow.DataBoundItem;
-                    Result next = (Result)_resultDataGridView.Rows[rowIndex + 1].DataBoundItem;
+                    Result current = (Result)_starterCompetitionDataGridView.CurrentRow.DataBoundItem;
+                    Result next = (Result)_starterCompetitionDataGridView.Rows[rowIndex + 1].DataBoundItem;
 
                     int sortIndex = current.SortIndex;
                     current.SortIndex = next.SortIndex;
@@ -270,15 +300,10 @@ namespace PonydayManager
                     current.Save();
                     next.Save();
 
-                    ReloadResultList();
-                    _resultDataGridView.SetCurrentRow(rowIndex + 1);
+                    ReloadStarterCompetitionList();
+                    _starterCompetitionDataGridView.SetCurrentRow(rowIndex + 1);
                 }
             }
-        }
-
-        private void ResultDataGridView_CurrentCellChanged(object sender, EventArgs e)
-        {
-            SetUpDownEnabled();
         }
 
         #endregion

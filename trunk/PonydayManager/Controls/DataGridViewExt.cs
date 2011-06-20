@@ -41,9 +41,12 @@ namespace PonydayManager.Controls
 
         public void SetCurrentRow(int rowIndex)
         {
-            this.Rows[rowIndex].Selected = false;
-            this.Rows[rowIndex].Selected = true;
-            this.CurrentCell = this[0, rowIndex];
+            if (rowIndex > -1 && rowIndex < this.RowCount)
+            {
+                this.Rows[rowIndex].Selected = false;
+                this.Rows[rowIndex].Selected = true;
+                this.CurrentCell = this[0, rowIndex];
+            }
         }
     }
 }

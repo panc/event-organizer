@@ -95,7 +95,7 @@ namespace PonydayManager
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.FirstName;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.LastName;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Pony;
-                    wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.AssessmentSum;
+                    wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Assessment;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Comment;
 
                     rowIndex++;
