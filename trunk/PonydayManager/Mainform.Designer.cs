@@ -41,46 +41,46 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this._editStarterButton = new System.Windows.Forms.Button();
             this._addStarterButton = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this._resultDownButton = new System.Windows.Forms.Button();
-            this._resultUpButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this._starterListButton = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this._editResultButton = new System.Windows.Forms.Button();
-            this._printResultButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this._competitionTabTwoComboBox = new System.Windows.Forms.ComboBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this._versionStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this._starterDataGridView = new PonydayManager.Controls.DataGridViewExt();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Club = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this._resultDownButton = new System.Windows.Forms.Button();
+            this._resultUpButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this._starterListButton = new System.Windows.Forms.Button();
             this._starterCompetitionDataGridView = new PonydayManager.Controls.DataGridViewExt();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this._editResultButton = new System.Windows.Forms.Button();
+            this._printResultButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this._competitionTabTwoComboBox = new System.Windows.Forms.ComboBox();
             this._resultDataGridView = new PonydayManager.Controls.DataGridViewExt();
-            this.panel1 = new PonydayManager.Controls.OutlookPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this._versionStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panel1 = new PonydayManager.Controls.OutlookPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._starterDataGridView)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._starterCompetitionDataGridView)).BeginInit();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._resultDataGridView)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -113,13 +113,13 @@
             this.dateiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._closeMenuItem});
             this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
-            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.dateiToolStripMenuItem.Text = "Datei";
             // 
             // _closeMenuItem
             // 
             this._closeMenuItem.Name = "_closeMenuItem";
-            this._closeMenuItem.Size = new System.Drawing.Size(120, 22);
+            this._closeMenuItem.Size = new System.Drawing.Size(127, 22);
             this._closeMenuItem.Text = "Beenden";
             this._closeMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
             // 
@@ -128,13 +128,13 @@
             this.verwaltungToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bewerbeToolStripMenuItem});
             this.verwaltungToolStripMenuItem.Name = "verwaltungToolStripMenuItem";
-            this.verwaltungToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.verwaltungToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.verwaltungToolStripMenuItem.Text = "Verwaltung";
             // 
             // bewerbeToolStripMenuItem
             // 
             this.bewerbeToolStripMenuItem.Name = "bewerbeToolStripMenuItem";
-            this.bewerbeToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.bewerbeToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.bewerbeToolStripMenuItem.Text = "Bewerbe";
             // 
             // infoToolStripMenuItem
@@ -142,21 +142,21 @@
             this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._aboutMenuItem});
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.infoToolStripMenuItem.Text = "Info";
             // 
             // _aboutMenuItem
             // 
             this._aboutMenuItem.Name = "_aboutMenuItem";
-            this._aboutMenuItem.Size = new System.Drawing.Size(108, 22);
+            this._aboutMenuItem.Size = new System.Drawing.Size(120, 22);
             this._aboutMenuItem.Text = "Über...";
             this._aboutMenuItem.Click += new System.EventHandler(this.AboutMenuItem_Click);
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -209,6 +209,61 @@
             this._addStarterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this._addStarterButton.UseVisualStyleBackColor = true;
             this._addStarterButton.Click += new System.EventHandler(this.AddStarterButton_Click);
+            // 
+            // _starterDataGridView
+            // 
+            this._starterDataGridView.AllowUserToAddRows = false;
+            this._starterDataGridView.AllowUserToDeleteRows = false;
+            this._starterDataGridView.AllowUserToResizeRows = false;
+            this._starterDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._starterDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this._starterDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this._starterDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this._starterDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._starterDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LastName,
+            this.FirstName,
+            this.Club,
+            this.Comment});
+            this._starterDataGridView.Location = new System.Drawing.Point(6, 6);
+            this._starterDataGridView.MultiSelect = false;
+            this._starterDataGridView.Name = "_starterDataGridView";
+            this._starterDataGridView.ReadOnly = true;
+            this._starterDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this._starterDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this._starterDataGridView.Size = new System.Drawing.Size(826, 329);
+            this._starterDataGridView.TabIndex = 2;
+            this._starterDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StarterDataGridView_CellDoubleClick);
+            // 
+            // LastName
+            // 
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "Nachname";
+            this.LastName.Name = "LastName";
+            this.LastName.ReadOnly = true;
+            // 
+            // FirstName
+            // 
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "Vorname";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.ReadOnly = true;
+            // 
+            // Club
+            // 
+            this.Club.DataPropertyName = "Club";
+            this.Club.HeaderText = "Verein";
+            this.Club.Name = "Club";
+            this.Club.ReadOnly = true;
+            // 
+            // Comment
+            // 
+            this.Comment.DataPropertyName = "Comment";
+            this.Comment.HeaderText = "Kommentar";
+            this.Comment.Name = "Comment";
+            this.Comment.ReadOnly = true;
             // 
             // tabPage2
             // 
@@ -269,6 +324,54 @@
             this._starterListButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this._starterListButton.UseVisualStyleBackColor = true;
             this._starterListButton.Click += new System.EventHandler(this.StarterListButton_Click);
+            // 
+            // _starterCompetitionDataGridView
+            // 
+            this._starterCompetitionDataGridView.AllowUserToAddRows = false;
+            this._starterCompetitionDataGridView.AllowUserToDeleteRows = false;
+            this._starterCompetitionDataGridView.AllowUserToResizeRows = false;
+            this._starterCompetitionDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this._starterCompetitionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this._starterCompetitionDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this._starterCompetitionDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this._starterCompetitionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._starterCompetitionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn5});
+            this._starterCompetitionDataGridView.Location = new System.Drawing.Point(51, 51);
+            this._starterCompetitionDataGridView.MultiSelect = false;
+            this._starterCompetitionDataGridView.Name = "_starterCompetitionDataGridView";
+            this._starterCompetitionDataGridView.ReadOnly = true;
+            this._starterCompetitionDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this._starterCompetitionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this._starterCompetitionDataGridView.Size = new System.Drawing.Size(781, 284);
+            this._starterCompetitionDataGridView.StandardTab = true;
+            this._starterCompetitionDataGridView.TabIndex = 46;
+            this._starterCompetitionDataGridView.CurrentCellChanged += new System.EventHandler(this.StarterCompetitionDataGridView_CurrentCellChanged);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "LastName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nachname";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "FirstName";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Vorname";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Pony";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Pony";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // tabPage3
             // 
@@ -334,147 +437,14 @@
             this._competitionTabTwoComboBox.TabIndex = 47;
             this._competitionTabTwoComboBox.SelectedIndexChanged += new System.EventHandler(this.CompetitionTabTwoComboBox_SelectedIndexChanged);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripStatusLabel3,
-            this._versionStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(870, 24);
-            this.statusStrip1.TabIndex = 41;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(214, 19);
-            this.toolStripStatusLabel1.Text = "  © Christoph Pangerl, Christian Prein";
-            this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(641, 19);
-            this.toolStripStatusLabel3.Spring = true;
-            // 
-            // _versionStatusLabel
-            // 
-            this._versionStatusLabel.Name = "_versionStatusLabel";
-            this._versionStatusLabel.Size = new System.Drawing.Size(0, 19);
-            // 
-            // _starterDataGridView
-            // 
-            this._starterDataGridView.AllowUserToAddRows = false;
-            this._starterDataGridView.AllowUserToDeleteRows = false;
-            this._starterDataGridView.AllowUserToResizeRows = false;
-            this._starterDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this._starterDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this._starterDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this._starterDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this._starterDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._starterDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.LastName,
-            this.FirstName,
-            this.Club,
-            this.Comment});
-            this._starterDataGridView.Location = new System.Drawing.Point(6, 6);
-            this._starterDataGridView.MultiSelect = false;
-            this._starterDataGridView.Name = "_starterDataGridView";
-            this._starterDataGridView.ReadOnly = true;
-            this._starterDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this._starterDataGridView.Size = new System.Drawing.Size(826, 329);
-            this._starterDataGridView.TabIndex = 2;
-            this._starterDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StarterDataGridView_CellDoubleClick);
-            // 
-            // LastName
-            // 
-            this.LastName.DataPropertyName = "LastName";
-            this.LastName.HeaderText = "Nachname";
-            this.LastName.Name = "LastName";
-            this.LastName.ReadOnly = true;
-            // 
-            // FirstName
-            // 
-            this.FirstName.DataPropertyName = "FirstName";
-            this.FirstName.HeaderText = "Vorname";
-            this.FirstName.Name = "FirstName";
-            this.FirstName.ReadOnly = true;
-            // 
-            // Club
-            // 
-            this.Club.DataPropertyName = "Club";
-            this.Club.HeaderText = "Verein";
-            this.Club.Name = "Club";
-            this.Club.ReadOnly = true;
-            // 
-            // Comment
-            // 
-            this.Comment.DataPropertyName = "Comment";
-            this.Comment.HeaderText = "Kommentar";
-            this.Comment.Name = "Comment";
-            this.Comment.ReadOnly = true;
-            // 
-            // _starterCompetitionDataGridView
-            // 
-            this._starterCompetitionDataGridView.AllowUserToAddRows = false;
-            this._starterCompetitionDataGridView.AllowUserToDeleteRows = false;
-            this._starterCompetitionDataGridView.AllowUserToResizeRows = false;
-            this._starterCompetitionDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this._starterCompetitionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this._starterCompetitionDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this._starterCompetitionDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this._starterCompetitionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._starterCompetitionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn5});
-            this._starterCompetitionDataGridView.Location = new System.Drawing.Point(51, 51);
-            this._starterCompetitionDataGridView.MultiSelect = false;
-            this._starterCompetitionDataGridView.Name = "_starterCompetitionDataGridView";
-            this._starterCompetitionDataGridView.ReadOnly = true;
-            this._starterCompetitionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this._starterCompetitionDataGridView.Size = new System.Drawing.Size(781, 284);
-            this._starterCompetitionDataGridView.StandardTab = true;
-            this._starterCompetitionDataGridView.TabIndex = 46;
-            this._starterCompetitionDataGridView.CurrentCellChanged += new System.EventHandler(this.StarterCompetitionDataGridView_CurrentCellChanged);
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "LastName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Nachname";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "FirstName";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Vorname";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Pony";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Pony";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
             // _resultDataGridView
             // 
             this._resultDataGridView.AllowUserToAddRows = false;
             this._resultDataGridView.AllowUserToDeleteRows = false;
             this._resultDataGridView.AllowUserToResizeRows = false;
-            this._resultDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this._resultDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._resultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this._resultDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this._resultDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -488,16 +458,77 @@
             this._resultDataGridView.MultiSelect = false;
             this._resultDataGridView.Name = "_resultDataGridView";
             this._resultDataGridView.ReadOnly = true;
+            this._resultDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this._resultDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this._resultDataGridView.Size = new System.Drawing.Size(826, 284);
             this._resultDataGridView.StandardTab = true;
             this._resultDataGridView.TabIndex = 50;
             this._resultDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ResultDataGridView_CellDoubleClick);
             // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "LastName";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nachname";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "FirstName";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Vorname";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Pony";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Pony";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Assessment";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Gesamtbewertung";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel3,
+            this._versionStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 542);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(870, 22);
+            this.statusStrip1.TabIndex = 41;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(196, 17);
+            this.toolStripStatusLabel1.Text = "  © Christoph Pangerl, Christian Prein";
+            this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(659, 17);
+            this.toolStripStatusLabel3.Spring = true;
+            // 
+            // _versionStatusLabel
+            // 
+            this._versionStatusLabel.Name = "_versionStatusLabel";
+            this._versionStatusLabel.Size = new System.Drawing.Size(0, 17);
+            // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -529,34 +560,6 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "LastName";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Nachname";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "FirstName";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Vorname";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Pony";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Pony";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Assessment";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Gesamtbewertung";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -576,15 +579,15 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this._starterDataGridView)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._starterCompetitionDataGridView)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._resultDataGridView)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._starterDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._starterCompetitionDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._resultDataGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

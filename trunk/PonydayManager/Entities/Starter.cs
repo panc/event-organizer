@@ -22,21 +22,6 @@ namespace PonydayManager.Entities
         public decimal? Costs { get; set; }
         public bool Paied { get; set; }
 
-        public Pony PonyOne
-        {
-            get { return SelectPony(1); }
-        }
-
-        public Pony PonyTwo
-        {
-            get { return SelectPony(2); }
-        }
-
-        public Pony PonyThree
-        {
-            get { return SelectPony(3); }
-        }
-
         public IList<StarterCompetition> Competitions
         {
             get
@@ -164,19 +149,6 @@ namespace PonydayManager.Entities
                 SavePonys(connection);
                 InsertResults(connection);
             }
-        }
-
-        private Pony SelectPony(int sortIndex)
-        {
-            Pony pony = this.Ponys.SingleOrDefault(p => p.SortIndex == sortIndex);
-
-            if (pony == null)
-            {
-                pony = new Pony { StarterId = this.Id, SortIndex = sortIndex };
-                this.Ponys.Add(pony);
-            }
-
-            return pony;
         }
 
         private void SaveCompetitions(SQLiteConnection connection)

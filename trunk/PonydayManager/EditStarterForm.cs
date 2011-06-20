@@ -23,12 +23,13 @@ namespace PonydayManager
         public EditStarterForm()
         {
             InitializeComponent();
+
+            _ponyDataGridView.AutoGenerateColumns = false;
         }
         
         public EditStarterForm(Starter starter)
             : this()
         {
-            
             _starter = starter;
             _isLoading = true;
 
@@ -41,10 +42,7 @@ namespace PonydayManager
             _costs.Text = string.Format("{0:#,##0.00}", _starter.Costs);
             _paied.Checked = _starter.Paied;
 
-            _ponyOne.Text = _starter.PonyOne.Name;
-            _ponyTwo.Text = _starter.PonyTwo.Name;
-            _ponyThree.Text = _starter.PonyThree.Name;
-            
+            _ponyDataGridView.DataSource = _starter.Ponys;
 
             // load the competition-listbox
             foreach (var item in Competition.Select(""))
@@ -56,12 +54,7 @@ namespace PonydayManager
                             StarterId = _starter.Id
                         });
             }
-
-            foreach (var item in _starter.Competitions)
-                _competitions.Items.Add(item, item.IsChecked);
-
-            _competitions.Sorted = true;
-
+            
             _isLoading = false;
         }
 
@@ -72,19 +65,16 @@ namespace PonydayManager
             _starter.LastName = _lastName.Text;
             _starter.Club = _club.Text;
             _starter.Comment = _comment.Text;
-            _starter.PonyOne.Name = _ponyOne.Text;
-            _starter.PonyTwo.Name = _ponyTwo.Text;
-            _starter.PonyThree.Name = _ponyThree.Text;
             _starter.Birthdate = _birthdate.Value;
             _starter.Costs = _costs.GetTextAsDecimal();
             _starter.Paied = _paied.Checked;
 
             // update the values from the listbox
-            foreach (var item in _competitions.Items)
-            {
-                if (item is StarterCompetition)
-                    ((StarterCompetition)item).IsChecked = _competitions.CheckedItems.Contains(item);
-            }
+            //foreach (var item in _competitions.Items)
+            //{
+            //    if (item is StarterCompetition)
+            //        ((StarterCompetition)item).IsChecked = _competitions.CheckedItems.Contains(item);
+            //}
 
             _starter.Save();
             _isDirty = false;
