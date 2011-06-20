@@ -15,7 +15,7 @@ namespace PonydayManager
     public partial class EditStarterForm : Form
     {
         private static ILog _log = LogManager.GetLogger(typeof(EditStarterForm));
-        
+
         private Starter _starter;
         private bool _isDirty;
         private bool _isLoading;
@@ -25,8 +25,9 @@ namespace PonydayManager
             InitializeComponent();
 
             _ponyDataGridView.AutoGenerateColumns = false;
+            
         }
-        
+
         public EditStarterForm(Starter starter)
             : this()
         {
@@ -54,7 +55,7 @@ namespace PonydayManager
                             StarterId = _starter.Id
                         });
             }
-            
+
             _isLoading = false;
         }
 

@@ -50,7 +50,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this._ponyDataGridView = new PonydayManager.Controls.DataGridViewExt();
             this.PonyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._competitionDataGridView = new PonydayManager.Controls.DataGridViewExt();
@@ -249,7 +251,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(71, 14);
+            this.label12.Location = new System.Drawing.Point(71, 37);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(76, 20);
             this.label12.TabIndex = 47;
@@ -268,6 +270,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this._ponyDataGridView);
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -276,19 +280,40 @@
             this.panel2.Size = new System.Drawing.Size(640, 194);
             this.panel2.TabIndex = 50;
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(292, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(23, 23);
+            this.button1.TabIndex = 51;
+            this.button1.Text = "-";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this._competitionDataGridView);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Location = new System.Drawing.Point(272, 5);
+            this.groupBox1.Location = new System.Drawing.Point(272, 21);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(358, 176);
+            this.groupBox1.Size = new System.Drawing.Size(358, 160);
             this.groupBox1.TabIndex = 50;
             this.groupBox1.TabStop = false;
             // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(266, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(23, 23);
+            this.button2.TabIndex = 52;
+            this.button2.Text = "+";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // _ponyDataGridView
             // 
-            this._ponyDataGridView.AllowUserToDeleteRows = false;
             this._ponyDataGridView.AllowUserToResizeRows = false;
             this._ponyDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -299,13 +324,12 @@
             this._ponyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._ponyDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PonyName});
-            this._ponyDataGridView.Location = new System.Drawing.Point(8, 14);
+            this._ponyDataGridView.Location = new System.Drawing.Point(8, 30);
             this._ponyDataGridView.MultiSelect = false;
             this._ponyDataGridView.Name = "_ponyDataGridView";
-            this._ponyDataGridView.ReadOnly = true;
             this._ponyDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this._ponyDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this._ponyDataGridView.Size = new System.Drawing.Size(307, 167);
+            this._ponyDataGridView.Size = new System.Drawing.Size(307, 151);
             this._ponyDataGridView.TabIndex = 49;
             // 
             // PonyName
@@ -313,7 +337,6 @@
             this.PonyName.DataPropertyName = "Name";
             this.PonyName.HeaderText = "Pony";
             this.PonyName.Name = "PonyName";
-            this.PonyName.ReadOnly = true;
             // 
             // _competitionDataGridView
             // 
@@ -327,13 +350,13 @@
             this._competitionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._competitionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
-            this._competitionDataGridView.Location = new System.Drawing.Point(75, 40);
+            this._competitionDataGridView.Location = new System.Drawing.Point(75, 60);
             this._competitionDataGridView.MultiSelect = false;
             this._competitionDataGridView.Name = "_competitionDataGridView";
             this._competitionDataGridView.ReadOnly = true;
             this._competitionDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this._competitionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this._competitionDataGridView.Size = new System.Drawing.Size(277, 130);
+            this._competitionDataGridView.Size = new System.Drawing.Size(277, 94);
             this._competitionDataGridView.TabIndex = 51;
             // 
             // dataGridViewTextBoxColumn1
@@ -414,9 +437,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Controls.DataGridViewExt _ponyDataGridView;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PonyName;
         private System.Windows.Forms.GroupBox groupBox1;
         private Controls.DataGridViewExt _competitionDataGridView;
         private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PonyName;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

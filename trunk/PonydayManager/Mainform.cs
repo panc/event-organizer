@@ -32,14 +32,12 @@ namespace PonydayManager
             {
                 using (EditStarterForm frm = new EditStarterForm(starter))
                 {
-                    if (frm.ShowDialog() == DialogResult.OK)
-                    {
-                        _starterDataGridView.StoreRowSelection();
-                        _starterDataGridView.DataSource = Starter.Select("");
-                        _starterDataGridView.RestoreRowSelection();
+                    frm.ShowDialog();
+                    _starterDataGridView.StoreRowSelection();
+                    _starterDataGridView.DataSource = Starter.Select("");
+                    _starterDataGridView.RestoreRowSelection();
 
-                        ReloadStarterCompetitionList();
-                    }
+                    ReloadStarterCompetitionList();
                 }
             }
             catch (Exception ex)
@@ -59,10 +57,8 @@ namespace PonydayManager
             {
                 using (EditResultForm frm = new EditResultForm(result, _competitionTabTwoComboBox.Text))
                 {
-                    if (frm.ShowDialog() == DialogResult.OK)
-                    {
-                        ReloadResultList();
-                    }
+                    frm.ShowDialog();
+                    ReloadResultList();
                 }
             }
             catch (Exception ex)
