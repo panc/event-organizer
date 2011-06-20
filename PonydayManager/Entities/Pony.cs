@@ -17,7 +17,7 @@ namespace PonydayManager.Entities
 
         public static IList<Pony> Select(int starterId)
         {
-            List<Pony> result = new List<Pony>();
+            IList<Pony> result = new EntityBindingList<Pony>();
 
             using (SQLiteConnection connection = OpenConnection())
             {
@@ -51,8 +51,13 @@ namespace PonydayManager.Entities
         {
             using (SQLiteCommand cmd = new SQLiteCommand(connection))
             {
-                if (this.Id == Starter.NEW_ID)
+                if (this.Id == Entity.NEW_ID && this.IsDeleted)
+                    return;
+
+                if (this.Id == Entity.NEW_ID)
                     Insert(cmd);
+                else if (this.IsDeleted)
+                    Delete(cmd);
                 else
                     Update(cmd);
             }
@@ -83,6 +88,22 @@ namespace PonydayManager.Entities
                     new SQLiteParameter{ Value = this.StarterId },
                     new SQLiteParameter{ Value = this.Name },
                     new SQLiteParameter{ Value = this.SortIndex }
+                });
+
+            _log.Debug(CreateLogString(cmd));
+
+            if (cmd.ExecuteNonQuery() != 1)
+                throw new Exception("Insert effects more than one record!");
+
+            ReadBackId(cmd.Connection);
+        }
+
+        private void Delete(SQLiteCommand cmd)
+        {
+            cmd.CommandText = "DELETE FROM EO_Pony WHERE Id = ?;";
+            cmd.Parameters.AddRange(new SQLiteParameter[]
+                {
+                    new SQLiteParameter{ Value = this.Id }
                 });
 
             _log.Debug(CreateLogString(cmd));

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SQLite;
 using log4net;
+using System.ComponentModel;
 
 namespace PonydayManager.Entities
 {
@@ -46,7 +47,7 @@ namespace PonydayManager.Entities
 
         public static IList<Starter> Select(string filter)
         {
-            List<Starter> result = new List<Starter>();
+            IList<Starter> result = new List<Starter>();
 
             using (SQLiteConnection connection = OpenConnection())
             {

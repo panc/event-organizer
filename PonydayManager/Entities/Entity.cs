@@ -13,6 +13,7 @@ namespace PonydayManager.Entities
         public const int NEW_ID = -1;
 
         public int Id { get; protected set; }
+        public bool IsDeleted { get; private set; }
 
         public Entity()
         {
@@ -53,6 +54,11 @@ namespace PonydayManager.Entities
             }
 
             return sb.ToString();
+        }
+
+        public void SetDeleted()
+        {
+            this.IsDeleted = true;
         }
     }
 }
