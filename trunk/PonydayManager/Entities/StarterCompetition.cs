@@ -15,7 +15,6 @@ namespace PonydayManager.Entities
 
         public int StarterId { get; set; }
         public int CompetitionId { get; set; }
-        public bool IsChecked { get; set; }
 
         public Competition CompetitionEntity
         {
@@ -28,29 +27,20 @@ namespace PonydayManager.Entities
             }
         }
 
-        public override string ToString()
+        public static EntityBindingList<StarterCompetition> Select(int ponyId)
         {
-            return CompetitionEntity.Caption;
-        }
-
-        public static IList<StarterCompetition> Select(int? starterId = null)
-        {
-            List<StarterCompetition> result = new List<StarterCompetition>();
+            EntityBindingList<StarterCompetition> result = new EntityBindingList<StarterCompetition>();
 
             using (SQLiteConnection connection = OpenConnection())
             {
                 using (SQLiteCommand cmd = new SQLiteCommand(connection))
                 {
                     cmd.CommandText = "SELECT Id, StarterId, CompetitionId FROM EO_StarterCompetition";
-
-                    if (starterId.HasValue)
-                    {
-                        cmd.CommandText += " WHERE StarterId = ?";
-                        cmd.Parameters.Add(new SQLiteParameter { Value = starterId.Value });
-                    }
+                    cmd.CommandText += " WHERE StarterId = ?";
+                    cmd.Parameters.Add(new SQLiteParameter { Value = ponyId });
 
                     _log.Debug(CreateLogString(cmd));
-                    
+
                     using (SQLiteDataReader rdr = cmd.ExecuteReader())
                     {
                         while (rdr.Read())
@@ -59,8 +49,7 @@ namespace PonydayManager.Entities
                             {
                                 Id = rdr.GetInt32(0),
                                 StarterId = rdr.GetInt32(1),
-                                CompetitionId = rdr.GetInt32(2),
-                                IsChecked = true
+                                CompetitionId = rdr.GetInt32(2)
                             });
                         }
                     }
@@ -74,10 +63,16 @@ namespace PonydayManager.Entities
         {
             using (SQLiteCommand cmd = new SQLiteCommand(connection))
             {
-                if (this.IsChecked && this.Id == Entity.NEW_ID)
+                if (this.Id == Entity.NEW_ID && this.IsDeleted)
+                    return;
+
+                if (this.Id == Entity.NEW_ID)
                     Insert(cmd);
-                else if (!this.IsChecked && this.Id != Entity.NEW_ID)
+                else if (this.IsDeleted)
                     Delete(cmd);
+                
+                //else
+                //  nothing to do
             }
         }
 
@@ -90,9 +85,9 @@ namespace PonydayManager.Entities
                 });
 
             _log.Debug(CreateLogString(cmd));
-            
+
             if (cmd.ExecuteNonQuery() != 1)
-                throw new Exception("Update effects more than one record!");
+                throw new Exception("Delete effects more than one record!");
         }
 
         private void Insert(SQLiteCommand cmd)
@@ -105,7 +100,7 @@ namespace PonydayManager.Entities
                 });
 
             _log.Debug(CreateLogString(cmd));
-            
+
             if (cmd.ExecuteNonQuery() != 1)
                 throw new Exception("Insert effects more than one record!");
 

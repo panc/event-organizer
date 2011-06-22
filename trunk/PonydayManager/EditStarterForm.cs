@@ -25,7 +25,7 @@ namespace PonydayManager
             InitializeComponent();
 
             _ponyDataGridView.AutoGenerateColumns = false;
-            
+            _competitionDataGridView.AutoGenerateColumns = false;
         }
 
         public EditStarterForm(Starter starter)
@@ -45,16 +45,20 @@ namespace PonydayManager
 
             _ponyDataGridView.DataSource = _starter.Ponys;
 
-            // load the competition-listbox
-            foreach (var item in Competition.Select(""))
-            {
-                if (_starter.Competitions.Where(c => c.CompetitionId == item.Id).Count() == 0)
-                    _starter.Competitions.Add(new StarterCompetition
-                        {
-                            CompetitionId = item.Id,
-                            StarterId = _starter.Id
-                        });
-            }
+            Pony p = _starter.Ponys[0];
+            _competitionDataGridView.DataSource = p.Competitions;
+
+            // load the competition-combo
+            //DataGridViewComboBoxColumn comboColumn = (DataGridViewComboBoxColumn)_competitionDataGridView.Columns[0];
+            DataGridViewComboBoxColumn comboColumn = new DataGridViewComboBoxColumn();
+            comboColumn.Name = "Test";
+            comboColumn.HeaderText = "TTT";
+            comboColumn.DataPropertyName = "StarterId";
+            comboColumn.DataSource = Competition.Select("");
+            comboColumn.DisplayMember = "Caption";
+            comboColumn.ValueMember = "Id";
+
+            _competitionDataGridView.Columns.Add(comboColumn);
 
             _isLoading = false;
         }
@@ -69,13 +73,6 @@ namespace PonydayManager
             _starter.Birthdate = _birthdate.Value;
             _starter.Costs = _costs.GetTextAsDecimal();
             _starter.Paied = _paied.Checked;
-
-            // update the values from the listbox
-            //foreach (var item in _competitions.Items)
-            //{
-            //    if (item is StarterCompetition)
-            //        ((StarterCompetition)item).IsChecked = _competitions.CheckedItems.Contains(item);
-            //}
 
             _starter.Save();
             _isDirty = false;
@@ -153,6 +150,33 @@ namespace PonydayManager
         private void Costs_Leave(object sender, EventArgs e)
         {
             _costs.Text = string.Format("{0:#,##0.00}", _costs.GetTextAsDecimal());
+        }
+
+        private void DataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!_isLoading)
+                _isDirty = true;
+        }
+
+        private void DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if (!_isLoading)
+                _isDirty = true;
+        }
+
+        private void DataGridView_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if (!_isLoading)
+                _isDirty = true;
+        }
+
+        private void PonyDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            //if (_ponyDataGridView.CurrentRow != null && _ponyDataGridView.CurrentRow.DataBoundItem is Pony)
+            //{
+            //    Pony p = (Pony)_ponyDataGridView.CurrentRow.DataBoundItem;
+            //    _competitionDataGridView.DataSource = p.Competitions;
+            //}
         }
     }
 }

@@ -10,13 +10,24 @@ namespace PonydayManager.Entities
 {
     public class EntityBindingList<T> : BindingList<T> where T : Entity
     {
+        public EntityBindingList()
+            : base()
+        {
+            RemovedItems = new List<T>();
+        }
+
         protected override void RemoveItem(int index)
         {
-            Entity e = this[index] as Entity;
+            T e = this[index] as T;
             if (e != null)
+            {
                 e.SetDeleted();
+                RemovedItems.Add(e);
+            }
 
             base.RemoveItem(index);
         }
+
+        public IList<T> RemovedItems { get; private set; }
     }
 }
