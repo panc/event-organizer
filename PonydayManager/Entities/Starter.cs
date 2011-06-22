@@ -13,7 +13,7 @@ namespace PonydayManager.Entities
         private static ILog _log = LogManager.GetLogger(typeof(Starter));
 
         private IList<StarterCompetition> _competitions;
-        private IList<Pony> _ponys;
+        private EntityBindingList<Pony> _ponys;
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -34,7 +34,7 @@ namespace PonydayManager.Entities
             }
         }
 
-        public IList<Pony> Ponys
+        public EntityBindingList<Pony> Ponys
         {
             get
             {
@@ -159,6 +159,11 @@ namespace PonydayManager.Entities
                 foreach (var item in _ponys)
                 {
                     item.StarterId = this.Id;
+                    item.Save(connection);
+                }
+
+                foreach (var item in _ponys.RemovedItems)
+                {
                     item.Save(connection);
                 }
             }

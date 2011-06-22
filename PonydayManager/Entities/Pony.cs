@@ -11,13 +11,15 @@ namespace PonydayManager.Entities
     {
         private static ILog _log = LogManager.GetLogger(typeof(Pony));
 
+        private EntityBindingList<StarterCompetition> _competitions;
+
         public int StarterId { get; set; }
         public string Name { get; set; }
         public int SortIndex { get; set; }
 
-        public static IList<Pony> Select(int starterId)
+        public static EntityBindingList<Pony> Select(int starterId)
         {
-            IList<Pony> result = new EntityBindingList<Pony>();
+            EntityBindingList<Pony> result = new EntityBindingList<Pony>();
 
             using (SQLiteConnection connection = OpenConnection())
             {
@@ -112,6 +114,17 @@ namespace PonydayManager.Entities
                 throw new Exception("Insert effects more than one record!");
 
             ReadBackId(cmd.Connection);
+        }
+
+        public EntityBindingList<StarterCompetition> Competitions
+        {
+            get
+            {
+                if (_competitions == null)
+                    _competitions = StarterCompetition.Select(this.Id);
+
+                return _competitions;
+            }
         }
     }
 }
