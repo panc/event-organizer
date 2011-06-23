@@ -19,6 +19,7 @@ namespace PonydayManager
         private Starter _starter;
         private bool _isDirty;
         private bool _isLoading;
+        private bool _isDataSourceChanging;
 
         public EditStarterForm()
         {
@@ -26,14 +27,15 @@ namespace PonydayManager
 
             _ponyDataGridView.AutoGenerateColumns = false;
             _competitionDataGridView.AutoGenerateColumns = false;
+
+            _isLoading = true;
         }
 
         public EditStarterForm(Starter starter)
             : this()
         {
             _starter = starter;
-            _isLoading = true;
-
+            
             // load the textboxes
             _firstName.Text = _starter.FirstName;
             _lastName.Text = _starter.LastName;
@@ -43,23 +45,18 @@ namespace PonydayManager
             _costs.Text = string.Format("{0:#,##0.00}", _starter.Costs);
             _paied.Checked = _starter.Paied;
 
-            _ponyDataGridView.DataSource = _starter.Ponys;
-
-            Pony p = _starter.Ponys[0];
-            _competitionDataGridView.DataSource = p.Competitions;
-
-            // load the competition-combo
-            //DataGridViewComboBoxColumn comboColumn = (DataGridViewComboBoxColumn)_competitionDataGridView.Columns[0];
-            DataGridViewComboBoxColumn comboColumn = new DataGridViewComboBoxColumn();
-            comboColumn.Name = "Test";
-            comboColumn.HeaderText = "TTT";
-            comboColumn.DataPropertyName = "StarterId";
+            // load the competition-combo in the grid-column
+            DataGridViewComboBoxColumn comboColumn = (DataGridViewComboBoxColumn)_competitionDataGridView.Columns[0];
             comboColumn.DataSource = Competition.Select("");
             comboColumn.DisplayMember = "Caption";
             comboColumn.ValueMember = "Id";
 
-            _competitionDataGridView.Columns.Add(comboColumn);
+            _ponyDataGridView.DataSource = _starter.Ponys;
+        }
 
+        private void EditStarterForm_Load(object sender, EventArgs e)
+        {
+            // is needed, because the datagridview-events occours to often
             _isLoading = false;
         }
 
@@ -154,29 +151,44 @@ namespace PonydayManager
 
         private void DataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (!_isLoading)
+            if (!_isDataSourceChanging && !_isLoading && e.RowIndex > -1 && e.ColumnIndex > -1)
                 _isDirty = true;
         }
 
-        private void DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void PonyDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            if (!_isLoading)
+            if (!_isLoading && e.RowIndex > -1)
+            {
+                _isDirty = true;
+                
+                Pony p = (Pony)_ponyDataGridView.CurrentRow.DataBoundItem;
+                _competitionDataGridView.DataSource = p.Competitions;
+            }
+        }
+
+        private void CompetitionDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if (!_isDataSourceChanging && !_isLoading && e.RowIndex > -1)
                 _isDirty = true;
         }
 
         private void DataGridView_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
-            if (!_isLoading)
+            if (!_isDataSourceChanging && !_isLoading && e.RowIndex > -1)
                 _isDirty = true;
         }
 
         private void PonyDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            //if (_ponyDataGridView.CurrentRow != null && _ponyDataGridView.CurrentRow.DataBoundItem is Pony)
-            //{
-            //    Pony p = (Pony)_ponyDataGridView.CurrentRow.DataBoundItem;
-            //    _competitionDataGridView.DataSource = p.Competitions;
-            //}
+            if (_ponyDataGridView.CurrentRow != null && _ponyDataGridView.CurrentRow.DataBoundItem is Pony)
+            {
+                _isDataSourceChanging = true;
+
+                Pony p = (Pony)_ponyDataGridView.CurrentRow.DataBoundItem;
+                _competitionDataGridView.DataSource = p.Competitions;
+
+                _isDataSourceChanging = false;
+            }
         }
     }
 }

@@ -12,7 +12,6 @@ namespace PonydayManager.Entities
     {
         private static ILog _log = LogManager.GetLogger(typeof(Starter));
 
-        private IList<StarterCompetition> _competitions;
         private EntityBindingList<Pony> _ponys;
 
         public string FirstName { get; set; }
@@ -23,18 +22,7 @@ namespace PonydayManager.Entities
         public decimal? Costs { get; set; }
         public bool Paied { get; set; }
 
-        public IList<StarterCompetition> Competitions
-        {
-            get
-            {
-                if (_competitions == null)
-                    _competitions = StarterCompetition.Select(this.Id);
-
-                return _competitions;
-            }
-        }
-
-        public EntityBindingList<Pony> Ponys
+       public EntityBindingList<Pony> Ponys
         {
             get
             {
@@ -119,7 +107,6 @@ namespace PonydayManager.Entities
                     throw new Exception("Update effects more than one record!");
             }
 
-            SaveCompetitions(connection);
             SavePonys(connection);
         }
 
@@ -146,13 +133,12 @@ namespace PonydayManager.Entities
 
                 ReadBackId(connection);
 
-                SaveCompetitions(connection);
                 SavePonys(connection);
-                InsertResults(connection);
+                //InsertResults(connection);
             }
         }
 
-        private void SaveCompetitions(SQLiteConnection connection)
+        private void SavePonys(SQLiteConnection connection)
         {
             if (_ponys != null)
             {
@@ -165,32 +151,6 @@ namespace PonydayManager.Entities
                 foreach (var item in _ponys.RemovedItems)
                 {
                     item.Save(connection);
-                }
-            }
-        }
-
-        private void SavePonys(SQLiteConnection connection)
-        {
-            if (_competitions != null)
-            {
-                foreach (var item in _competitions)
-                {
-                    item.StarterId = this.Id;
-                    item.Save(connection);
-                }
-            }
-        }
-
-        private void InsertResults(SQLiteConnection connection)
-        {
-            var allComepetitions = Competition.Select(connection, "");
-
-            foreach (var competition in allComepetitions)
-            {
-                foreach (var pony in _ponys)
-                {
-                    var result = new Result { CompetitionId = competition.Id, PonyId = pony.Id };
-                    result.Save(connection);
                 }
             }
         }

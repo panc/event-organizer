@@ -13,7 +13,7 @@ namespace PonydayManager
 {
     public class ExcelExporter
     {
-        public void ExportStarterList(IList<Result> starter, string competitionCaption)
+        public void ExportStarterList(IList<PonyCompetition> starter, string competitionCaption)
         {
             string tempFileName = string.Empty;
 
@@ -69,7 +69,7 @@ namespace PonydayManager
             }
         }
 
-        public void ExportResultList(IList<Result> results, string competitionCaption)
+        public void ExportResultList(IList<PonyCompetition> results, string competitionCaption)
         {
             string tempFileName = string.Empty;
 

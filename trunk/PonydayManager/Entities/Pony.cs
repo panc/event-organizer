@@ -11,11 +11,21 @@ namespace PonydayManager.Entities
     {
         private static ILog _log = LogManager.GetLogger(typeof(Pony));
 
-        private EntityBindingList<StarterCompetition> _competitions;
+        private EntityBindingList<PonyCompetition> _competitions;
 
-        public int StarterId { get; set; }
+        public int? StarterId { get; set; }
         public string Name { get; set; }
-        public int SortIndex { get; set; }
+
+        public EntityBindingList<PonyCompetition> Competitions
+        {
+            get
+            {
+                if (_competitions == null)
+                    _competitions = PonyCompetition.Select(this.Id);
+
+                return _competitions;
+            }
+        }
 
         public static EntityBindingList<Pony> Select(int starterId)
         {
@@ -25,7 +35,7 @@ namespace PonydayManager.Entities
             {
                 using (SQLiteCommand cmd = new SQLiteCommand(connection))
                 {
-                    cmd.CommandText = "SELECT Id, StarterId, Name, SortIndex FROM EO_Pony WHERE StarterId = ?;";
+                    cmd.CommandText = "SELECT Id, StarterId, Name FROM EO_Pony WHERE StarterId = ?;";
                     cmd.Parameters.Add(new SQLiteParameter { Value = starterId });
 
                     _log.Debug(CreateLogString(cmd));
@@ -38,8 +48,7 @@ namespace PonydayManager.Entities
                             {
                                 Id = rdr.GetInt32(0),
                                 StarterId = rdr.GetInt32(1),
-                                Name = rdr.GetNullableString(2),
-                                SortIndex = rdr.GetInt32(3)
+                                Name = rdr.GetNullableString(2)
                             });
                         }
                     }
@@ -51,79 +60,91 @@ namespace PonydayManager.Entities
 
         public void Save(SQLiteConnection connection)
         {
+            if (this.Id == Entity.NEW_ID && this.IsDeleted)
+                return;
+
+            if (this.Id == Entity.NEW_ID)
+                Insert(connection);
+            else if (this.IsDeleted)
+                Delete(connection);
+            else
+                Update(connection);
+        }
+
+        private void Update(SQLiteConnection connection)
+        {
             using (SQLiteCommand cmd = new SQLiteCommand(connection))
             {
-                if (this.Id == Entity.NEW_ID && this.IsDeleted)
-                    return;
+                cmd.CommandText = "UPDATE EO_Pony SET StarterId = ?, Name = ? WHERE Id = ?;";
+                cmd.Parameters.AddRange(new SQLiteParameter[]
+                {
+                    new SQLiteParameter{ Value = this.StarterId },
+                    new SQLiteParameter{ Value = this.Name },
+                    new SQLiteParameter{ Value = this.Id }
+                });
 
-                if (this.Id == Entity.NEW_ID)
-                    Insert(cmd);
-                else if (this.IsDeleted)
-                    Delete(cmd);
-                else
-                    Update(cmd);
+                _log.Debug(CreateLogString(cmd));
+
+                if (cmd.ExecuteNonQuery() != 1)
+                    throw new Exception("Update effects more than one record!");
+            }
+
+            SavePonyCompetitions(connection);
+        }
+
+        private void Insert(SQLiteConnection connection)
+        {
+            using (SQLiteCommand cmd = new SQLiteCommand(connection))
+            {
+                cmd.CommandText = "INSERT INTO EO_Pony (StarterId, Name) VALUES(?, ?);";
+                cmd.Parameters.AddRange(new SQLiteParameter[]
+                {
+                    new SQLiteParameter{ Value = this.StarterId },
+                    new SQLiteParameter{ Value = this.Name }
+                });
+
+                _log.Debug(CreateLogString(cmd));
+
+                if (cmd.ExecuteNonQuery() != 1)
+                    throw new Exception("Insert effects more than one record!");
+            }
+
+            ReadBackId(connection);
+            SavePonyCompetitions(connection);
+        }
+
+        private void Delete(SQLiteConnection connection)
+        {
+            using (SQLiteCommand cmd = new SQLiteCommand(connection))
+            {
+                cmd.CommandText = "DELETE FROM EO_Pony WHERE Id = ?;";
+                cmd.Parameters.AddRange(new SQLiteParameter[]
+                {
+                    new SQLiteParameter{ Value = this.Id }
+                });
+
+                _log.Debug(CreateLogString(cmd));
+
+                if (cmd.ExecuteNonQuery() != 1)
+                    throw new Exception("Delete effects more than one record!");
+            }
+
+            foreach (var item in _competitions)
+            {
+                item.SetDeleted();
+                item.Save(connection);
             }
         }
 
-        private void Update(SQLiteCommand cmd)
+        private void SavePonyCompetitions(SQLiteConnection connection)
         {
-            cmd.CommandText = "UPDATE EO_Pony SET StarterId = ?, Name = ?, SortIndex = ? WHERE Id = ?;";
-            cmd.Parameters.AddRange(new SQLiteParameter[]
-                {
-                    new SQLiteParameter{ Value = this.StarterId },
-                    new SQLiteParameter{ Value = this.Name },
-                    new SQLiteParameter{ Value = this.SortIndex },
-                    new SQLiteParameter{ Value = this.Id }
-                });
-
-            _log.Debug(CreateLogString(cmd));
-
-            if (cmd.ExecuteNonQuery() != 1)
-                throw new Exception("Update effects more than one record!");
-        }
-
-        private void Insert(SQLiteCommand cmd)
-        {
-            cmd.CommandText = "INSERT INTO EO_Pony (StarterId, Name, SortIndex) VALUES(?, ?, ?);";
-            cmd.Parameters.AddRange(new SQLiteParameter[]
-                {
-                    new SQLiteParameter{ Value = this.StarterId },
-                    new SQLiteParameter{ Value = this.Name },
-                    new SQLiteParameter{ Value = this.SortIndex }
-                });
-
-            _log.Debug(CreateLogString(cmd));
-
-            if (cmd.ExecuteNonQuery() != 1)
-                throw new Exception("Insert effects more than one record!");
-
-            ReadBackId(cmd.Connection);
-        }
-
-        private void Delete(SQLiteCommand cmd)
-        {
-            cmd.CommandText = "DELETE FROM EO_Pony WHERE Id = ?;";
-            cmd.Parameters.AddRange(new SQLiteParameter[]
-                {
-                    new SQLiteParameter{ Value = this.Id }
-                });
-
-            _log.Debug(CreateLogString(cmd));
-
-            if (cmd.ExecuteNonQuery() != 1)
-                throw new Exception("Insert effects more than one record!");
-
-            ReadBackId(cmd.Connection);
-        }
-
-        public EntityBindingList<StarterCompetition> Competitions
-        {
-            get
+            if (_competitions != null)
             {
-                if (_competitions == null)
-                    _competitions = StarterCompetition.Select(this.Id);
-
-                return _competitions;
+                foreach (var item in _competitions)
+                {
+                    item.PonyId = this.Id;
+                    item.Save(connection);
+                }
             }
         }
     }

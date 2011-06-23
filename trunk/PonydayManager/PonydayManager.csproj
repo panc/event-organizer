@@ -75,10 +75,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Entities\Pony.cs" />
-    <Compile Include="Entities\Result.cs" />
     <Compile Include="ExcelExporter.cs" />
     <Compile Include="Entities\Competition.cs" />
-    <Compile Include="Entities\StarterCompetition.cs" />
+    <Compile Include="Entities\PonyCompetition.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Starter.cs" />
     <Compile Include="Extensions.cs" />
