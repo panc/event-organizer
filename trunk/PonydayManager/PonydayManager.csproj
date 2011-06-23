@@ -74,6 +74,12 @@
     <Compile Include="Controls\OutlookPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CompetitionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompetitionForm.Designer.cs">
+      <DependentUpon>CompetitionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Pony.cs" />
     <Compile Include="ExcelExporter.cs" />
     <Compile Include="Entities\Competition.cs" />
@@ -104,6 +110,9 @@
     <Compile Include="Entities\EntityBindingList.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompetitionForm.resx">
+      <DependentUpon>CompetitionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditResultForm.resx">
       <DependentUpon>EditResultForm.cs</DependentUpon>

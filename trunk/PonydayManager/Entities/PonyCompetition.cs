@@ -16,7 +16,7 @@ namespace PonydayManager.Entities
         public int? Assessment { get; set; }
         public string Comment { get; set; }
 
-        
+
         // to use the property in the datagridview, it musst be nullable
         // in DB the column is not nullable
         private int? _originalCompetitionId;
@@ -132,6 +132,24 @@ namespace PonydayManager.Entities
             }
 
             return result;
+        }
+
+        public static int SelectInUseCount(int competitionId)
+        {
+            using (SQLiteConnection connection = OpenConnection())
+            {
+                using (SQLiteCommand cmd = connection.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT COUNT(*) FROM EO_PonyCompetition WHERE CompetitionId = ?;";
+                    cmd.Parameters.Add(new SQLiteParameter { Value = competitionId });
+
+                    object result = cmd.ExecuteScalar();
+                    if(result != null && result is long)
+                        return (int)((long)result);
+
+                    return 0;
+                }
+            }
         }
 
         public void Save()

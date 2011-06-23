@@ -27,7 +27,6 @@ namespace PonydayManager
                 wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Vorname";
                 wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Nachname";
                 wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Pony";
-                wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Anmerkung";
 
                 wb.ActiveWorksheet.Cells[rowIndex, 0].EntireRow.Font.Bold = true;
                 rowIndex++;
@@ -38,7 +37,6 @@ namespace PonydayManager
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.FirstName;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.LastName;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Pony;
-                    wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Comment;
                     
                     rowIndex++;
                 }
@@ -84,7 +82,6 @@ namespace PonydayManager
                 wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Nachname";
                 wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Pony";
                 wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Gesamtbewertung";
-                wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Anmerkung";
 
                 wb.ActiveWorksheet.Cells[rowIndex, 0].EntireRow.Font.Bold = true;
                 rowIndex++;
@@ -96,7 +93,6 @@ namespace PonydayManager
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.LastName;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Pony;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Assessment;
-                    wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Comment;
 
                     rowIndex++;
                 }

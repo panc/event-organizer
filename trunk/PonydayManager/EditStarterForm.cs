@@ -115,7 +115,7 @@ namespace PonydayManager
                 _isDirty = true;
         }
 
-        private void StarterForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void EditStarterForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (_isDirty)
             {
