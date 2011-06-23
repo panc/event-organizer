@@ -16,7 +16,7 @@ namespace PonydayManager
     {
         private static ILog _log = LogManager.GetLogger(typeof(EditResultForm));
 
-        private Result _result;
+        private PonyCompetition _result;
         private bool _isDirty;
         private bool _isLoading;
 
@@ -25,7 +25,7 @@ namespace PonydayManager
             InitializeComponent();
         }
 
-        public EditResultForm(Result result, string competitionCaption)
+        public EditResultForm(PonyCompetition result, string competitionCaption)
             : this()
         {
             _isLoading = true;
