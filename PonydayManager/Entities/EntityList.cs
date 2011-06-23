@@ -8,12 +8,12 @@ using PonydayManager.Entities;
 
 namespace PonydayManager.Entities
 {
-    public class EntityBindingList<T> : BindingList<T> where T : Entity
+    public class EntityList<T> : BindingList<T>, IEntityList<T> where T : Entity
     {
-        public EntityBindingList()
+        public EntityList()
             : base()
         {
-            RemovedItems = new List<T>();
+            RemovedEntities = new List<T>();
         }
 
         protected override void RemoveItem(int index)
@@ -22,12 +22,12 @@ namespace PonydayManager.Entities
             if (e != null)
             {
                 e.SetDeleted();
-                RemovedItems.Add(e);
+                RemovedEntities.Add(e);
             }
 
             base.RemoveItem(index);
         }
 
-        public IList<T> RemovedItems { get; private set; }
+        public IList<T> RemovedEntities { get; private set; }
     }
 }

@@ -80,6 +80,7 @@
     <Compile Include="CompetitionForm.Designer.cs">
       <DependentUpon>CompetitionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\IEntityList.cs" />
     <Compile Include="Entities\Pony.cs" />
     <Compile Include="ExcelExporter.cs" />
     <Compile Include="Entities\Competition.cs" />
@@ -107,7 +108,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entities\EntityBindingList.cs" />
+    <Compile Include="Entities\EntityList.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>

@@ -34,7 +34,7 @@ namespace PonydayManager
                 {
                     frm.ShowDialog();
                     _starterDataGridView.StoreRowSelection();
-                    _starterDataGridView.DataSource = Starter.Select("");
+                    _starterDataGridView.DataSource = Starter.Select();
                     _starterDataGridView.RestoreRowSelection();
 
                     ReloadStarterCompetitionList();
@@ -123,7 +123,7 @@ namespace PonydayManager
             {
                 _versionStatusLabel.Text = "Version " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
-                IList<Competition> list = Competition.Select("");
+                IList<Competition> list = Competition.Select();
                 _competitionTabOneComboBox.DisplayMember = "Caption";
                 _competitionTabOneComboBox.ValueMember = "Id";
                 _competitionTabOneComboBox.DataSource = list;
@@ -132,7 +132,7 @@ namespace PonydayManager
                 _competitionTabTwoComboBox.ValueMember = "Id";
                 _competitionTabTwoComboBox.DataSource = list.ToList();
 
-                _starterDataGridView.DataSource = Starter.Select("");
+                _starterDataGridView.DataSource = Starter.Select();
             }
             catch (Exception ex)
             {
@@ -161,7 +161,7 @@ namespace PonydayManager
             {
                 if (frm.ShowDialog(this) == DialogResult.OK)
                 {
-                    IList<Competition> list = Competition.Select("");
+                    IList<Competition> list = Competition.Select();
                     _competitionTabOneComboBox.DataSource = list;
                     _competitionTabTwoComboBox.DataSource = list.ToList();
                 }
@@ -183,8 +183,21 @@ namespace PonydayManager
         {
             if (_starterDataGridView.CurrentRow.DataBoundItem is Starter)
             {
-                // todo
-                //DeleteStarter((Starter)_starterDataGridView.CurrentRow.DataBoundItem);
+                Starter s = ((Starter)_starterDataGridView.CurrentRow.DataBoundItem);
+                if (MessageBox.Show(this,
+                                   string.Format("Soll der Starter '{0} {1}' wirklich gelöscht werden?", s.FirstName, s.LastName),
+                                   "Starter löschen",
+                                   MessageBoxButtons.YesNoCancel,
+                                   MessageBoxIcon.Question)
+                    == DialogResult.Yes)
+                {
+                    s.SetDeleted();
+                    s.Save();
+
+                    _starterDataGridView.DataSource = Starter.Select();
+                    ReloadStarterCompetitionList(); 
+                    ReloadResultList();                    
+                }
             }
         }
 

@@ -11,12 +11,12 @@ namespace PonydayManager.Entities
     {
         private static ILog _log = LogManager.GetLogger(typeof(Pony));
 
-        private EntityBindingList<PonyCompetition> _competitions;
+        private IEntityList<PonyCompetition> _competitions;
 
         public int? StarterId { get; set; }
         public string Name { get; set; }
 
-        public EntityBindingList<PonyCompetition> Competitions
+        public IEntityList<PonyCompetition> Competitions
         {
             get
             {
@@ -27,9 +27,9 @@ namespace PonydayManager.Entities
             }
         }
 
-        public static EntityBindingList<Pony> Select(int starterId)
+        public static IEntityList<Pony> Select(int starterId)
         {
-            EntityBindingList<Pony> result = new EntityBindingList<Pony>();
+            IEntityList<Pony> result = new EntityList<Pony>();
 
             using (SQLiteConnection connection = OpenConnection())
             {
@@ -129,7 +129,7 @@ namespace PonydayManager.Entities
                     throw new Exception("Delete effects more than one record!");
             }
 
-            foreach (var item in _competitions)
+            foreach (var item in Competitions)
             {
                 item.SetDeleted();
                 item.Save(connection);

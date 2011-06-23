@@ -26,18 +26,18 @@ namespace PonydayManager
 
             // load the grid data
             _competitionDataGridView.AutoGenerateColumns = false;
-            _competitionDataGridView.DataSource = Competition.Select("");
+            _competitionDataGridView.DataSource = Competition.Select();
         }
 
         private void Save()
         {
             if (_isDirty)
             {
-                EntityBindingList<Competition> list = (EntityBindingList<Competition>)_competitionDataGridView.DataSource;
+                EntityList<Competition> list = (EntityList<Competition>)_competitionDataGridView.DataSource;
                 foreach (var item in list)
                     item.Save();
                 
-                foreach (var item in list.RemovedItems)
+                foreach (var item in list.RemovedEntities)
                     item.Save();
                 
                 _isDirty = false;

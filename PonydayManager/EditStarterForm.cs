@@ -47,7 +47,7 @@ namespace PonydayManager
 
             // load the competition-combo in the grid-column
             DataGridViewComboBoxColumn comboColumn = (DataGridViewComboBoxColumn)_competitionDataGridView.Columns[0];
-            comboColumn.DataSource = Competition.Select("");
+            comboColumn.DataSource = Competition.Select();
             comboColumn.DisplayMember = "Caption";
             comboColumn.ValueMember = "Id";
 
