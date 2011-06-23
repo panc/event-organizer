@@ -12,7 +12,7 @@ namespace PonydayManager.Entities
     {
         private static ILog _log = LogManager.GetLogger(typeof(Starter));
 
-        private EntityBindingList<Pony> _ponys;
+        private IEntityList<Pony> _ponys;
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -22,7 +22,7 @@ namespace PonydayManager.Entities
         public decimal? Costs { get; set; }
         public bool Paied { get; set; }
 
-       public EntityBindingList<Pony> Ponys
+        public IEntityList<Pony> Ponys
         {
             get
             {
@@ -33,9 +33,9 @@ namespace PonydayManager.Entities
             }
         }
 
-        public static IList<Starter> Select(string filter)
+        public static IEntityList<Starter> Select()
         {
-            IList<Starter> result = new List<Starter>();
+            IEntityList<Starter> result = new EntityList<Starter>();
 
             using (SQLiteConnection connection = OpenConnection())
             {
@@ -77,10 +77,38 @@ namespace PonydayManager.Entities
         {
             using (SQLiteConnection connection = OpenConnection())
             {
+                if (this.Id == NEW_ID && this.IsDeleted)
+                    return;
+
                 if (this.Id == Starter.NEW_ID)
                     Insert(connection);
+                else if (this.IsDeleted)
+                    Delete(connection);
                 else
                     Update(connection);
+            }
+        }
+
+        private void Delete(SQLiteConnection connection)
+        {
+            using (SQLiteCommand cmd = new SQLiteCommand(connection))
+            {
+                cmd.CommandText = "DELETE FROM EO_Starter WHERE Id = ?;";
+                cmd.Parameters.AddRange(new SQLiteParameter[]
+                {
+                    new SQLiteParameter{ Value = this.Id }
+                });
+
+                _log.Debug(CreateLogString(cmd));
+
+                if (cmd.ExecuteNonQuery() != 1)
+                    throw new Exception("Delete effects more than one record!");
+            }
+
+            foreach (var item in Ponys)
+            {
+                item.SetDeleted();
+                item.Save(connection);
             }
         }
 
@@ -148,7 +176,7 @@ namespace PonydayManager.Entities
                     item.Save(connection);
                 }
 
-                foreach (var item in _ponys.RemovedItems)
+                foreach (var item in _ponys.RemovedEntities)
                 {
                     item.Save(connection);
                 }

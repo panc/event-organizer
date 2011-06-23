@@ -13,17 +13,17 @@ namespace PonydayManager.Entities
 
         public string Caption { get; set; }
 
-        public static IList<Competition> Select(string filter)
+        public static IList<Competition> Select()
         {
             using (SQLiteConnection connection = OpenConnection())
             {
-                return Select(connection, filter);
+                return Select(connection);
             }
         }
 
-        public static EntityBindingList<Competition> Select(SQLiteConnection connection, string filter)
+        public static IEntityList<Competition> Select(SQLiteConnection connection)
         {
-            EntityBindingList<Competition> result = new EntityBindingList<Competition>();
+            IEntityList<Competition> result = new EntityList<Competition>();
 
             using (SQLiteCommand cmd = new SQLiteCommand(connection))
             {

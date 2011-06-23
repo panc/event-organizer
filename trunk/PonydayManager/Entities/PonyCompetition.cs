@@ -41,9 +41,9 @@ namespace PonydayManager.Entities
         public string LastName { get; private set; }
         public string Pony { get; private set; }
 
-        public static EntityBindingList<PonyCompetition> Select(int ponyId)
+        public static IEntityList<PonyCompetition> Select(int ponyId)
         {
-            EntityBindingList<PonyCompetition> result = new EntityBindingList<PonyCompetition>();
+            IEntityList<PonyCompetition> result = new EntityList<PonyCompetition>();
 
             using (SQLiteConnection connection = OpenConnection())
             {
@@ -80,9 +80,9 @@ namespace PonydayManager.Entities
             return result;
         }
 
-        public static IList<PonyCompetition> SelectForCompetition(int competitionId, bool orderByAssessment)
+        public static IEntityList<PonyCompetition> SelectForCompetition(int competitionId, bool orderByAssessment)
         {
-            List<PonyCompetition> result = new List<PonyCompetition>();
+            IEntityList<PonyCompetition> result = new EntityList<PonyCompetition>();
 
             using (SQLiteConnection connection = OpenConnection())
             {
