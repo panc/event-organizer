@@ -155,6 +155,19 @@ namespace PonydayManager
             }
         }
 
+        private void CompetitionMenuItem_Click(object sender, EventArgs e)
+        {
+            using (CompetitionForm frm = new CompetitionForm())
+            {
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    IList<Competition> list = Competition.Select("");
+                    _competitionTabOneComboBox.DataSource = list;
+                    _competitionTabTwoComboBox.DataSource = list.ToList();
+                }
+            }
+        }
+
         private void AddStarterButton_Click(object sender, EventArgs e)
         {
             EditStarter(new Starter());
@@ -164,6 +177,15 @@ namespace PonydayManager
         {
             if (_starterDataGridView.CurrentRow.DataBoundItem is Starter)
                 EditStarter((Starter)_starterDataGridView.CurrentRow.DataBoundItem);
+        }
+
+        private void DeleteStarterButton_Click(object sender, EventArgs e)
+        {
+            if (_starterDataGridView.CurrentRow.DataBoundItem is Starter)
+            {
+                // todo
+                //DeleteStarter((Starter)_starterDataGridView.CurrentRow.DataBoundItem);
+            }
         }
 
         private void StarterDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -203,8 +225,8 @@ namespace PonydayManager
 
         private void EditResultButton_Click(object sender, EventArgs e)
         {
-            if (_starterCompetitionDataGridView.CurrentRow.DataBoundItem is PonyCompetition)
-                EditResult((PonyCompetition)_starterCompetitionDataGridView.CurrentRow.DataBoundItem);
+            if (_resultDataGridView.CurrentRow.DataBoundItem is PonyCompetition)
+                EditResult((PonyCompetition)_resultDataGridView.CurrentRow.DataBoundItem);
         }
 
         private void StarterListButton_Click(object sender, EventArgs e)

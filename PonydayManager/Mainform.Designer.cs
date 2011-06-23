@@ -34,11 +34,12 @@
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._closeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verwaltungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bewerbeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._competitionMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this._deleteStarterButton = new System.Windows.Forms.Button();
             this._editStarterButton = new System.Windows.Forms.Button();
             this._addStarterButton = new System.Windows.Forms.Button();
             this._starterDataGridView = new PonydayManager.Controls.DataGridViewExt();
@@ -113,50 +114,51 @@
             this.dateiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._closeMenuItem});
             this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
-            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.dateiToolStripMenuItem.Text = "Datei";
             // 
             // _closeMenuItem
             // 
             this._closeMenuItem.Name = "_closeMenuItem";
-            this._closeMenuItem.Size = new System.Drawing.Size(127, 22);
+            this._closeMenuItem.Size = new System.Drawing.Size(120, 22);
             this._closeMenuItem.Text = "Beenden";
             this._closeMenuItem.Click += new System.EventHandler(this.CloseMenuItem_Click);
             // 
             // verwaltungToolStripMenuItem
             // 
             this.verwaltungToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bewerbeToolStripMenuItem});
+            this._competitionMenuItem});
             this.verwaltungToolStripMenuItem.Name = "verwaltungToolStripMenuItem";
-            this.verwaltungToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.verwaltungToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.verwaltungToolStripMenuItem.Text = "Verwaltung";
             // 
-            // bewerbeToolStripMenuItem
+            // _competitionMenuItem
             // 
-            this.bewerbeToolStripMenuItem.Name = "bewerbeToolStripMenuItem";
-            this.bewerbeToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.bewerbeToolStripMenuItem.Text = "Bewerbe";
+            this._competitionMenuItem.Name = "_competitionMenuItem";
+            this._competitionMenuItem.Size = new System.Drawing.Size(119, 22);
+            this._competitionMenuItem.Text = "Bewerbe";
+            this._competitionMenuItem.Click += new System.EventHandler(this.CompetitionMenuItem_Click);
             // 
             // infoToolStripMenuItem
             // 
             this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this._aboutMenuItem});
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.infoToolStripMenuItem.Text = "Info";
             // 
             // _aboutMenuItem
             // 
             this._aboutMenuItem.Name = "_aboutMenuItem";
-            this._aboutMenuItem.Size = new System.Drawing.Size(120, 22);
+            this._aboutMenuItem.Size = new System.Drawing.Size(108, 22);
             this._aboutMenuItem.Text = "Über...";
             this._aboutMenuItem.Click += new System.EventHandler(this.AboutMenuItem_Click);
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -169,6 +171,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this._deleteStarterButton);
             this.tabPage1.Controls.Add(this._editStarterButton);
             this.tabPage1.Controls.Add(this._addStarterButton);
             this.tabPage1.Controls.Add(this._starterDataGridView);
@@ -179,6 +182,21 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Meldungen";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // _deleteStarterButton
+            // 
+            this._deleteStarterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._deleteStarterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._deleteStarterButton.Image = ((System.Drawing.Image)(resources.GetObject("_deleteStarterButton.Image")));
+            this._deleteStarterButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._deleteStarterButton.Location = new System.Drawing.Point(354, 341);
+            this._deleteStarterButton.Name = "_deleteStarterButton";
+            this._deleteStarterButton.Size = new System.Drawing.Size(156, 30);
+            this._deleteStarterButton.TabIndex = 3;
+            this._deleteStarterButton.Text = "Meldung löschen";
+            this._deleteStarterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._deleteStarterButton.UseVisualStyleBackColor = true;
+            this._deleteStarterButton.Click += new System.EventHandler(this.DeleteStarterButton_Click);
             // 
             // _editStarterButton
             // 
@@ -215,9 +233,9 @@
             this._starterDataGridView.AllowUserToAddRows = false;
             this._starterDataGridView.AllowUserToDeleteRows = false;
             this._starterDataGridView.AllowUserToResizeRows = false;
-            this._starterDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this._starterDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this._starterDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this._starterDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this._starterDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -330,9 +348,9 @@
             this._starterCompetitionDataGridView.AllowUserToAddRows = false;
             this._starterCompetitionDataGridView.AllowUserToDeleteRows = false;
             this._starterCompetitionDataGridView.AllowUserToResizeRows = false;
-            this._starterCompetitionDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this._starterCompetitionDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this._starterCompetitionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this._starterCompetitionDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this._starterCompetitionDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -401,6 +419,7 @@
             this._editResultButton.Text = "Wertung bearbeiten";
             this._editResultButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this._editResultButton.UseVisualStyleBackColor = true;
+            this._editResultButton.Click += new System.EventHandler(this.EditResultButton_Click);
             // 
             // _printResultButton
             // 
@@ -442,9 +461,9 @@
             this._resultDataGridView.AllowUserToAddRows = false;
             this._resultDataGridView.AllowUserToDeleteRows = false;
             this._resultDataGridView.AllowUserToResizeRows = false;
-            this._resultDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this._resultDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this._resultDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this._resultDataGridView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this._resultDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -499,9 +518,9 @@
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel3,
             this._versionStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 542);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(870, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(870, 24);
             this.statusStrip1.TabIndex = 41;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -510,25 +529,25 @@
             this.toolStripStatusLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(196, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(214, 19);
             this.toolStripStatusLabel1.Text = "  © Christoph Pangerl, Christian Prein";
             this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // toolStripStatusLabel3
             // 
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(659, 17);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(641, 19);
             this.toolStripStatusLabel3.Spring = true;
             // 
             // _versionStatusLabel
             // 
             this._versionStatusLabel.Name = "_versionStatusLabel";
-            this._versionStatusLabel.Size = new System.Drawing.Size(0, 17);
+            this._versionStatusLabel.Size = new System.Drawing.Size(0, 19);
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -608,7 +627,7 @@
         private System.Windows.Forms.ToolStripMenuItem _aboutMenuItem;
         private PonydayManager.Controls.DataGridViewExt _starterDataGridView;
         private System.Windows.Forms.ToolStripMenuItem verwaltungToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem bewerbeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem _competitionMenuItem;
         private System.Windows.Forms.Button _addStarterButton;
         private System.Windows.Forms.Button _editStarterButton;
         private System.Windows.Forms.TabControl tabControl1;
@@ -641,6 +660,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.Button _deleteStarterButton;
     }
 }
 
