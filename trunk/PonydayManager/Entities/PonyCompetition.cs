@@ -13,7 +13,7 @@ namespace PonydayManager.Entities
 
         public int PonyId { get; set; }
         public int SortIndex { get; set; }
-        public int? Assessment { get; set; }
+        public decimal? Assessment { get; set; }
         public string Comment { get; set; }
 
 
@@ -69,7 +69,7 @@ namespace PonydayManager.Entities
                                 PonyId = rdr.GetInt32(1),
                                 CompetitionId = rdr.GetInt32(2),
                                 SortIndex = rdr.GetInt32(3),
-                                Assessment = rdr.GetNullableInt32(4),
+                                Assessment = rdr.GetNullableDecimal(4),
                                 Comment = rdr.GetNullableString(5)
                             });
                         }
@@ -119,7 +119,7 @@ namespace PonydayManager.Entities
                                 CompetitionId = rdr.GetInt32(1),
                                 PonyId = rdr.GetInt32(2),
                                 SortIndex = rdr.GetInt32(3),
-                                Assessment = rdr.GetNullableInt32(4),
+                                Assessment = rdr.GetNullableDecimal(4),
                                 Comment = rdr.GetNullableString(5),
                                 FirstName = rdr.GetNullableString(6),
                                 LastName = rdr.GetNullableString(7),

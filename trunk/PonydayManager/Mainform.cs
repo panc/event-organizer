@@ -269,8 +269,8 @@ namespace PonydayManager
             try
             {
                 string caption = string.Empty;
-                if (_competitionTabOneComboBox.SelectedItem is Competition)
-                    caption = ((Competition)_competitionTabOneComboBox.SelectedItem).Caption;
+                if (_competitionTabTwoComboBox.SelectedItem is Competition)
+                    caption = ((Competition)_competitionTabTwoComboBox.SelectedItem).Caption;
 
                 ExcelExporter exporter = new ExcelExporter();
                 exporter.ExportResultList((IList<PonyCompetition>)_resultDataGridView.DataSource, caption);

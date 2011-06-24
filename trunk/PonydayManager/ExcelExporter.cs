@@ -19,43 +19,26 @@ namespace PonydayManager
 
             try
             {
-                IWorkbook wb = Factory.GetWorkbook();
+                string template = ConfigurationManager.AppSettings["StarterListTemplate"];
+                IWorkbook wb = Factory.GetWorkbook(template);
 
-                int rowIndex = 2;
-                int colIndex = 0;
-
-                wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Vorname";
-                wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Nachname";
-                wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Pony";
-
-                wb.ActiveWorksheet.Cells[rowIndex, 0].EntireRow.Font.Bold = true;
-                rowIndex++;
+                int rowIndex = 5;
+                int colIndex = 1;
 
                 foreach (var item in starter)
                 {
-                    colIndex = 0;
-                    wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.FirstName;
+                    colIndex = 1;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.LastName;
+                    wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.FirstName;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Pony;
-                    
+
                     rowIndex++;
                 }
 
-                wb.ActiveWorksheet.Cells[0, 0, 0, colIndex].EntireColumn.AutoFit();
+                IRange captionRange = wb.ActiveWorksheet.Cells[1, 0];
+                captionRange.Value = string.Format("Startliste für: {0}", competitionCaption);
 
-                // insert the caption after autofit the columns, 
-                // else the first column is fitted to the size of the caption
-                IRange captionRange = wb.ActiveWorksheet.Cells[0, 0];
-                captionRange.Value = string.Format("Starterliste für: {0}", competitionCaption);
-                captionRange.Font.Bold = true;
-                captionRange.Font.Size = 12;
-
-
-                //string file = "D:\\Tswte.xls";
-                tempFileName = ConfigurationManager.AppSettings["TempExcelPath"];
-                tempFileName = Path.Combine(tempFileName, Path.GetRandomFileName());
-                tempFileName = Path.ChangeExtension(tempFileName, "xlt");
-
+                tempFileName = CreateTempFileName(template);
                 wb.SaveAs(tempFileName, FileFormat.Excel8);
 
                 Process.Start(tempFileName);
@@ -67,51 +50,39 @@ namespace PonydayManager
             }
         }
 
+        private string CreateTempFileName(string template)
+        {
+            string fileName = DateTime.Now.ToString("yyyyMMddhhmmss") + "_" + Path.GetFileName(template);
+            return Path.Combine(ConfigurationManager.AppSettings["TempExcelPath"], fileName);
+        }
+
         public void ExportResultList(IList<PonyCompetition> results, string competitionCaption)
         {
             string tempFileName = string.Empty;
 
             try
             {
-                IWorkbook wb = Factory.GetWorkbook();
+                string template = ConfigurationManager.AppSettings["ResultListTemplate"];
+                IWorkbook wb = Factory.GetWorkbook(template);
 
-                int rowIndex = 2;
-                int colIndex = 0;
-
-                wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Vorname";
-                wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Nachname";
-                wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Pony";
-                wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = "Gesamtbewertung";
-
-                wb.ActiveWorksheet.Cells[rowIndex, 0].EntireRow.Font.Bold = true;
-                rowIndex++;
-
+                int rowIndex = 5;
+                int colIndex = 1;
+                                
                 foreach (var item in results)
                 {
-                    colIndex = 0;
-                    wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.FirstName;
+                    colIndex = 1;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.LastName;
+                    wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.FirstName;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Pony;
                     wb.ActiveWorksheet.Cells[rowIndex, colIndex++].Value = item.Assessment;
 
                     rowIndex++;
                 }
 
-                wb.ActiveWorksheet.Cells[0, 0, 0, colIndex].EntireColumn.AutoFit();
-
-                // insert the caption after autofit the columns, 
-                // else the first column is fitted to the size of the caption
-                IRange captionRange = wb.ActiveWorksheet.Cells[0, 0];
+                IRange captionRange = wb.ActiveWorksheet.Cells[1, 0];
                 captionRange.Value = string.Format("Ergebnisliste für: {0}", competitionCaption);
-                captionRange.Font.Bold = true;
-                captionRange.Font.Size = 12;
-
-
-                //string file = "D:\\Tswte.xls";
-                tempFileName = ConfigurationManager.AppSettings["TempExcelPath"];
-                tempFileName = Path.Combine(tempFileName, Path.GetRandomFileName());
-                tempFileName = Path.ChangeExtension(tempFileName, "xlt");
-
+                
+                tempFileName = CreateTempFileName(template);
                 wb.SaveAs(tempFileName, FileFormat.Excel8);
 
                 Process.Start(tempFileName);

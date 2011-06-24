@@ -46,7 +46,7 @@ namespace PonydayManager
             if (_isDirty)
             {
                 // update the values from the textboxes
-                _result.Assessment = _assessment.GetTextAsInt32();
+                _result.Assessment = _assessment.GetTextAsDecimal();
                 _result.Comment = _comment.Text;
 
                 _result.Save();
