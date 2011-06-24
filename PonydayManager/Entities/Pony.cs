@@ -145,6 +145,11 @@ namespace PonydayManager.Entities
                     item.PonyId = this.Id;
                     item.Save(connection);
                 }
+
+                foreach (var item in _competitions.RemovedEntities)
+                {
+                    item.Save();
+                }
             }
         }
     }

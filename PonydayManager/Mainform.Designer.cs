@@ -39,26 +39,18 @@
             this._aboutMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this._deleteStarterButton = new System.Windows.Forms.Button();
-            this._editStarterButton = new System.Windows.Forms.Button();
-            this._addStarterButton = new System.Windows.Forms.Button();
             this._starterDataGridView = new PonydayManager.Controls.DataGridViewExt();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Club = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this._resultDownButton = new System.Windows.Forms.Button();
-            this._resultUpButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this._starterListButton = new System.Windows.Forms.Button();
             this._starterCompetitionDataGridView = new PonydayManager.Controls.DataGridViewExt();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this._editResultButton = new System.Windows.Forms.Button();
-            this._printResultButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this._competitionTabTwoComboBox = new System.Windows.Forms.ComboBox();
             this._resultDataGridView = new PonydayManager.Controls.DataGridViewExt();
@@ -72,6 +64,14 @@
             this._versionStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new PonydayManager.Controls.OutlookPanel();
             this.label2 = new System.Windows.Forms.Label();
+            this._deleteStarterButton = new System.Windows.Forms.Button();
+            this._editStarterButton = new System.Windows.Forms.Button();
+            this._addStarterButton = new System.Windows.Forms.Button();
+            this._resultDownButton = new System.Windows.Forms.Button();
+            this._resultUpButton = new System.Windows.Forms.Button();
+            this._starterListButton = new System.Windows.Forms.Button();
+            this._editResultButton = new System.Windows.Forms.Button();
+            this._printResultButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -183,51 +183,6 @@
             this.tabPage1.Text = "Meldungen";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // _deleteStarterButton
-            // 
-            this._deleteStarterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._deleteStarterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._deleteStarterButton.Image = ((System.Drawing.Image)(resources.GetObject("_deleteStarterButton.Image")));
-            this._deleteStarterButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._deleteStarterButton.Location = new System.Drawing.Point(354, 341);
-            this._deleteStarterButton.Name = "_deleteStarterButton";
-            this._deleteStarterButton.Size = new System.Drawing.Size(156, 30);
-            this._deleteStarterButton.TabIndex = 3;
-            this._deleteStarterButton.Text = "Meldung löschen";
-            this._deleteStarterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._deleteStarterButton.UseVisualStyleBackColor = true;
-            this._deleteStarterButton.Click += new System.EventHandler(this.DeleteStarterButton_Click);
-            // 
-            // _editStarterButton
-            // 
-            this._editStarterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._editStarterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._editStarterButton.Image = ((System.Drawing.Image)(resources.GetObject("_editStarterButton.Image")));
-            this._editStarterButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._editStarterButton.Location = new System.Drawing.Point(173, 341);
-            this._editStarterButton.Name = "_editStarterButton";
-            this._editStarterButton.Size = new System.Drawing.Size(175, 30);
-            this._editStarterButton.TabIndex = 1;
-            this._editStarterButton.Text = "Meldung bearbeiten";
-            this._editStarterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._editStarterButton.UseVisualStyleBackColor = true;
-            this._editStarterButton.Click += new System.EventHandler(this.EditStarterButton_Click);
-            // 
-            // _addStarterButton
-            // 
-            this._addStarterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._addStarterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._addStarterButton.Image = global::PonydayManager.Properties.Resources.New_16x16;
-            this._addStarterButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._addStarterButton.Location = new System.Drawing.Point(6, 341);
-            this._addStarterButton.Name = "_addStarterButton";
-            this._addStarterButton.Size = new System.Drawing.Size(161, 30);
-            this._addStarterButton.TabIndex = 0;
-            this._addStarterButton.Text = "Meldung erfassen";
-            this._addStarterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._addStarterButton.UseVisualStyleBackColor = true;
-            this._addStarterButton.Click += new System.EventHandler(this.AddStarterButton_Click);
-            // 
             // _starterDataGridView
             // 
             this._starterDataGridView.AllowUserToAddRows = false;
@@ -289,35 +244,15 @@
             this.tabPage2.Controls.Add(this._resultUpButton);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this._competitionTabOneComboBox);
-            this.tabPage2.Controls.Add(this._starterListButton);
             this.tabPage2.Controls.Add(this._starterCompetitionDataGridView);
+            this.tabPage2.Controls.Add(this._starterListButton);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(838, 377);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Starterlisten";
+            this.tabPage2.Text = "Startlisten";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // _resultDownButton
-            // 
-            this._resultDownButton.Image = global::PonydayManager.Properties.Resources.Navigate_down;
-            this._resultDownButton.Location = new System.Drawing.Point(6, 117);
-            this._resultDownButton.Name = "_resultDownButton";
-            this._resultDownButton.Size = new System.Drawing.Size(39, 33);
-            this._resultDownButton.TabIndex = 48;
-            this._resultDownButton.UseVisualStyleBackColor = true;
-            this._resultDownButton.Click += new System.EventHandler(this.ResultDownButton_Click);
-            // 
-            // _resultUpButton
-            // 
-            this._resultUpButton.Image = ((System.Drawing.Image)(resources.GetObject("_resultUpButton.Image")));
-            this._resultUpButton.Location = new System.Drawing.Point(6, 78);
-            this._resultUpButton.Name = "_resultUpButton";
-            this._resultUpButton.Size = new System.Drawing.Size(39, 33);
-            this._resultUpButton.TabIndex = 47;
-            this._resultUpButton.UseVisualStyleBackColor = true;
-            this._resultUpButton.Click += new System.EventHandler(this.ResultUpButton_Click);
             // 
             // label1
             // 
@@ -327,21 +262,6 @@
             this.label1.Size = new System.Drawing.Size(67, 20);
             this.label1.TabIndex = 10;
             this.label1.Text = "Bewerb:";
-            // 
-            // _starterListButton
-            // 
-            this._starterListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._starterListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._starterListButton.Image = global::PonydayManager.Properties.Resources.Excel_16x16;
-            this._starterListButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._starterListButton.Location = new System.Drawing.Point(676, 341);
-            this._starterListButton.Name = "_starterListButton";
-            this._starterListButton.Size = new System.Drawing.Size(156, 30);
-            this._starterListButton.TabIndex = 2;
-            this._starterListButton.Text = "Startiste drucken";
-            this._starterListButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._starterListButton.UseVisualStyleBackColor = true;
-            this._starterListButton.Click += new System.EventHandler(this.StarterListButton_Click);
             // 
             // _starterCompetitionDataGridView
             // 
@@ -405,36 +325,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Ergebnislisten";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // _editResultButton
-            // 
-            this._editResultButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this._editResultButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._editResultButton.Image = ((System.Drawing.Image)(resources.GetObject("_editResultButton.Image")));
-            this._editResultButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._editResultButton.Location = new System.Drawing.Point(6, 341);
-            this._editResultButton.Name = "_editResultButton";
-            this._editResultButton.Size = new System.Drawing.Size(174, 30);
-            this._editResultButton.TabIndex = 52;
-            this._editResultButton.Text = "Wertung bearbeiten";
-            this._editResultButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._editResultButton.UseVisualStyleBackColor = true;
-            this._editResultButton.Click += new System.EventHandler(this.EditResultButton_Click);
-            // 
-            // _printResultButton
-            // 
-            this._printResultButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this._printResultButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._printResultButton.Image = global::PonydayManager.Properties.Resources.Excel_16x16;
-            this._printResultButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this._printResultButton.Location = new System.Drawing.Point(637, 341);
-            this._printResultButton.Name = "_printResultButton";
-            this._printResultButton.Size = new System.Drawing.Size(195, 30);
-            this._printResultButton.TabIndex = 51;
-            this._printResultButton.Text = "Ergebnissliste drucken";
-            this._printResultButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this._printResultButton.UseVisualStyleBackColor = true;
-            this._printResultButton.Click += new System.EventHandler(this.PrintResultButton_Click);
             // 
             // label3
             // 
@@ -567,6 +457,116 @@
             this.label2.Size = new System.Drawing.Size(248, 31);
             this.label2.TabIndex = 14;
             this.label2.Text = "Ponyday Manager";
+            // 
+            // _deleteStarterButton
+            // 
+            this._deleteStarterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._deleteStarterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._deleteStarterButton.Image = global::PonydayManager.Properties.Resources.X_16x16;
+            this._deleteStarterButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._deleteStarterButton.Location = new System.Drawing.Point(354, 341);
+            this._deleteStarterButton.Name = "_deleteStarterButton";
+            this._deleteStarterButton.Size = new System.Drawing.Size(156, 30);
+            this._deleteStarterButton.TabIndex = 3;
+            this._deleteStarterButton.Text = "Meldung löschen";
+            this._deleteStarterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._deleteStarterButton.UseVisualStyleBackColor = true;
+            this._deleteStarterButton.Click += new System.EventHandler(this.DeleteStarterButton_Click);
+            // 
+            // _editStarterButton
+            // 
+            this._editStarterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._editStarterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._editStarterButton.Image = global::PonydayManager.Properties.Resources.Edit_16x16;
+            this._editStarterButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._editStarterButton.Location = new System.Drawing.Point(173, 341);
+            this._editStarterButton.Name = "_editStarterButton";
+            this._editStarterButton.Size = new System.Drawing.Size(175, 30);
+            this._editStarterButton.TabIndex = 1;
+            this._editStarterButton.Text = "Meldung bearbeiten";
+            this._editStarterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._editStarterButton.UseVisualStyleBackColor = true;
+            this._editStarterButton.Click += new System.EventHandler(this.EditStarterButton_Click);
+            // 
+            // _addStarterButton
+            // 
+            this._addStarterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._addStarterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._addStarterButton.Image = global::PonydayManager.Properties.Resources.New_16x16;
+            this._addStarterButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._addStarterButton.Location = new System.Drawing.Point(6, 341);
+            this._addStarterButton.Name = "_addStarterButton";
+            this._addStarterButton.Size = new System.Drawing.Size(161, 30);
+            this._addStarterButton.TabIndex = 0;
+            this._addStarterButton.Text = "Meldung erfassen";
+            this._addStarterButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._addStarterButton.UseVisualStyleBackColor = true;
+            this._addStarterButton.Click += new System.EventHandler(this.AddStarterButton_Click);
+            // 
+            // _resultDownButton
+            // 
+            this._resultDownButton.Image = global::PonydayManager.Properties.Resources.Navigate_down;
+            this._resultDownButton.Location = new System.Drawing.Point(6, 117);
+            this._resultDownButton.Name = "_resultDownButton";
+            this._resultDownButton.Size = new System.Drawing.Size(39, 33);
+            this._resultDownButton.TabIndex = 48;
+            this._resultDownButton.UseVisualStyleBackColor = true;
+            this._resultDownButton.Click += new System.EventHandler(this.ResultDownButton_Click);
+            // 
+            // _resultUpButton
+            // 
+            this._resultUpButton.Image = global::PonydayManager.Properties.Resources.Navigate_up;
+            this._resultUpButton.Location = new System.Drawing.Point(6, 78);
+            this._resultUpButton.Name = "_resultUpButton";
+            this._resultUpButton.Size = new System.Drawing.Size(39, 33);
+            this._resultUpButton.TabIndex = 47;
+            this._resultUpButton.UseVisualStyleBackColor = true;
+            this._resultUpButton.Click += new System.EventHandler(this.ResultUpButton_Click);
+            // 
+            // _starterListButton
+            // 
+            this._starterListButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._starterListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._starterListButton.Image = global::PonydayManager.Properties.Resources.Excel_16x16;
+            this._starterListButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._starterListButton.Location = new System.Drawing.Point(676, 341);
+            this._starterListButton.Name = "_starterListButton";
+            this._starterListButton.Size = new System.Drawing.Size(156, 30);
+            this._starterListButton.TabIndex = 2;
+            this._starterListButton.Text = "Startiste drucken";
+            this._starterListButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._starterListButton.UseVisualStyleBackColor = true;
+            this._starterListButton.Click += new System.EventHandler(this.StarterListButton_Click);
+            // 
+            // _editResultButton
+            // 
+            this._editResultButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this._editResultButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._editResultButton.Image = global::PonydayManager.Properties.Resources.Edit_16x16;
+            this._editResultButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._editResultButton.Location = new System.Drawing.Point(6, 341);
+            this._editResultButton.Name = "_editResultButton";
+            this._editResultButton.Size = new System.Drawing.Size(174, 30);
+            this._editResultButton.TabIndex = 52;
+            this._editResultButton.Text = "Wertung bearbeiten";
+            this._editResultButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._editResultButton.UseVisualStyleBackColor = true;
+            this._editResultButton.Click += new System.EventHandler(this.EditResultButton_Click);
+            // 
+            // _printResultButton
+            // 
+            this._printResultButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this._printResultButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._printResultButton.Image = global::PonydayManager.Properties.Resources.Excel_16x16;
+            this._printResultButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this._printResultButton.Location = new System.Drawing.Point(637, 341);
+            this._printResultButton.Name = "_printResultButton";
+            this._printResultButton.Size = new System.Drawing.Size(195, 30);
+            this._printResultButton.TabIndex = 51;
+            this._printResultButton.Text = "Ergebnissliste drucken";
+            this._printResultButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._printResultButton.UseVisualStyleBackColor = true;
+            this._printResultButton.Click += new System.EventHandler(this.PrintResultButton_Click);
             // 
             // pictureBox1
             // 
