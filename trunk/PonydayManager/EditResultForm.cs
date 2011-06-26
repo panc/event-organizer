@@ -96,12 +96,5 @@ namespace PonydayManager
                     e.Cancel = true;
             }
         }
-
-        private void AssessmentTextBox_Leave(object sender, EventArgs e)
-        {
-            TextBox tb = sender as TextBox;
-            if (tb != null)
-                tb.Text = tb.GetTextAsInt32().ToString();
-        }
     }
 }

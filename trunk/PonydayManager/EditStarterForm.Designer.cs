@@ -137,6 +137,7 @@
             this._comment.Name = "_comment";
             this._comment.Size = new System.Drawing.Size(622, 111);
             this._comment.TabIndex = 7;
+            this._comment.TextChanged += new System.EventHandler(this.Control_Changed);
             // 
             // label8
             // 
