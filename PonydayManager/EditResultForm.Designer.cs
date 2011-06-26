@@ -106,7 +106,6 @@
             this._assessment.TabIndex = 0;
             this._assessment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this._assessment.TextChanged += new System.EventHandler(this.Control_Changed);
-            this._assessment.Leave += new System.EventHandler(this.AssessmentTextBox_Leave);
             // 
             // _comment
             // 
