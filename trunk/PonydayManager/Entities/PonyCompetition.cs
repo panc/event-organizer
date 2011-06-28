@@ -40,6 +40,7 @@ namespace PonydayManager.Entities
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string Pony { get; private set; }
+        public string Club { get; private set; }
 
         public static IEntityList<PonyCompetition> Select(int ponyId)
         {
@@ -92,7 +93,7 @@ namespace PonydayManager.Entities
                         .Append("SELECT ")
                         .Append("pc.Id, pc.CompetitionId, pc.PonyId, pc.SortIndex, ")
                         .Append("pc.Assessment, pc.Comment, ")
-                        .Append("s.FirstName, s.LastName, p.Name as Pony ")
+                        .Append("s.FirstName, s.LastName, s.Club, p.Name as Pony ")
                         .Append("FROM EO_PonyCompetition AS pc ")
                         .Append("INNER JOIN EO_Pony AS p ON p.Id = pc.PonyId ")
                         .Append("INNER JOIN EO_Starter AS s ON s.Id = p.StarterId ")
@@ -123,7 +124,8 @@ namespace PonydayManager.Entities
                                 Comment = rdr.GetNullableString(5),
                                 FirstName = rdr.GetNullableString(6),
                                 LastName = rdr.GetNullableString(7),
-                                Pony = rdr.GetNullableString(8)
+                                Club = rdr.GetNullableString(8),
+                                Pony = rdr.GetNullableString(9)
                             });
                         }
 
