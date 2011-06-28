@@ -74,6 +74,13 @@ namespace PonydayManager.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap LikeIt {
+            get {
+                object obj = ResourceManager.GetObject("LikeIt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);

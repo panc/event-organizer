@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die mit einer Assembly verknüpft sind.
 [assembly: AssemblyTitle("Ponyday-Manager")]
-[assembly: AssemblyDescription("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Pangerl-Solutions")]
 [assembly: AssemblyProduct("Ponyday-Manager")]
@@ -32,8 +32,8 @@ using System.Runtime.InteropServices;
 // Sie können alle Werte angeben oder die standardmäßigen Build- und Revisionsnummern 
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.5")]
-[assembly: AssemblyFileVersion("1.0.5")]
+[assembly: AssemblyVersion("1.0.5.2")]
+[assembly: AssemblyFileVersion("1.0.5.2")]
 
 // Log4Net
 [assembly: log4net.Config.XmlConfigurator(ConfigFileExtension = "config", Watch = true)]
